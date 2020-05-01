@@ -1,4 +1,4 @@
-; Fri May 01 18:38:12 CEST 2020
+; Sat May 02 01:52:47 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -44,13 +44,13 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot puntuacion
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot indicado
 		(type INSTANCE)
 ;+		(allowed-classes Problemas)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot ejercicio
 		(type INSTANCE)
@@ -211,31 +211,31 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot duracion+max
-;+		(comment "Duracion maxima del ejercicio")
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot objetivos
 ;+		(comment "Objetivos que cumple esta actividad.")
 		(type INSTANCE)
 ;+		(allowed-classes Objetivo)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
+	(single-slot duracion+max
+;+		(comment "Duracion maxima del ejercicio")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot tipo+de+ejercicio
 		(type SYMBOL)
 		(allowed-values cardio con_pesas con_aparatos suelo estiramiento)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot calorias+por+min
-;+		(comment "Calorias que se queman por minuto con este ejercicio")
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot contraindicado
 ;+		(comment "Lista de condicionantes para los cualos este ejercicio es contraindicado.")
 		(type INSTANCE)
 ;+		(allowed-classes Problemas)
+		(create-accessor read-write))
+	(single-slot calorias+por+min
+;+		(comment "Calorias que se queman por minuto con este ejercicio")
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot nombre
 ;+		(comment "Nombre")
