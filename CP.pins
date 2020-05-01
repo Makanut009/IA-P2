@@ -1,0 +1,188 @@
+; Fri May 01 15:03:47 CEST 2020
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([30-4-20_Class18] of  Habito+personal
+
+	(favorable [30-4-20_Class24])
+	(grupo_muscular Brazos)
+	(nombre "Planchar"))
+
+([30-4-20_Class19] of  Habito+personal
+
+	(desfavorable [30-4-20_Class26])
+	(favorable
+		[30-4-20_Class24]
+		[30-4-20_Class23])
+	(grupo_muscular Brazos)
+	(nombre "Levantar cajas"))
+
+([30-4-20_Class20] of  Habito+personal
+
+	(favorable [30-4-20_Class25])
+	(grupo_muscular Piernas)
+	(nombre "Compras"))
+
+([30-4-20_Class21] of  Habito+personal
+
+	(favorable
+		[30-4-20_Class23]
+		[30-4-20_Class24]
+		[30-4-20_Class26]
+		[30-4-20_Class28])
+	(grupo_muscular Espalda Brazos Abdominales)
+	(nombre "Natacion"))
+
+([30-4-20_Class22] of  Habito+personal
+
+	(favorable
+		[30-4-20_Class27]
+		[30-4-20_Class25])
+	(grupo_muscular Gluteos Piernas)
+	(nombre "Pasear la mascota"))
+
+([30-4-20_Class23] of  Objetivo
+
+	(nombre "Adelgazar"))
+
+([30-4-20_Class24] of  Objetivo
+
+	(nombre "Tonificar brazo"))
+
+([30-4-20_Class25] of  Objetivo
+
+	(nombre "Tonificar piernas"))
+
+([30-4-20_Class26] of  Objetivo
+
+	(nombre "Tonificar espalda"))
+
+([30-4-20_Class27] of  Objetivo
+
+	(nombre "Tonificar gluteos"))
+
+([30-4-20_Class28] of  Objetivo
+
+	(nombre "Tonificar abdomen"))
+
+([30-4-20_Class30] of  Problemas+musculo-esqueleticos
+
+	(grupo_muscular Brazos)
+	(nombre "Dolor en el brazo"))
+
+([30-4-20_Class31] of  Problemas+musculo-esqueleticos
+
+	(grupo_muscular Piernas)
+	(nombre "Rodilla operada"))
+
+([30-4-20_Class32] of  Problemas+cardiorespiratorios
+
+	(nombre "Asma"))
+
+([30-4-20_Class33] of  Problemas+cardiorespiratorios
+
+	(nombre "Coronavirus"))
+
+([30-4-20_Class34] of  Problema+peso
+
+	(nombre "Sobrepeso"))
+
+([30-4-20_Class35] of  Problema+peso
+
+	(nombre "Obesidad"))
+
+([30-4-20_Class36] of  Problema+peso
+
+	(nombre "Excesivamente delgado"))
+
+([30-4-20_Class37] of  Problema+edad
+
+	(nombre "+100 años"))
+
+([30-4-20_Class38] of  Problema+edad
+
+	(nombre "-10 años"))
+
+([30-4-20_Class39] of  Ejercicio
+
+	(calorias+por+min 10)
+	(duracion+max 60)
+	(duracion+min 10)
+	(grupo_muscular Piernas)
+	(indicado [30-4-20_Class31])
+	(nombre "Bicicleta estatica")
+	(objetivos
+		[30-4-20_Class25]
+		[30-4-20_Class23])
+	(repeticiones+max 1)
+	(repeticiones+min 1)
+	(tipo+de+ejercicio con_aparatos))
+
+([30-4-20_Class40] of  Ejercicio
+
+	(calorias+por+min 10)
+	(duracion+max 10)
+	(duracion+min 1)
+	(grupo_muscular Abdominales)
+	(nombre "Abdominales")
+	(objetivos [30-4-20_Class28])
+	(repeticiones+max 100)
+	(repeticiones+min 5)
+	(tipo+de+ejercicio suelo))
+
+([30-4-20_Class41] of  Ejercicio
+
+	(calorias+por+min 10)
+	(duracion+max 20)
+	(duracion+min 1)
+	(grupo_muscular Brazos)
+	(nombre "Levantar pesas")
+	(objetivos [30-4-20_Class24])
+	(repeticiones+max 100)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio con_pesas))
+
+([30-4-20_Class42] of  Ejercicio
+
+	(calorias+por+min 10)
+	(duracion+max 2)
+	(duracion+min 10)
+	(grupo_muscular Gluteos)
+	(nombre "Sentadillas")
+	(objetivos [30-4-20_Class27])
+	(repeticiones+max 100)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([30-4-20_Class43] of  Ejercicio
+
+	(calorias+por+min 10)
+	(duracion+max 10)
+	(duracion+min 1)
+	(grupo_muscular Espalda)
+	(nombre "Hiperextensiones")
+	(objetivos [30-4-20_Class26])
+	(repeticiones+max 50)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio con_aparatos))
+
+([30-4-20_Class44] of  Ejercicio
+
+	(calorias+por+min 5)
+	(duracion+max 10)
+	(duracion+min 2)
+	(grupo_muscular Piernas)
+	(nombre "Estirar quadriceps")
+	(objetivos [30-4-20_Class45])
+	(repeticiones+max 1)
+	(repeticiones+min 1)
+	(tipo+de+ejercicio estiramiento))
+
+([30-4-20_Class45] of  Objetivo
+
+	(nombre "Mejorar flexibilidad"))
+
+([30-4-20_Class46] of  Objetivo
+
+	(nombre "Aliviar el dolor"))
