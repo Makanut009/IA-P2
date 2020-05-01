@@ -1,4 +1,4 @@
-; Fri May 01 15:03:47 CEST 2020
+; Fri May 01 18:38:12 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -7,7 +7,8 @@
 
 	(favorable [30-4-20_Class24])
 	(grupo_muscular Brazos)
-	(nombre "Planchar"))
+	(nombre "Planchar")
+	(puntuacion 5))
 
 ([30-4-20_Class19] of  Habito+personal
 
@@ -16,13 +17,15 @@
 		[30-4-20_Class24]
 		[30-4-20_Class23])
 	(grupo_muscular Brazos)
-	(nombre "Levantar cajas"))
+	(nombre "Levantar cajas")
+	(puntuacion 15))
 
 ([30-4-20_Class20] of  Habito+personal
 
 	(favorable [30-4-20_Class25])
 	(grupo_muscular Piernas)
-	(nombre "Compras"))
+	(nombre "Compras")
+	(puntuacion 10))
 
 ([30-4-20_Class21] of  Habito+personal
 
@@ -32,7 +35,8 @@
 		[30-4-20_Class26]
 		[30-4-20_Class28])
 	(grupo_muscular Espalda Brazos Abdominales)
-	(nombre "Natacion"))
+	(nombre "Natacion")
+	(puntuacion 25))
 
 ([30-4-20_Class22] of  Habito+personal
 
@@ -40,7 +44,8 @@
 		[30-4-20_Class27]
 		[30-4-20_Class25])
 	(grupo_muscular Gluteos Piernas)
-	(nombre "Pasear la mascota"))
+	(nombre "Pasear la mascota")
+	(puntuacion 10))
 
 ([30-4-20_Class23] of  Objetivo
 

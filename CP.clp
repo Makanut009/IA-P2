@@ -49,6 +49,21 @@
 	?respuesta
 )
 
+(deffunction pregunta-frec (?pregunta ?rangini ?rangfi) 
+	(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
+	(printout t "1. Diariamente")
+	(printout t "2. Varias veces a la semana")
+	(printout t "3. Semanalmente")
+	(bind ?respuesta (read)) 
+	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
+		(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
+		(bind ?respuesta (read)) 
+	)
+	if (eq ?respuesta 1) then Diaria
+	else if (eq ?respuesta 2) then Varias_veces_a_la_semana
+	else if (eq ?respuesta 3) then Semanal
+)
+
 (deffunction ask-question (?question $?allowed-values)
    (printout t ?question)
    (bind ?answer (read))
@@ -63,6 +78,19 @@
    (if (or (eq ?response si) (eq ?response s))
        then TRUE 
        else FALSE))
+
+	   
+;POTSER HAURIEM D'AFEGIR ELS PROBLEMES DE PES AQUI???
+(deffunction calcular_int_imc(?imc)
+	(if (< ?imc 18.5) then -1000) else
+	(if (> ?imc 50) then -3000) else
+	(if (> ?imc 40) then -2000) else
+	(if (> ?imc 35) then -1600) else 
+	(if (> ?imc 30) then -1200) else
+	(if (> ?imc 27) then -700) else 
+	(if (> ?imc 25) then -300) else
+	500
+)
 
 
 ;;////////////////////
@@ -91,13 +119,14 @@
 	=>
     (bind ?nombre (pregunta-general "Nombre: "))
 	(bind ?edad (pregunta-numerica "Edad (anos): " 0 150))
-    (bind ?altura (pregunta-numerica "Altura (cm): " 0 150))
+    (bind ?altura (pregunta-numerica "Altura (cm): " 0 250))
     (bind ?peso (pregunta-numerica "Peso (kg): " 0.0 600.0))
 	(bind ?IMC (/ ?peso (* ?altura ?altura)))
-;	(if (< ?imc 18.5) then (anadir-ProblemaIMC )
     (bind ?presion_min (pregunta-numerica "Presion sanguinea minima: " 0.0 200.0))
 	(bind ?presion_max (pregunta-numerica "Presion sanguinea maxima: " 0.0 200.0))
 	;(if (presion demasiado alta) then ...)
+
+	(bind ?tiempo_diario_disp (pregunta-numerica "Tiempo diario disponible [30,300] min: " 30 300))
 
 	(assert
 		(Persona
@@ -107,7 +136,8 @@
    		(peso ?peso)
 		(IMC ?IMC)
 		(presion_min ?presion_min)
-		(presion_max ?presion_max))
+		(presion_max ?presion_max)
+		(tiempo_dispo ?tiempo_diario_disp))
 	)
 	(assert (no_hay_habitos))
 	(assert (no_hay_problemas))
@@ -131,8 +161,10 @@
 	(bind ?lista (create$))
 	(while (> ?respuesta 0) do 
 		(bind ?habito (nth$ ?respuesta ?lista_habitos))
-		(send ?habito put-duracion   (pregunta-numerica "Durante cuanto tiempo? (minutos)" 0 600))
-		(send ?habito put-frecuencia Diaria)
+		(bind ?duracion (pregunta-numerica "Durante cuanto tiempo? (minutos)" 0 600))
+		(send ?habito put-duracion ?duracion)
+		(bind ?frec (pregunta-frec "Con que frecuencia?" 1 3))
+		(send ?habito put-frecuencia ?frec)
 		(bind ?lista (insert$ ?lista 1 ?habito))
 		(bind ?respuesta (pregunta-numerica "Cual mas? " 0 (length$ ?lista_habitos)))
 	)
@@ -185,3 +217,48 @@
 	(retract ?nho)
 )
 
+(defrule pasa-a-inferir
+	(declare (salience -10))
+	=>
+	(focus inferir-datos)
+)
+
+(defmodule inferir-datos "Modulo de inferencia"
+  (import MAIN ?ALL)
+  (import preguntas ?ALL)
+  (export ?ALL))
+
+
+(defrule calcula_int_inicial
+	?persona <- (Persona (habitos $?lista_habitos) (IMC ?IMC) (intensidad_inicial 0))
+	=>
+	;IMC
+	(bind ?int_ini (calcular_int_imc ?IMC)) ;FALTA ACABAR DE REPASSAR-LA
+
+	;DIETA
+	;(bind ?int_ini (+ ?int_ini (calcular_int_dieta ?persona:dieta)))
+	;EJERCICIOS SENCILLOS
+	;(bind ?int_ini (+ ?int_ini (calcular_int_ejercicios ?persona:ejercicios)))
+	(printout t (length$ $?lista_habitos) crlf)
+
+	;HABITOS PERSONALES
+	(loop-for-count (?i 1 (length$ $?lista_habitos)) do
+		(bind ?habito (nth$ ?i $?lista_habitos))
+
+		(bind ?duracion (send ?habito get-duracion))
+		(bind ?puntuacion (send ?habito get-puntuacion))
+		(bind ?frec (send ?habito get-frecuencia))
+		;HAURÍEM DE CANVIAR L'SLOT FREQUÈNCIA PERQUE SIGUI UN INT, QUE SERAN ELS DIES DE LA SETMANA. LLAVORS PODEM FER PREGUNTA NUMERICA
+		(if (eq ?frec Diaria) then (bind ?frec2 30) else
+			(if (eq ?frec Semanal) then (bind ?frec2 4) else
+				(if (eq ?frec Varias_veces_a_la_semana) then (bind ?frec2 1))
+			)
+		)
+		
+		(bind ?puntuacion_real (* ?puntuacion (* ?frec2 ?duracion)))
+		
+		(bind ?int_ini (+ ?int_ini ?puntuacion_real))
+	)
+	
+	(modify ?persona (intensidad_inicial ?int_ini))
+)
