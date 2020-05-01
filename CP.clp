@@ -262,3 +262,49 @@
 	
 	(modify ?persona (intensidad_inicial ?int_ini))
 )
+
+(deftemplate completitud_objetivo (slot objetivo (type INSTANCE)) (slot puntuacion (type INTEGER)))
+
+(defrule objetivos_cumplidos_habitos
+	;(declare (salience 1))
+	?persona <- (Persona (habitos $?lista_habitos))
+	=>
+	(progn$ (?habito ?lista_habitos)
+		(bind ?duracion (send ?habito get-duracion))
+		(bind ?puntuacion (send ?habito get-puntuacion))
+		(bind ?frec (send ?habito get-frecuencia))
+		(if (eq ?frec Diaria) then (bind ?frec2 30) else
+			(if (eq ?frec Semanal) then (bind ?frec2 4) else
+				(if (eq ?frec Varias_veces_a_la_semana) then (bind ?frec2 1))
+			)
+		)
+		(bind ?puntuacion_real (* ?puntuacion (* ?frec2 ?duracion)))
+
+		(bind ?lista_objetivos (send ?habito get-favorable))
+		(progn$ (?objetivo ?lista_objetivos)
+			(assert (completitud_objetivo (objetivo ?objetivo) (puntuacion ?puntuacion)))
+		)
+	)
+)
+
+(defrule junta_pares
+	?x1 <- (completitud_objetivo (objetivo ?objetivo) (puntuacion ?punt1))
+	?x2 <- (completitud_objetivo (objetivo ?objetivo) (puntuacion ?punt2))
+	(eq x1 x2)
+	=>
+	(assert (completitud_objetivo (objetivo ?objetivo) (puntuacion (+ ?punt1 ?punt2))))
+	(retract ?x1)
+	(retract ?x2)
+)
+
+; 		;(bind ?int_ini (+ ?int_ini ?puntuacion_real))
+; 		)
+	
+; 	;(modify ?persona (intensidad_inicial ?int_ini))
+; )
+
+;xmck <- (completitud_objetivo Adelgazar)
+
+;AFEGIR PROBLEMA DE PRESSIO ALTA/BAIXA A LA ONTOLOGIA
+
+;(exists(bebida ?precio:(< ?precio 5)))
