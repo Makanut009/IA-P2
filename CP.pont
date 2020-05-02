@@ -1,4 +1,4 @@
-; Sat May 02 19:47:32 CEST 2020
+; Sat May 02 22:48:22 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -47,14 +47,14 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot indicado
+		(type INSTANCE)
+;+		(allowed-classes Problemas)
+		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
 		(range -3 3)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot ejercicio
 		(type INSTANCE)
@@ -97,22 +97,22 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot duracion+total
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot intensidad
 		(type SYMBOL)
 		(allowed-values Baja Media Alta)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot dia
+	(single-slot duracion+total
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot dificultad
 		(type SYMBOL)
 		(allowed-values moderada normal dificil)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot dia
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -198,14 +198,14 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot indicado
+		(type INSTANCE)
+;+		(allowed-classes Problemas)
+		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
 		(range -3 3)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot repeticiones+max
 ;+		(comment "Maximo de repeticiones de ejercicio")

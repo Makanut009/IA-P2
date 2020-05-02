@@ -90,14 +90,14 @@
        else FALSE))
 
 (deffunction calcular_int_imc(?imc)
-	(if (< ?imc 15) then -30) else
-	(if (< ?imc 16) then -20) else
-	(if (< ?imc 18.5) then -10) else
-	(if (< ?imc 25) then 0) else
-	(if (< ?imc 30) then -10) else 
-	(if (< ?imc 35) then -20) else
-	(if (< ?imc 40) then -30) else
-	-40
+	(if (< ?imc 15) then -30 else
+	(if (< ?imc 16) then -20 else
+	(if (< ?imc 18.5) then -10 else
+	(if (< ?imc 25) then 0 else
+	(if (< ?imc 30) then -10 else 
+	(if (< ?imc 35) then -20 else
+	(if (< ?imc 40) then -30 else
+	-40)))))))
 )
 
 
@@ -135,7 +135,6 @@
 	(bind ?presion_max (pregunta-numerica "Presion sanguinea maxima: " 0.0 200.0))
 
 	(bind ?tiempo_diario_disp (* 60 (pregunta-numerica5 "Tiempo diario disponible, ha de ser multiple de 5 min: " 30 300)))
-	(printout t crlf ?tiempo_diario_disp crlf)
 
 	(assert
 		(Persona
@@ -146,8 +145,8 @@
 		(IMC ?IMC)
 		(presion_min ?presion_min)
 		(presion_max ?presion_max)
-		(tiempo_dispo ?tiempo_diario_disp))
-		(intensidad_inicial Nula)
+		(tiempo_dispo ?tiempo_diario_disp)
+		(intensidad_inicial Nula))
 	)
 	(assert (no_hay_habitos))
 	(assert (no_hay_problemas))
@@ -291,6 +290,7 @@
 	?persona <- (Persona (habitos $?lista_habitos) (IMC ?IMC) (intensidad_inicial Nula))
 	=>
 	;IMC
+	(printout t ?IMC crlf)
 	(bind ?int_ini (calcular_int_imc ?IMC)) ;FALTA ACABAR DE REPASSAR-LA
 
 	;DIETA
@@ -300,11 +300,10 @@
 	;(bind ?int_ini (+ ?int_ini (calcular_int_ejercicios ?persona:ejercicios)))
 	
 	(printout t (length$ $?lista_habitos) crlf)
+	(printout t ?int_ini crlf)
 
 	;HABITOS PERSONALES
-	(loop-for-count (?i 1 (length$ $?lista_habitos)) do
-		(bind ?habito (nth$ ?i $?lista_habitos))
-
+	(progn$ (?habito ?lista_habitos)
 		(bind ?duracion (send ?habito get-duracion))
 		(bind ?puntuacion (send ?habito get-puntuacion))
 		(bind ?frec (send ?habito get-frecuencia))
@@ -326,7 +325,7 @@
 	else (if (< ?int_ini 30) then (bind ?int_ini_cat Media)
 	else (bind ?int_ini_cat Alta)))
 
-	(printout t "8===============================D O: <- eva elfie" ?int_ini crlf)
+	(printout t "8===============================D O: <- eva elfie " ?int_ini_cat crlf)
 	
 	(modify ?persona (intensidad_inicial ?int_ini_cat))
 )
