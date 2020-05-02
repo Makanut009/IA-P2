@@ -59,20 +59,20 @@
 	?respuesta
 )
 
-(deffunction pregunta-frec (?pregunta ?rangini ?rangfi) 
-	(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
-	(printout t "1. Diariamente")
-	(printout t "2. Varias veces a la semana")
-	(printout t "3. Semanalmente")
-	(bind ?respuesta (read)) 
-	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
-		(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
-		(bind ?respuesta (read)) 
-	)
-	if (eq ?respuesta 1) then Diaria
-	else if (eq ?respuesta 2) then Varias_veces_a_la_semana
-	else if (eq ?respuesta 3) then Semanal
-)
+; (deffunction pregunta-frec (?pregunta ?rangini ?rangfi) 
+; 	(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
+; 	(printout t crlf "1. Diariamente" crlf)
+; 	(printout t "2. Varias veces a la semana" crlf)
+; 	(printout t "3. Semanalmente" crlf)
+; 	(bind ?respuesta (read)) 
+; 	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
+; 		(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
+; 		(bind ?respuesta (read)) 
+; 	)
+; 	if (eq ?respuesta 1) then Diaria
+; 	else if (eq ?respuesta 2) then Varias_veces_a_la_semana
+; 	else if (eq ?respuesta 3) then Semanal
+; )
 
 (deffunction ask-question (?question $?allowed-values)
    (printout t ?question)
@@ -89,17 +89,15 @@
        then TRUE 
        else FALSE))
 
-	   
-;POTSER HAURIEM D'AFEGIR ELS PROBLEMES DE PES AQUI???
 (deffunction calcular_int_imc(?imc)
-	(if (< ?imc 18.5) then -1000) else
-	(if (> ?imc 50) then -3000) else
-	(if (> ?imc 40) then -2000) else
-	(if (> ?imc 35) then -1600) else 
-	(if (> ?imc 30) then -1200) else
-	(if (> ?imc 27) then -700) else 
-	(if (> ?imc 25) then -300) else
-	500
+	(if (< ?imc 15) then -30) else
+	(if (< ?imc 16) then -20) else
+	(if (< ?imc 18.5) then -10) else
+	(if (< ?imc 25) then 0) else
+	(if (< ?imc 30) then -10) else 
+	(if (< ?imc 35) then -20) else
+	(if (< ?imc 40) then -30) else
+	-40
 )
 
 
@@ -136,7 +134,7 @@
     (bind ?presion_min (pregunta-numerica "Presion sanguinea minima: " 0.0 200.0))
 	(bind ?presion_max (pregunta-numerica "Presion sanguinea maxima: " 0.0 200.0))
 
-	(bind ?tiempo_diario_disp (* 60 (pregunta-numerica5 "Tiempo diario disponible, ha de ser multiple de 5 [30,300] min: " 30 300)))
+	(bind ?tiempo_diario_disp (* 60 (pregunta-numerica5 "Tiempo diario disponible, ha de ser multiple de 5 min: " 30 300)))
 	(printout t crlf ?tiempo_diario_disp crlf)
 
 	(assert
@@ -149,6 +147,7 @@
 		(presion_min ?presion_min)
 		(presion_max ?presion_max)
 		(tiempo_dispo ?tiempo_diario_disp))
+		(intensidad_inicial Nula)
 	)
 	(assert (no_hay_habitos))
 	(assert (no_hay_problemas))
@@ -176,8 +175,8 @@
 		(bind ?habito (nth$ ?respuesta ?lista_habitos))
 		(bind ?duracion (pregunta-numerica "Durante cuanto tiempo? (minutos)" 0 600))
 		(send ?habito put-duracion ?duracion)
-		(bind ?frec (pregunta-frec "Con que frecuencia?" 1 3))
-		(send ?habito put-frecuencia ?frec)
+		(bind ?frecuencia (pregunta-numerica "Cuantos dias a la semana?" 1 7))
+		(send ?habito put-frecuencia ?frecuencia)
 		(bind ?lista (insert$ ?lista 1 ?habito))
 		(bind ?respuesta (pregunta-numerica "Cual mas? " 0 (length$ ?lista_habitos)))
 	)
@@ -309,21 +308,26 @@
 		(bind ?duracion (send ?habito get-duracion))
 		(bind ?puntuacion (send ?habito get-puntuacion))
 		(bind ?frec (send ?habito get-frecuencia))
-		;HAURÍEM DE CANVIAR L'SLOT FREQUÈNCIA PERQUE SIGUI UN INT, QUE SERAN ELS DIES DE LA SETMANA. LLAVORS PODEM FER PREGUNTA NUMERICA
-		(if (eq ?frec Diaria) then (bind ?frec2 30) else
-			(if (eq ?frec Semanal) then (bind ?frec2 4) else
-				(if (eq ?frec Varias_veces_a_la_semana) then (bind ?frec2 1))
-			)
-		)
-		
-		(bind ?puntuacion_real (* ?puntuacion (* ?frec2 ?duracion)))
-		
+ 
+		; (if (eq ?frec Diaria) then (bind ?frec2 30) else
+		; 	(if (eq ?frec Semanal) then (bind ?frec2 4) else
+		; 		(if (eq ?frec Varias_veces_a_la_semana) then (bind ?frec2 1))
+		; 	)
+		; )
+		(bind ?puntuacion_real (* ?puntuacion ?frec)) ;(* ?frec ?duracion))) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		(bind ?int_ini (+ ?int_ini ?puntuacion_real))
 	)
-	(if (<= ?int_ini 1000) then (bind ?int_ini_cat Baja))
-	(if (>  ?int_ini 1000) then (bind ?int_ini_cat Media)) 
-	(if (>  ?int_ini 2000) then (bind ?int_ini_cat Alta)) 
-			
+	
+	;		   -30            0            30
+	;-----------|-------------|-------------|---------------
+	;	Baja				Media				   Alta
+
+	(if (<= ?int_ini -30) then (bind ?int_ini_cat Baja)
+	else (if (< ?int_ini 30) then (bind ?int_ini_cat Media)
+	else (bind ?int_ini_cat Alta)))
+
+	(printout t "8===============================D O: <- eva elfie" ?int_ini crlf)
+	
 	(modify ?persona (intensidad_inicial ?int_ini_cat))
 )
 
@@ -432,11 +436,70 @@
 	(modify ?persona (tiempo_dispo ?tiempo_restante))
 )
 
-(defrule print_ej_rec
-	(object (is-a Ejercicio+recomendado) (duracion ?duracion) (repeticiones ?repeticiones) (ejercicio ?ejercicio))
+(defrule crea_rutina
+	(declare (salience 11))
 	=>
-	(bind ?nombre_ej (send ?ejercicio get-nombre))
-	(printout t ?nombre_ej crlf)
-	(printout t ?duracion crlf)
-	(printout t ?repeticiones crlf)
+	(bind ?lista_ejercicios_reco (find-all-instances ((?ej Ejercicio+recomendado)) TRUE))
+	(bind ?duracion_total 0)
+	(bind ?lista_objetivos (create$))
+	(progn$ (?ej_rec ?lista_ejercicios_reco)
+		(bind ?duracion_total (+ (send ?ej_rec get-duracion) ?duracion_total))
+		(bind ?ejercicio (send ?ej_rec get-ejercicio))
+		(bind ?lista_objetivos (insert$ ?lista_objetivos 1 (send ?ejercicio get-objetivos)))
+	)
+
+	(bind ?rutina (make-instance (gensym*) of Rutina+diaria))
+	(send ?rutina put-duracion+total ?duracion_total)
+	(send ?rutina put-objetivos ?lista_objetivos)
+	(send ?rutina put-ejercicios ?lista_ejercicios_reco)
 )
+
+(defrule crea_programa
+	(declare (salience 10))
+	=>
+	(bind ?lista_rutinas (find-all-instances ((?ej Rutina+diaria)) TRUE))
+	(bind ?programa (make-instance (gensym*) of Programa))
+	
+	(bind ?aux ?lista_rutinas)
+	(loop-for-count (?i 1 6) do 
+		(bind ?lista_rutinas (insert$ ?lista_rutinas 1 ?aux))
+	)
+	(send ?programa put-rutinas+diarias ?lista_rutinas)
+)
+
+(defrule print_programa
+	(object (is-a Programa) (rutinas+diarias $?rutinas))
+	=>
+	(bind ?dia 1)
+	(bind ?obj_programa (create$))
+	(progn$ (?rutina $?rutinas)
+		(send ?rutina put-dia ?dia)
+		(printout t "Dia " ?dia ": " crlf)
+
+		;Ejercicios de la rutina diaria
+		(bind ?ejercicios_rutina (send ?rutina get-ejercicios))
+		(progn$  (?ejercicio_rec ?ejercicios_rutina)
+			(bind ?ejercicio (send ?ejercicio_rec get-ejercicio))
+			(printout t (send ?ejercicio get-nombre) crlf)
+			(printout t "Duracion (seg): " (send ?ejercicio_rec get-duracion) crlf)
+			(printout t "Repeticiones: " (send ?ejercicio_rec get-repeticiones) crlf)
+			(printout t crlf)
+		)
+		(printout t "Duracion total: " (send ?rutina get-duracion+total) crlf)
+		
+		;Objetivos que cumple la rutina diaria
+		(bind ?objetivos_rutina (send ?rutina get-objetivos))
+		(progn$  (?objetivo ?objetivos_rutina)
+			(if (not (member ?objetivo ?obj_programa)) then
+				(bind ?obj_programa (insert$ ?obj_programa 1 ?objetivo))
+			)
+		)
+		(bind ?dia (+ ?dia 1))
+		(printout t crlf crlf)
+	)
+	(printout t "Objetivos cumplidos en el programa: " crlf)
+	(progn$ (?objetivo $?obj_programa)
+		(printout t (send ?objetivo get-nombre) crlf)
+	)
+)
+
