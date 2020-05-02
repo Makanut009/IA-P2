@@ -48,13 +48,13 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
-		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot indicado
+		(type INSTANCE)
+;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot ejercicio
 		(type INSTANCE)
@@ -99,14 +99,14 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot duracion+total
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot intensidad
 		(type SYMBOL)
 		(allowed-values Baja Media Alta)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot duracion+total
-		(type INTEGER)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot dificultad
 		(type SYMBOL)
@@ -197,6 +197,10 @@
 	(is-a Problemas)
 	(role concrete))
 
+(defclass Problema+presion
+	(is-a Problemas)
+	(role concrete))
+
 (defclass Ejercicio "Ejercicio que realiza una persona"
 	(is-a USER)
 	(role concrete)
@@ -224,13 +228,13 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
-		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot indicado
+		(type INSTANCE)
+;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot repeticiones+max
 ;+		(comment "Maximo de repeticiones de ejercicio")

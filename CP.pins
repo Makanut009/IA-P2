@@ -1,4 +1,4 @@
-; Sat May 02 13:58:26 CEST 2020
+; Sat May 02 17:29:47 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -91,23 +91,19 @@
 
 ([30-4-20_Class34] of  Problema+peso
 
-	(nombre "Sobrepeso"))
-
-([30-4-20_Class35] of  Problema+peso
-
-	(nombre "Obesidad"))
+	(nombre "Extremadamente obeso"))
 
 ([30-4-20_Class36] of  Problema+peso
 
-	(nombre "Excesivamente delgado"))
+	(nombre "Extremadamente delgado"))
 
 ([30-4-20_Class37] of  Problema+edad
 
-	(nombre "+100 años"))
+	(nombre "Edad avanzada"))
 
 ([30-4-20_Class38] of  Problema+edad
 
-	(nombre "-10 años"))
+	(nombre "Edad temprana"))
 
 ([30-4-20_Class41] of  Ejercicio
 
@@ -135,6 +131,9 @@
 
 ([30-4-20_Class43] of  Ejercicio
 
+	(contraindicado
+		[30-4-20_Class37]
+		[30-4-20_Class38])
 	(duracion_por_rep 10)
 	(grupo_muscular Espalda)
 	(intensidad Baja)
@@ -165,8 +164,13 @@
 
 	(nombre "Aliviar el dolor"))
 
+([CP_Class1] of  Problema+presion
+
+	(nombre "Presion alterada"))
+
 ([CP_Class10] of  Ejercicio
 
+	(contraindicado [CP_Class1])
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Alta)
@@ -203,6 +207,9 @@
 
 ([CP_Class17] of  Ejercicio
 
+	(contraindicado
+		[30-4-20_Class37]
+		[30-4-20_Class38])
 	(duracion_por_rep 5)
 	(grupo_muscular Espalda)
 	(intensidad Media)
@@ -215,6 +222,9 @@
 
 ([CP_Class18] of  Ejercicio
 
+	(contraindicado
+		[30-4-20_Class37]
+		[30-4-20_Class38])
 	(duracion_por_rep 3)
 	(grupo_muscular Espalda)
 	(intensidad Alta)
@@ -275,6 +285,7 @@
 
 ([CP_Class3] of  Ejercicio
 
+	(contraindicado [30-4-20_Class34])
 	(duracion_por_rep 3)
 	(grupo_muscular Abdominales)
 	(intensidad Baja)
@@ -287,6 +298,7 @@
 
 ([CP_Class4] of  Ejercicio
 
+	(contraindicado [30-4-20_Class34])
 	(duracion_por_rep 3)
 	(grupo_muscular Abdominales)
 	(intensidad Media)
@@ -299,6 +311,7 @@
 
 ([CP_Class5] of  Ejercicio
 
+	(contraindicado [30-4-20_Class34])
 	(duracion_por_rep 2)
 	(grupo_muscular Abdominales)
 	(intensidad Alta)
@@ -311,6 +324,7 @@
 
 ([CP_Class6] of  Ejercicio
 
+	(contraindicado [CP_Class1])
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Baja)
@@ -323,6 +337,7 @@
 
 ([CP_Class9] of  Ejercicio
 
+	(contraindicado [CP_Class1])
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Media)
