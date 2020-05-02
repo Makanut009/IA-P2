@@ -136,7 +136,8 @@
 	(bind ?presion_max (pregunta-numerica "Presion sanguinea maxima: " 0.0 200.0))
 	;(if (presion demasiado alta) then ...)
 
-	(bind ?tiempo_diario_disp (pregunta-numerica5 "Tiempo diario disponible, ha de ser multiple de 5 [30,300] min: " 30 300))
+	(bind ?tiempo_diario_disp (* 60 (pregunta-numerica5 "Tiempo diario disponible, ha de ser multiple de 5 [30,300] min: " 30 300)))
+	(printout t crlf ?tiempo_diario_disp crlf)
 
 	(assert
 		(Persona
@@ -369,7 +370,9 @@
 	=>
 	(bind ?dur_rep (send ?ej get-duracion_por_rep))
 	(bind ?rep_max (send ?ej get-repeticiones+max))
-	(bind ?rep_obj (/ (- ?punt1 100) (* ?punt2 ?dur_rep)))
+	(printout t ?punt1 " " ?punt2 " " ?dur_rep crlf)
+	(bind ?rep_obj (div (- 100 ?punt1) (* ?punt2 ?dur_rep)))
+	(printout t ?rep_obj crlf)
 	(bind ?rep (min ?rep_obj ?rep_max))
 		;punt1 + rep*dur/rep*punt2 > 100
 		;rep*dur/rep*punt2 > 100 - punt1
@@ -377,14 +380,44 @@
 		
 	(bind ?duracion (* ?rep ?dur_rep))
 	(bind ?duracion_real (min ?duracion ?tiempo_disp))
-	(bind ?rep_reales (/ ?duracion_real ?dur_rep))
+	(bind ?rep_reales (div ?duracion_real ?dur_rep))
+	
+	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
+	(send ?ej_rec put-duracion ?duracion_real)
+	(send ?ej_rec put-repeticiones ?rep_reales)
+	(send ?ej_rec put-ejercicio ?ej)
+	(retract ?x1)
+	(retract ?x2)
+		
+	(printout t "Miau5" crlf)
+	(bind ?tiempo_restante (- ?tiempo_disp ?duracion_real))
+	(modify ?persona (tiempo_dispo ?tiempo_restante))
+)
+
+(defrule asigna_tiempo2
+	(declare (salience 3))
+	?persona <- (Persona (tiempo_dispo ?tiempo_disp))
+	?x <- (ejercicio_puntuado (ejercicio ?ej) (objetivo ?objetivo) (puntuacion ?punt))
+	=>
+	(bind ?dur_rep (send ?ej get-duracion_por_rep))
+	(bind ?rep_max (send ?ej get-repeticiones+max))
+	(bind ?rep_obj (div 1000 (* ?punt ?dur_rep))) ;repeticions per complir l'objectiu
+	(bind ?rep (min ?rep_obj ?rep_max))
+		;rep*dur/rep*punt > 100
+		;rep*dur/rep*punt > 100
+		;rep = 100 /(punt*dur/rep)
+		
+	(bind ?duracion (* ?rep ?dur_rep))
+	(bind ?duracion_real (min ?duracion ?tiempo_disp))
+	(bind ?rep_reales (div ?duracion_real ?dur_rep))
 	
 	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
 	(send ?ej_rec put-duracion ?duracion)
 	(send ?ej_rec put-repeticiones ?rep_reales)
 	(send ?ej_rec put-ejercicio ?ej)
+	(retract ?x)
 		
-	(printout t "Miau5" crlf)
+	(printout t "Miau6" crlf)
 	(bind ?tiempo_restante (- ?tiempo_disp ?duracion_real))
 	(modify ?persona (tiempo_dispo ?tiempo_restante))
 )
@@ -394,7 +427,6 @@
 	(object (is-a Ejercicio+recomendado) (duracion ?duracion) (repeticiones ?repeticiones) (ejercicio ?ejercicio))
 	=>
 	(bind ?nombre_ej (send ?ejercicio get-nombre))
-	(printout "RUTINA DIARIA" crlf)
 	(printout t ?nombre_ej crlf)
 	(printout t ?duracion crlf)
 	(printout t ?repeticiones crlf)
@@ -402,11 +434,11 @@
 
 
 
-(defrule lol
- 	(declare (salience 2))
- 	=>
-	(bind ?respuesta (read))
-)
+; (defrule lol
+;  	(declare (salience 2))
+;  	=>
+; 	(bind ?respuesta (read))
+; )
 
 ; 		;(bind ?int_ini (+ ?int_ini ?puntuacion_real))
 ; 		)
