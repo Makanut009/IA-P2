@@ -1,4 +1,4 @@
-; Sat May 02 01:52:47 CEST 2020
+; Sat May 02 12:41:13 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -109,77 +109,50 @@
 
 	(nombre "-10 años"))
 
-([30-4-20_Class39] of  Ejercicio
-
-	(calorias+por+min 10)
-	(duracion+max 60)
-	(duracion+min 10)
-	(grupo_muscular Piernas)
-	(indicado [30-4-20_Class31])
-	(nombre "Bicicleta estatica")
-	(objetivos
-		[30-4-20_Class25]
-		[30-4-20_Class23])
-	(repeticiones+max 1)
-	(repeticiones+min 1)
-	(tipo+de+ejercicio con_aparatos))
-
-([30-4-20_Class40] of  Ejercicio
-
-	(calorias+por+min 10)
-	(duracion+max 10)
-	(duracion+min 1)
-	(grupo_muscular Abdominales)
-	(nombre "Abdominales")
-	(objetivos [30-4-20_Class28])
-	(repeticiones+max 100)
-	(repeticiones+min 5)
-	(tipo+de+ejercicio suelo))
-
 ([30-4-20_Class41] of  Ejercicio
 
-	(calorias+por+min 10)
-	(duracion+max 20)
-	(duracion+min 1)
+	(duracion_por_rep 5)
 	(grupo_muscular Brazos)
-	(nombre "Levantar pesas")
+	(intensidad Baja)
+	(nombre "Levantar pesas 1")
 	(objetivos [30-4-20_Class24])
-	(repeticiones+max 100)
-	(repeticiones+min 20)
+	(puntuacion 30)
+	(repeticiones+max 20)
+	(repeticiones+min 10)
 	(tipo+de+ejercicio con_pesas))
 
 ([30-4-20_Class42] of  Ejercicio
 
-	(calorias+por+min 10)
-	(duracion+max 2)
-	(duracion+min 10)
+	(duracion_por_rep 4)
 	(grupo_muscular Gluteos)
-	(nombre "Sentadillas")
+	(intensidad Baja)
+	(nombre "Sentadillas 1")
 	(objetivos [30-4-20_Class27])
-	(repeticiones+max 100)
+	(puntuacion 30)
+	(repeticiones+max 15)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
 
 ([30-4-20_Class43] of  Ejercicio
 
-	(calorias+por+min 10)
-	(duracion+max 10)
-	(duracion+min 1)
+	(duracion_por_rep 10)
 	(grupo_muscular Espalda)
-	(nombre "Hiperextensiones")
+	(intensidad Baja)
+	(nombre "Hiperextensiones 1")
 	(objetivos [30-4-20_Class26])
-	(repeticiones+max 50)
-	(repeticiones+min 10)
+	(puntuacion 20)
+	(repeticiones+max 10)
+	(repeticiones+min 3)
 	(tipo+de+ejercicio con_aparatos))
 
 ([30-4-20_Class44] of  Ejercicio
 
-	(calorias+por+min 5)
-	(duracion+max 10)
-	(duracion+min 2)
+	(duracion_por_rep 30)
 	(grupo_muscular Piernas)
-	(nombre "Estirar quadriceps")
+	(intensidad Baja)
+	(nombre "Estirar quadriceps 1")
 	(objetivos [30-4-20_Class45])
+	(puntuacion 10)
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -191,3 +164,171 @@
 ([30-4-20_Class46] of  Objetivo
 
 	(nombre "Aliviar el dolor"))
+
+([CP_Class10] of  Ejercicio
+
+	(duracion_por_rep 300)
+	(grupo_muscular Piernas)
+	(intensidad Alta)
+	(nombre "Bicicleta estatica 3")
+	(objetivos [30-4-20_Class25])
+	(puntuacion 10)
+	(repeticiones+max 12)
+	(repeticiones+min 2)
+	(tipo+de+ejercicio con_aparatos))
+
+([CP_Class15] of  Ejercicio
+
+	(duracion_por_rep 60)
+	(grupo_muscular Piernas)
+	(intensidad Media)
+	(nombre "Estirar quadriceps 2")
+	(objetivos [30-4-20_Class45])
+	(puntuacion 10)
+	(repeticiones+max 1)
+	(repeticiones+min 1)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class16] of  Ejercicio
+
+	(duracion_por_rep 120)
+	(grupo_muscular Piernas)
+	(intensidad Alta)
+	(nombre "Estirar quadriceps 3")
+	(objetivos [30-4-20_Class45])
+	(puntuacion 10)
+	(repeticiones+max 1)
+	(repeticiones+min 1)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class17] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(grupo_muscular Espalda)
+	(intensidad Media)
+	(nombre "Hiperextensiones 2")
+	(objetivos [30-4-20_Class26])
+	(puntuacion 20)
+	(repeticiones+max 20)
+	(repeticiones+min 3)
+	(tipo+de+ejercicio con_aparatos))
+
+([CP_Class18] of  Ejercicio
+
+	(duracion_por_rep 3)
+	(grupo_muscular Espalda)
+	(intensidad Alta)
+	(nombre "Hiperextensiones 3")
+	(objetivos [30-4-20_Class26])
+	(puntuacion 20)
+	(repeticiones+max 30)
+	(repeticiones+min 3)
+	(tipo+de+ejercicio con_aparatos))
+
+([CP_Class19] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(grupo_muscular Brazos)
+	(intensidad Media)
+	(nombre "Levantar pesas 2")
+	(objetivos [30-4-20_Class24])
+	(puntuacion 30)
+	(repeticiones+max 50)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio con_pesas))
+
+([CP_Class20] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(grupo_muscular Brazos)
+	(intensidad Alta)
+	(nombre "Levantar pesas 3")
+	(objetivos [30-4-20_Class24])
+	(puntuacion 30)
+	(repeticiones+max 100)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio con_pesas))
+
+([CP_Class21] of  Ejercicio
+
+	(duracion_por_rep 3)
+	(grupo_muscular Gluteos)
+	(intensidad Media)
+	(nombre "Sentadillas 2")
+	(objetivos [30-4-20_Class27])
+	(puntuacion 30)
+	(repeticiones+max 25)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class22] of  Ejercicio
+
+	(duracion_por_rep 3)
+	(grupo_muscular Gluteos)
+	(intensidad Alta)
+	(nombre "Sentadillas 3")
+	(objetivos [30-4-20_Class27])
+	(puntuacion 30)
+	(repeticiones+max 40)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class3] of  Ejercicio
+
+	(duracion_por_rep 3)
+	(grupo_muscular Abdominales)
+	(intensidad Baja)
+	(nombre "Abdominales 1")
+	(objetivos [30-4-20_Class28])
+	(puntuacion 10)
+	(repeticiones+max 30)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class4] of  Ejercicio
+
+	(duracion_por_rep 3)
+	(grupo_muscular Abdominales)
+	(intensidad Media)
+	(nombre "Abdominales 2")
+	(objetivos [30-4-20_Class28])
+	(puntuacion 10)
+	(repeticiones+max 75)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class5] of  Ejercicio
+
+	(duracion_por_rep 2)
+	(grupo_muscular Abdominales)
+	(intensidad Alta)
+	(nombre "Abdominales 3")
+	(objetivos [30-4-20_Class28])
+	(puntuacion 10)
+	(repeticiones+max 150)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class6] of  Ejercicio
+
+	(duracion_por_rep 300)
+	(grupo_muscular Piernas)
+	(intensidad Baja)
+	(nombre "Bicicleta estatica 1")
+	(objetivos [30-4-20_Class25])
+	(puntuacion 10)
+	(repeticiones+max 3)
+	(repeticiones+min 2)
+	(tipo+de+ejercicio con_aparatos))
+
+([CP_Class9] of  Ejercicio
+
+	(duracion_por_rep 300)
+	(grupo_muscular Piernas)
+	(intensidad Media)
+	(nombre "Bicicleta estatica 2")
+	(objetivos [30-4-20_Class25])
+	(puntuacion 10)
+	(repeticiones+max 6)
+	(repeticiones+min 2)
+	(tipo+de+ejercicio con_aparatos))

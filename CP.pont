@@ -1,4 +1,4 @@
-; Sat May 02 01:52:47 CEST 2020
+; Sat May 02 12:41:13 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -25,13 +25,17 @@
 	(single-slot calorias+por+min
 ;+		(comment "Calorias que se queman por minuto con este ejercicio")
 		(type INTEGER)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot grupo_muscular
 ;+		(comment "Lista de grupos musculares que trabaja esta actividad.")
 		(type SYMBOL)
 		(allowed-values Espalda Piernas Gluteos Abdominales Brazos)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot duracion_por_rep
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot duracion
 ;+		(comment "Duracion de la actividad, en minutos")
@@ -67,20 +71,10 @@
 		(type INSTANCE)
 ;+		(allowed-classes Objetivo)
 		(create-accessor read-write))
-	(single-slot duracion+min
-;+		(comment "Duracion minima del ejercicio")
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot duracion+max
-;+		(comment "Duracion maxima del ejercicio")
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot tipo+de+ejercicio
 		(type SYMBOL)
 		(allowed-values cardio con_pesas con_aparatos suelo estiramiento)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot rutinas+diarias
 		(type INSTANCE)
@@ -104,6 +98,11 @@
 ;+		(comment "Nombre")
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot intensidad
+		(type SYMBOL)
+		(allowed-values Baja Media Alta)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot duracion+total
 		(type INTEGER)
@@ -201,52 +200,24 @@
 (defclass Ejercicio "Ejercicio que realiza una persona"
 	(is-a USER)
 	(role concrete)
-	(single-slot repeticiones+max
-;+		(comment "Maximo de repeticiones de ejercicio")
+	(single-slot duracion_por_rep
 		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot duracion+min
-;+		(comment "Duracion minima del ejercicio")
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot objetivos
-;+		(comment "Objetivos que cumple esta actividad.")
-		(type INSTANCE)
-;+		(allowed-classes Objetivo)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot duracion+max
-;+		(comment "Duracion maxima del ejercicio")
-		(type INTEGER)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot tipo+de+ejercicio
 		(type SYMBOL)
 		(allowed-values cardio con_pesas con_aparatos suelo estiramiento)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot contraindicado
 ;+		(comment "Lista de condicionantes para los cualos este ejercicio es contraindicado.")
 		(type INSTANCE)
 ;+		(allowed-classes Problemas)
 		(create-accessor read-write))
-	(single-slot calorias+por+min
-;+		(comment "Calorias que se queman por minuto con este ejercicio")
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot nombre
 ;+		(comment "Nombre")
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot grupo_muscular
-;+		(comment "Lista de grupos musculares que trabaja esta actividad.")
-		(type SYMBOL)
-		(allowed-values Espalda Piernas Gluteos Abdominales Brazos)
-		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot repeticiones+min
 ;+		(comment "Minimo de repeticiones de ejercicio")
@@ -256,6 +227,37 @@
 	(multislot indicado
 		(type INSTANCE)
 ;+		(allowed-classes Problemas)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot repeticiones+max
+;+		(comment "Maximo de repeticiones de ejercicio")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot objetivos
+;+		(comment "Objetivos que cumple esta actividad.")
+		(type INSTANCE)
+;+		(allowed-classes Objetivo)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot intensidad
+		(type SYMBOL)
+		(allowed-values Baja Media Alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot calorias+por+min
+;+		(comment "Calorias que se queman por minuto con este ejercicio")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grupo_muscular
+;+		(comment "Lista de grupos musculares que trabaja esta actividad.")
+		(type SYMBOL)
+		(allowed-values Espalda Piernas Gluteos Abdominales Brazos)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
 (defclass Ejercicio+recomendado

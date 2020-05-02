@@ -8,7 +8,7 @@
 	(slot altura (type INTEGER))
 	(slot peso (type INTEGER))
 	(slot IMC (type INTEGER))
-	(slot intensidad_inicial (type INTEGER))
+	(slot intensidad_inicial (type SYMBOL) (allowed-values Baja Media Alta Nula))
 	(slot presion_max (type INTEGER))
 	(slot presion_min (type INTEGER))
 	(slot tiempo_dispo (type INTEGER))
@@ -43,6 +43,16 @@
 	(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
 	(bind ?respuesta (read)) 
 	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
+		(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
+		(bind ?respuesta (read)) 
+	) 
+	?respuesta
+)
+
+(deffunction pregunta-numerica5 (?pregunta ?rangini ?rangfi) 
+	(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
+	(bind ?respuesta (read)) 
+	(while (not(and(eq (mod ?respuesta 5) 0) (and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi)))) do 
 		(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
 		(bind ?respuesta (read)) 
 	) 
@@ -126,7 +136,7 @@
 	(bind ?presion_max (pregunta-numerica "Presion sanguinea maxima: " 0.0 200.0))
 	;(if (presion demasiado alta) then ...)
 
-	(bind ?tiempo_diario_disp (pregunta-numerica "Tiempo diario disponible [30,300] min: " 30 300))
+	(bind ?tiempo_diario_disp (pregunta-numerica5 "Tiempo diario disponible, ha de ser multiple de 5 [30,300] min: " 30 300))
 
 	(assert
 		(Persona
@@ -142,6 +152,8 @@
 	(assert (no_hay_habitos))
 	(assert (no_hay_problemas))
 	(assert (no_hay_objetivos))
+	(assert (no_hay_obj_cumpl))
+	(assert (no_hay_obj_eje))
 )
 
 (defrule introduce-habitos
@@ -230,7 +242,8 @@
 
 
 (defrule calcula_int_inicial
-	?persona <- (Persona (habitos $?lista_habitos) (IMC ?IMC) (intensidad_inicial 0))
+	(declare (salience 10))
+	?persona <- (Persona (habitos $?lista_habitos) (IMC ?IMC) (intensidad_inicial Nula))
 	=>
 	;IMC
 	(bind ?int_ini (calcular_int_imc ?IMC)) ;FALTA ACABAR DE REPASSAR-LA
@@ -259,15 +272,19 @@
 		
 		(bind ?int_ini (+ ?int_ini ?puntuacion_real))
 	)
-	
-	(modify ?persona (intensidad_inicial ?int_ini))
+	(if (<= ?int_ini 1000) then (bind ?int_ini_cat Baja))
+	(if (>  ?int_ini 1000) then (bind ?int_ini_cat Media)) 
+	(if (>  ?int_ini 2000) then (bind ?int_ini_cat Alta)) 
+			
+	(modify ?persona (intensidad_inicial ?int_ini_cat))
 )
 
 (deftemplate completitud_objetivo (slot objetivo (type INSTANCE)) (slot puntuacion (type INTEGER)))
 
 (defrule objetivos_cumplidos_habitos
-	;(declare (salience 1))
-	?persona <- (Persona (habitos $?lista_habitos))
+	(declare (salience 5))
+	?nhoc <- (no_hay_obj_cumpl)
+	(Persona (habitos $?lista_habitos))
 	=>
 	(progn$ (?habito ?lista_habitos)
 		(bind ?duracion (send ?habito get-duracion))
@@ -282,19 +299,113 @@
 
 		(bind ?lista_objetivos (send ?habito get-favorable))
 		(progn$ (?objetivo ?lista_objetivos)
+			(printout t "Miau" crlf)
 			(assert (completitud_objetivo (objetivo ?objetivo) (puntuacion ?puntuacion)))
 		)
 	)
+	(retract ?nhoc)
 )
 
 (defrule junta_pares
+	(declare (salience 4))
 	?x1 <- (completitud_objetivo (objetivo ?objetivo) (puntuacion ?punt1))
 	?x2 <- (completitud_objetivo (objetivo ?objetivo) (puntuacion ?punt2))
-	(eq x1 x2)
+	(test (neq (fact-index ?x1) (fact-index ?x2)))
 	=>
+	(printout t ?objetivo ?punt1 ?punt2 crlf)
+	(printout t "Miau2" crlf)
 	(assert (completitud_objetivo (objetivo ?objetivo) (puntuacion (+ ?punt1 ?punt2))))
 	(retract ?x1)
 	(retract ?x2)
+)
+
+(deftemplate ejercicio_puntuado (slot ejercicio (type INSTANCE)) (slot objetivo (type INSTANCE)) (slot puntuacion (type INTEGER)))
+
+(defrule objetivos_cumplidos_ejercicios
+	(declare (salience 3))
+	?nhoe <- (no_hay_obj_eje)
+	?persona <- (Persona (objetivos $?objetivos_persona) (intensidad_inicial ?int_ini))
+	=>
+	(bind ?lista_ejercicios (find-all-instances ((?ej Ejercicio)) (eq ?ej:intensidad ?int_ini)))
+
+	(progn$ (?ejercicio ?lista_ejercicios)
+		(bind ?puntuacion (send ?ejercicio get-puntuacion))
+		(bind ?intensidad (send ?ejercicio get-intensidad))
+			(bind ?lista_objetivos (send ?ejercicio get-objetivos))
+			(progn$ (?objetivo ?lista_objetivos)
+				(if (member ?objetivo $?objetivos_persona) 
+					then (assert (ejercicio_puntuado (ejercicio ?ejercicio) (objetivo ?objetivo) (puntuacion ?puntuacion))))
+				(printout t "Miau3" crlf)
+			)
+	)
+	(retract ?nhoe)
+)
+
+;(bind ?rectangulos (find-all-instances ((?inst Rectangulo)) (> ?inst:altura 10)))
+
+;(deftemplate ejercicio_tiempo (slot ejercicio) (slot tiempo) (slot puntuacion))
+
+;(deftemplate ejercicio_puntuado_max (slot ejercicio (type INSTANCE)) (slot objetivo (type INSTANCE)) (slot puntuacion (type INTEGER)))
+
+(defrule coge_maximo
+	(declare (salience 4))
+	?x1 <- (ejercicio_puntuado (objetivo ?objetivo) (puntuacion ?punt1))
+	?x2 <- (ejercicio_puntuado (objetivo ?objetivo) (puntuacion ?punt2))
+	(test (neq (fact-index ?x1) (fact-index ?x2)))
+	=>
+	(printout t ?objetivo ?punt1 ?punt2 crlf)
+	(printout t "Miau4" crlf)
+	(assert (ejercicio_puntuado (objetivo ?objetivo) (puntuacion (max ?punt1 ?punt2))))
+	(retract ?x1)
+	(retract ?x2)
+)
+
+(defrule asigna_tiempo
+	(declare (salience 4))
+	?persona <- (Persona (tiempo_dispo ?tiempo_disp))
+	?x1 <- (completitud_objetivo (objetivo ?objetivo) (puntuacion ?punt1))
+	?x2 <- (ejercicio_puntuado (ejercicio ?ej) (objetivo ?objetivo) (puntuacion ?punt2))
+	(test (neq (fact-index ?x1) (fact-index ?x2)))
+	=>
+	(bind ?dur_rep (send ?ej get-duracion_por_rep))
+	(bind ?rep_max (send ?ej get-repeticiones+max))
+	(bind ?rep_obj (/ (- ?punt1 100) (* ?punt2 ?dur_rep)))
+	(bind ?rep (min ?rep_obj ?rep_max))
+		;punt1 + rep*dur/rep*punt2 > 100
+		;rep*dur/rep*punt2 > 100 - punt1
+		;rep = (100 - punt1)/(punt2*dur/rep)
+		
+	(bind ?duracion (* ?rep ?dur_rep))
+	(bind ?duracion_real (min ?duracion ?tiempo_disp))
+	(bind ?rep_reales (/ ?duracion_real ?dur_rep))
+	
+	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
+	(send ?ej_rec put-duracion ?duracion)
+	(send ?ej_rec put-repeticiones ?rep_reales)
+	(send ?ej_rec put-ejercicio ?ej)
+		
+	(printout t "Miau5" crlf)
+	(bind ?tiempo_restante (- ?tiempo_disp ?duracion_real))
+	(modify ?persona (tiempo_dispo ?tiempo_restante))
+)
+
+
+(defrule print_ej_rec
+	(object (is-a Ejercicio+recomendado) (duracion ?duracion) (repeticiones ?repeticiones) (ejercicio ?ejercicio))
+	=>
+	(bind ?nombre_ej (send ?ejercicio get-nombre))
+	(printout "RUTINA DIARIA" crlf)
+	(printout t ?nombre_ej crlf)
+	(printout t ?duracion crlf)
+	(printout t ?repeticiones crlf)
+)
+
+
+
+(defrule lol
+ 	(declare (salience 2))
+ 	=>
+	(bind ?respuesta (read))
 )
 
 ; 		;(bind ?int_ini (+ ?int_ini ?puntuacion_real))
@@ -308,3 +419,13 @@
 ;AFEGIR PROBLEMA DE PRESSIO ALTA/BAIXA A LA ONTOLOGIA
 
 ;(exists(bebida ?precio:(< ?precio 5)))
+
+; (defrule repeated-person
+;    ?f1 <- (person (SSN ?ss))
+;    ?f2 <- (person (SSN ?ss))
+;    (test (< (fact-index ?f1) (fact-index ?f2)))
+;    =>
+;    (printout t "Duplicated SSN " ?ss crlf))
+; CLIPS> (agenda)
+; 0      repeated-person: f-1,f-2
+; For a total of 1 activation.
