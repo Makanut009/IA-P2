@@ -1,0 +1,61 @@
+IA Q2 2019-2020
+Sistemas basados en el conocimiento
+
+Miembros del equipo:
+- Jordi Cluet i Martinell
+- Rodrigo Arian Huapaya Sierra
+- Enric Lamarca Ferrés
+
+
+Práctica 2 - COACHING POTATOES - Prototipo inicial
+
+Este documento explica lo que nuestro prototipo inicial es capaz de hacer hasta el momento.
+
+- El usuario introduce:
+  - Sus datos personales (nombre, edad, etc)
+  - Sus habitos personales, de la lista de instancias que incluye la ontologia
+  - Sus problemas fisicos, de la lista de instancias que incluye la ontologia
+  - Sus objetivos de trabajo fisico, de la lista de instancias que incluye la ontologia
+
+- El programa infiere, segun sus caracteristicas:
+  - Su intensidad inicial, que indica su estado fisico y condiciona la intensidad que tendran
+    los ejercicios (repeticiones, duracion...). De monento lo hace teniendo en cuenta 
+    el IMC que calculamos y los habitos personales (buenos o malos) que tiene el usuario.
+    Mas adelante se tendran en cuenta otros factores, como los ejercicios sencillos (tests que 
+    realiza el usuario) o la dieta que tiene.
+
+  - Problemas distintos a los que ha añadido, como problemas de edad, de presion, de peso, etc.
+    
+- El programa descarta aquellos objetivos que ya se cumplen con los habitos personales que 
+  introduce la persona. De momento se hace de forma binaria: si el usuario indica que 
+  realiza Natacion, y en nuestra base de conocimiento tenemos que Natacion cumple el objetivo
+  de trabajar piernas, el programa considera que este objetivo ya esta cumplido, por lo que
+  si el usuario indica que lo quiere trabajar, no le recomendará ningún ejercicio para dicho objetivo.
+
+- El programa usa los problemas introducidos y los inferidos para filtrar aquellos ejercicios 
+  que son contraindicados para dichos problemas. Así pues, si el usuario indica que tiene un problema
+  musculo-esqueletico y algun ejercicio es contraindicado para dicho problema, lo descartamos
+  de antemano para evitar recomendarselo. Lo mismo si, por ejemplo, el usuario tiene mas de 100 años,
+  ya que el programa infiere que el usuario tiene un problema de edad.
+  
+- El programa utiliza los objetivos que quedan por cumplir para escoger que ejercicios son los que recomienda.
+  Ademas, segun la intensidad inicial calculada previamente, recomienda una version diferente de cada ejercicio,
+  ya que para cada uno tenemos una instancia de intensidad Baja, Media y Alta, con diferente numero de 
+  repeticiones maximas y duracion.
+    
+- El programa siempre se asegura que la suma de duraciones de todos los ejercicios del dia no supera el tiempo
+  disponible del usuario. De momento, lo hace asignando tanto tiempo como puede (inferior a la duracion y repeticiones
+  maximas) al primer ejercicio del dia, luego con el segundo, y asi sucesivamente. Cuando se acaba el tiempo
+  disponible, los ejercicios restantes se recomiendan con tiempo 0. Esto, en futuras versiones, se mejorara
+  para que los ejercicios se repartan entre los dias para que todos (o los que sea posible) se puedan hacer en algun momento.
+
+- Finalmente, con los ejercicios escogidos el programa crea una sola rutina diaria. El programa que genera es una 
+  repeticion de esta rutina para cada uno de los 7 dias del programa. En futuras versiones se hara que cada dia tenga,
+  posiblemente, diferente tiempo disponible y diferentes ejercicios.
+
+
+Para ejecutar el programa, se tiene que hacer lo siguiente:
+- Ejecutar (clear) en CLIPS
+- Cargar el prototipo_inicial.clp, usando Load.
+- Ejecutar (reset)
+- Ejecutar (run)

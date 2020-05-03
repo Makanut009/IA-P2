@@ -1,4 +1,4 @@
-; Sat May 02 22:48:22 CEST 2020
+; Sun May 03 12:14:19 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -107,6 +107,7 @@
 
 ([30-4-20_Class41] of  Ejercicio
 
+	(contraindicado [30-4-20_Class30])
 	(duracion_por_rep 5)
 	(grupo_muscular Brazos)
 	(intensidad Baja)
@@ -118,6 +119,7 @@
 
 ([30-4-20_Class42] of  Ejercicio
 
+	(contraindicado [30-4-20_Class31])
 	(duracion_por_rep 4)
 	(grupo_muscular Gluteos)
 	(intensidad Baja)
@@ -147,7 +149,9 @@
 	(grupo_muscular Piernas)
 	(intensidad Baja)
 	(nombre "Estirar quadriceps de intensidad baja")
-	(objetivos [30-4-20_Class45])
+	(objetivos
+		[30-4-20_Class45]
+		[30-4-20_Class46])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -159,6 +163,11 @@
 ([30-4-20_Class46] of  Objetivo
 
 	(nombre "Aliviar el dolor"))
+
+([CP_Class0] of  Problemas+musculo-esqueleticos
+
+	(grupo_muscular Espalda)
+	(nombre "Columna vertebral torcida"))
 
 ([CP_Class1] of  Problema+presion
 
@@ -200,7 +209,9 @@
 	(grupo_muscular Piernas)
 	(intensidad Media)
 	(nombre "Estirar quadriceps de intensidad media")
-	(objetivos [30-4-20_Class45])
+	(objetivos
+		[30-4-20_Class45]
+		[30-4-20_Class46])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -211,7 +222,9 @@
 	(grupo_muscular Piernas)
 	(intensidad Alta)
 	(nombre "Estirar quadriceps de intensidad alta")
-	(objetivos [30-4-20_Class45])
+	(objetivos
+		[30-4-20_Class45]
+		[30-4-20_Class46])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -246,6 +259,7 @@
 
 ([CP_Class19] of  Ejercicio
 
+	(contraindicado [30-4-20_Class30])
 	(duracion_por_rep 5)
 	(grupo_muscular Brazos)
 	(intensidad Media)
@@ -257,6 +271,7 @@
 
 ([CP_Class20] of  Ejercicio
 
+	(contraindicado [30-4-20_Class30])
 	(duracion_por_rep 5)
 	(grupo_muscular Brazos)
 	(intensidad Alta)
@@ -268,6 +283,7 @@
 
 ([CP_Class21] of  Ejercicio
 
+	(contraindicado [30-4-20_Class31])
 	(duracion_por_rep 3)
 	(grupo_muscular Gluteos)
 	(intensidad Media)
@@ -279,6 +295,7 @@
 
 ([CP_Class22] of  Ejercicio
 
+	(contraindicado [30-4-20_Class31])
 	(duracion_por_rep 3)
 	(grupo_muscular Gluteos)
 	(intensidad Alta)

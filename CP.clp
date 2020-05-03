@@ -23,9 +23,20 @@
 	(slot cansancio (type SYMBOL)
 		(allowed-values Alto Bajo Medio))
 	(slot mareo (type SYMBOL)
-		(allowed-values Sí No))
+		(allowed-values Si No))
 	(slot tirantez_muscular (type SYMBOL)
-		(allowed-values Sí No))
+		(allowed-values Si No))
+)
+
+(deftemplate Dieta "Dieta del usuario"
+	(slot consumo_de_fruta (type SYMBOL)
+		(allowed-values Si No))
+	(slot abuso_de_sal (type SYMBOL)
+		(allowed-values Si No))
+	(slot picar_entre_horas (type SYMBOL)
+		(allowed-values Si No))
+	(slot comida_basura (type SYMBOL)
+		(allowed-values Si No))
 )
 
 
@@ -35,7 +46,7 @@
 
 (deffunction pregunta-general (?pregunta) 
 	(format t "%s" ?pregunta) 
-	(bind ?respuesta (read)) 
+	(bind ?respuesta (readline)) 
 	?respuesta
 )
 
@@ -59,37 +70,28 @@
 	?respuesta
 )
 
-; (deffunction pregunta-frec (?pregunta ?rangini ?rangfi) 
-; 	(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
-; 	(printout t crlf "1. Diariamente" crlf)
-; 	(printout t "2. Varias veces a la semana" crlf)
-; 	(printout t "3. Semanalmente" crlf)
-; 	(bind ?respuesta (read)) 
-; 	(while (not(and(>= ?respuesta ?rangini)(<= ?respuesta ?rangfi))) do 
-; 		(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
-; 		(bind ?respuesta (read)) 
-; 	)
-; 	if (eq ?respuesta 1) then Diaria
-; 	else if (eq ?respuesta 2) then Varias_veces_a_la_semana
-; 	else if (eq ?respuesta 3) then Semanal
-; )
+(deffunction pregunta (?pregunta $?valores-permitidos)
+	(progn$
+		(?var ?valores-permitidos)
+		(lowcase ?var))
+		(format t "¿%s? (%s) " ?pregunta (implode$ ?valores-permitidos))
+		(bind ?respuesta (read))
+		(while (not (member (lowcase ?respuesta) ?valores-permitidos)) do
+		(format t "¿%s? (%s) " ?pregunta (implode$ ?valores-permitidos))
+		(bind ?respuesta (read))
+	)
+	?respuesta
+)
 
-(deffunction ask-question (?question $?allowed-values)
-   (printout t ?question)
-   (bind ?answer (read))
-   (while (not (member ?answer ?allowed-values)) do
-      (printout t ?question)
-      (bind ?answer (read))
-      )
-   ?answer)
+(deffunction si-o-no-p (?pregunta)
+	(bind ?respuesta (pregunta ?pregunta si no s n))
+	(if (or (eq (lowcase ?respuesta) si) (eq (lowcase ?respuesta) s))
+		then TRUE
+		else FALSE
+	)
+)
 
-(deffunction si-o-no-p (?question)
-   (bind ?response (ask-question ?question si no s n))
-   (if (or (eq ?response si) (eq ?response s))
-       then TRUE 
-       else FALSE))
-
-(deffunction calcular_int_imc(?imc)
+(deffunction calcular_intensidad_inicial_imc(?imc)
 	(if (< ?imc 15) then -30 else
 	(if (< ?imc 16) then -20 else
 	(if (< ?imc 18.5) then -10 else
@@ -118,17 +120,17 @@
     (focus preguntas)
 )
 
- (defmodule preguntas "Modulo de preguntas que el usuario debe responder"
+(defmodule preguntas "Modulo de preguntas que el usuario debe responder"
    (import MAIN ?ALL)
-   (export ?ALL))
+   (export ?ALL))	
 
 (defrule introducir-persona
 	(declare (salience 50))
 	=>
     (bind ?nombre (pregunta-general "Nombre: "))
-	(bind ?edad (pregunta-numerica "Edad (anos): " 0 150))
-    (bind ?altura (pregunta-numerica "Altura (cm): " 0 250))
-    (bind ?peso (pregunta-numerica "Peso (kg): " 0.0 600.0))
+	(bind ?edad (pregunta-numerica "Edad (anos): " 0 120))
+    (bind ?altura (pregunta-numerica "Altura (cm): " 1 250))
+    (bind ?peso (pregunta-numerica "Peso (kg): " 1.0 600.0))
 	(bind ?altura_metros (/ ?altura 100))
 	(bind ?IMC (/ ?peso (* ?altura_metros ?altura_metros)))
     (bind ?presion_min (pregunta-numerica "Presion sanguinea minima: " 0.0 200.0))
@@ -149,74 +151,73 @@
 		(intensidad_inicial Nula))
 	)
 	(assert (no_hay_habitos))
-	(assert (no_hay_problemas))
-	(assert (no_hay_objetivos))
-	(assert (no_hay_obj_cumpl))
-	(assert (no_hay_obj_eje))
 )
 
 (defrule introduce-habitos
 	(declare (salience 30))
 	?nhb <- (no_hay_habitos)
-	?persona <- (Persona (nombre ?nombre))
+	?persona <- (Persona)
 	=>
-
 	(bind ?lista_habitos (find-all-instances ((?a Habito+personal)) TRUE))
 	(printout t crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_habitos)) do
-		(bind ?aux (nth$ ?i ?lista_habitos))
-		(printout t ?i ". " (send ?aux get-nombre) crlf)
+		(bind ?habito (nth$ ?i ?lista_habitos))
+		(printout t ?i ". " (send ?habito get-nombre) crlf)
 	)
 	(printout t  crlf)
 	(bind ?respuesta (pregunta-numerica "Que habitos tienes? " 0 (length$ ?lista_habitos)))
 	(bind ?lista (create$))
 	(while (> ?respuesta 0) do 
 		(bind ?habito (nth$ ?respuesta ?lista_habitos))
-		(bind ?duracion (pregunta-numerica "Durante cuanto tiempo? (minutos)" 0 600))
-		(send ?habito put-duracion ?duracion)
 		(bind ?frecuencia (pregunta-numerica "Cuantos dias a la semana?" 1 7))
 		(send ?habito put-frecuencia ?frecuencia)
+		(bind ?duracion (pregunta-numerica "Durante cuanto tiempo al dia? (minutos)" 0 600))
+		(send ?habito put-duracion ?duracion)
 		(bind ?lista (insert$ ?lista 1 ?habito))
-		(bind ?respuesta (pregunta-numerica "Cual mas? " 0 (length$ ?lista_habitos)))
+		(bind ?respuesta (pregunta-numerica "Alguno mas? " 0 (length$ ?lista_habitos)))
 	)
 	(modify ?persona (habitos ?lista))
 	(retract ?nhb)
+	(assert (no_hay_problemas))
 )	
 
 (defrule introduce-problemas
 	(declare (salience 25))
 	?nhp <- (no_hay_problemas)	
-	?persona <- (Persona (nombre ?nombre))
+	?persona <- (Persona)
 	=>
 	(printout t "Problemas musculo-esqueleticos: " crlf)
 	(bind ?lista_problemas_musc (find-all-instances ((?p Problemas+musculo-esqueleticos)) TRUE))
-	(printout t "0. No tengo ninguno mas" crlf)
+	(printout t crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_problemas_musc)) do
 		(bind ?aux (nth$ ?i ?lista_problemas_musc))
 		(printout t ?i ". " (send ?aux get-nombre) crlf)
 	)
+	(printout t  crlf)
 	(bind ?respuesta (pregunta-numerica "Que problema de estos tienes? " 0 (length$ ?lista_problemas_musc)))
 	(bind ?lista (create$))
 	(while (> ?respuesta 0) do 
 		(bind ?problema (nth$ ?respuesta ?lista_problemas_musc))
 		(bind ?lista (insert$ ?lista 1 ?problema))
-		(bind ?respuesta (pregunta-numerica "Que problema mas de estos tienes? " 0 (length$ ?lista_problemas_musc)))
+		(bind ?respuesta (pregunta-numerica "Tienes algun problema mas? " 0 (length$ ?lista_problemas_musc)))
 	)
 	(modify ?persona (problemas ?lista))
 	(retract ?nhp)
+	(assert (no_hay_objetivos))
 )
 
 (defrule introduce-objetivos
 	(declare (salience 20))
 	?nho <- (no_hay_objetivos)
-	?persona <- (Persona (nombre ?nombre))
+	?persona <- (Persona)
 	=>
 	(bind ?lista_objetivos (find-all-instances ((?o Objetivo)) TRUE))
-	(printout t "0. No tengo ninguno mas" crlf)
+	(printout t crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_objetivos)) do
 		(bind ?aux (nth$ ?i ?lista_objetivos))
 		(printout t ?i ". " (send ?aux get-nombre) crlf)
 	)
+	(printout t  crlf)
 	(bind ?respuesta (pregunta-numerica "Que objetivo tienes? " 0 (length$ ?lista_objetivos)))
 	(bind ?lista (create$))
 	(while (> ?respuesta 0) do
@@ -232,7 +233,7 @@
 	(declare (salience 19))
 	=>
 	(focus inferir-datos)
-	(assert (problemas_inferidos))
+	(assert (infiere_problemas))
 )
 
 (defmodule inferir-datos "Modulo de inferencia"
@@ -240,10 +241,9 @@
   (import preguntas ?ALL)
   (export ?ALL))
 
-
 (defrule infiere_problemas
 	(declare (salience 18))
-	?pi <- (problemas_inferidos)
+	?ip <- (infiere_problemas)
 	?persona <- (Persona (problemas $?problemas) (edad ?edad) (presion_max ?presion_max) (presion_min ?presion_min) (IMC ?imc))
 	=>
 	(bind ?lista_problemas_inferidos (create$))
@@ -282,7 +282,7 @@
 
 	(bind ?lista_final (insert$ $?problemas 1 ?lista_problemas_inferidos))
 	(modify ?persona (problemas ?lista_final))
-	(retract ?pi)
+	(retract ?ip)
 )
 
 (defrule calcula_int_inicial
@@ -290,30 +290,20 @@
 	?persona <- (Persona (habitos $?lista_habitos) (IMC ?IMC) (intensidad_inicial Nula))
 	=>
 	;IMC
-	(printout t ?IMC crlf)
-	(bind ?int_ini (calcular_int_imc ?IMC)) ;FALTA ACABAR DE REPASSAR-LA
+	(bind ?int_ini (calcular_intensidad_inicial_imc ?IMC))
 
 	;DIETA
 	;(bind ?int_ini (+ ?int_ini (calcular_int_dieta ?persona:dieta)))
 
 	;EJERCICIOS SENCILLOS
 	;(bind ?int_ini (+ ?int_ini (calcular_int_ejercicios ?persona:ejercicios)))
-	
-	(printout t (length$ $?lista_habitos) crlf)
-	(printout t ?int_ini crlf)
 
 	;HABITOS PERSONALES
 	(progn$ (?habito ?lista_habitos)
 		(bind ?duracion (send ?habito get-duracion))
 		(bind ?puntuacion (send ?habito get-puntuacion))
 		(bind ?frec (send ?habito get-frecuencia))
- 
-		; (if (eq ?frec Diaria) then (bind ?frec2 30) else
-		; 	(if (eq ?frec Semanal) then (bind ?frec2 4) else
-		; 		(if (eq ?frec Varias_veces_a_la_semana) then (bind ?frec2 1))
-		; 	)
-		; )
-		(bind ?puntuacion_real (* ?puntuacion ?frec)) ;(* ?frec ?duracion))) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		(bind ?puntuacion_real (* ?puntuacion ?frec)) ;(* ?frec ?duracion)))
 		(bind ?int_ini (+ ?int_ini ?puntuacion_real))
 	)
 	
@@ -324,13 +314,12 @@
 	(if (<= ?int_ini -30) then (bind ?int_ini_cat Baja)
 	else (if (< ?int_ini 30) then (bind ?int_ini_cat Media)
 	else (bind ?int_ini_cat Alta)))
-
-	(printout t "8===============================D O: <- eva elfie " ?int_ini_cat crlf)
 	
 	(modify ?persona (intensidad_inicial ?int_ini_cat))
+	(assert (no_hay_obj_cumpl))
 )
 
-(deftemplate objetivo_cumplido (slot objetivo (type INSTANCE)))
+(deftemplate objetivo_cumplido_habito (slot objetivo (type INSTANCE)))
 
 (defrule objetivos_cumplidos_habitos
 	(declare (salience 17))
@@ -340,21 +329,22 @@
 	(progn$ (?habito ?lista_habitos)
 		(bind ?lista_objetivos (send ?habito get-favorable))
 		(progn$ (?objetivo ?lista_objetivos)
-			(assert (objetivo_cumplido (objetivo ?objetivo)))
+			(assert (objetivo_cumplido_habito (objetivo ?objetivo)))
 		)
 	)
 	(retract ?nhoc)
+	(assert (no_hay_obj_eje))
 )
 
-(defrule junta_pares
+(defrule combina_objetivos
 	(declare (salience 16))
-	?x1 <- (objetivo_cumplido (objetivo ?objetivo))
-	?x2 <- (objetivo_cumplido (objetivo ?objetivo))
-	(test (neq (fact-index ?x1) (fact-index ?x2)))
+	?o1 <- (objetivo_cumplido_habito (objetivo ?objetivo))
+	?o2 <- (objetivo_cumplido_habito (objetivo ?objetivo))
+	(test (neq (fact-index ?o1) (fact-index ?o2)))
 	=>
-	(assert (objetivo_cumplido (objetivo ?objetivo)))
-	(retract ?x1)
-	(retract ?x2)
+	(assert (objetivo_cumplido_habito (objetivo ?objetivo)))
+	(retract ?o1)
+	(retract ?o2)
 )
 
 (deftemplate ejercicio_puntuado (slot ejercicio (type INSTANCE)) (slot objetivo (type INSTANCE)) (slot puntuacion (type INTEGER)))
@@ -384,39 +374,39 @@
 	)
 	(retract ?nhoe)
 )
-;; ;; ;; delete$ <lista> <indice-inicio> <indice-final>)
-;; ;; ;; .Se borrarán todos los elementos del rango entre las posiciones inicio y final, ambas incluidas.También exist
 
-
-;(bind ?rectangulos (find-all-instances ((?inst Rectangulo)) (> ?inst:altura 10)))
-
-;(deftemplate ejercicio_tiempo (slot ejercicio) (slot tiempo) (slot puntuacion))
-
-;(deftemplate ejercicio_puntuado_max (slot ejercicio (type INSTANCE)) (slot objetivo (type INSTANCE)) (slot puntuacion (type INTEGER)))
-
-(defrule coge_maximo
+(defrule combina_ejercicios
 	(declare (salience 14))
-	?x1 <- (ejercicio_puntuado (objetivo ?objetivo) (puntuacion ?punt1))
-	?x2 <- (ejercicio_puntuado (objetivo ?objetivo) (puntuacion ?punt2))
-	(test (neq (fact-index ?x1) (fact-index ?x2)))
+	?e1 <- (ejercicio_puntuado (ejercicio ?ejercicio))
+	?e2 <- (ejercicio_puntuado (ejercicio ?ejercicio))
+	(test (neq (fact-index ?e1) (fact-index ?e2)))
+	=>
+	(retract ?e1)
+)
+
+(defrule combina_ejercicios_max
+	(declare (salience 14))
+	?e1 <- (ejercicio_puntuado (objetivo ?objetivo) (puntuacion ?punt1))
+	?e2 <- (ejercicio_puntuado (objetivo ?objetivo) (puntuacion ?punt2))
+	(test (neq (fact-index ?e1) (fact-index ?e2)))
 	=>
 	(assert (ejercicio_puntuado (objetivo ?objetivo) (puntuacion (max ?punt1 ?punt2))))
-	(retract ?x1)
-	(retract ?x2)
+	(retract ?e1)
+	(retract ?e2)
 )
 
 (defrule quita_ejercicios_ya_cumplidos_con_habitos
 	(declare (salience 13))
-	?x1 <- (objetivo_cumplido (objetivo ?objetivo))
-	?x2 <- (ejercicio_puntuado (objetivo ?objetivo))
+	?obj <- (objetivo_cumplido_habito (objetivo ?objetivo))
+	?ej <- (ejercicio_puntuado (objetivo ?objetivo))
 	=>
-	(retract ?x2)
+	(retract ?ej)
 )
 
 (defrule asigna_tiempo
 	(declare (salience 12))
 	?persona <- (Persona (tiempo_dispo ?tiempo_disp))
-	?ej_punt <- (ejercicio_puntuado (ejercicio ?ej) (objetivo ?objetivo))
+	?ej_punt <- (ejercicio_puntuado (ejercicio ?ej))
 	=>
 	(bind ?dur_rep (send ?ej get-duracion_por_rep))
 	(bind ?rep_max (send ?ej get-repeticiones+max))
@@ -468,10 +458,13 @@
 
 (defrule print_programa
 	(object (is-a Programa) (rutinas+diarias $?rutinas))
+	?persona <- (Persona (nombre ?nombre))
 	=>
+	(printout t crlf crlf "PROGRAMA RECOMENDADO para " ?nombre ":")
 	(bind ?dia 1)
 	(bind ?obj_programa (create$))
 	(progn$ (?rutina $?rutinas)
+		(printout t crlf crlf)
 		(send ?rutina put-dia ?dia)
 		(printout t "Dia " ?dia ": " crlf)
 
@@ -480,12 +473,16 @@
 		(progn$  (?ejercicio_rec ?ejercicios_rutina)
 			(bind ?ejercicio (send ?ejercicio_rec get-ejercicio))
 			(printout t (send ?ejercicio get-nombre) crlf)
-			(printout t "Duracion (seg): " (send ?ejercicio_rec get-duracion) crlf)
+			(bind ?duracion (/ (send ?ejercicio_rec get-duracion) 60))
+			(if (and (> ?duracion 0) (< ?duracion 1)) then
+				(printout t "Duracion: menos de un minuto" crlf) else
+				(printout t "Duracion: " (round ?duracion) " minuto(s)" crlf)
+			)	
 			(printout t "Repeticiones: " (send ?ejercicio_rec get-repeticiones) crlf)
 			(printout t crlf)
 		)
-		(printout t "Duracion total: " (send ?rutina get-duracion+total) crlf)
-		
+		(printout t "Duracion total: " (div (send ?rutina get-duracion+total) 60) " minuto(s)" crlf)
+
 		;Objetivos que cumple la rutina diaria
 		(bind ?objetivos_rutina (send ?rutina get-objetivos))
 		(progn$  (?objetivo ?objetivos_rutina)
@@ -494,11 +491,11 @@
 			)
 		)
 		(bind ?dia (+ ?dia 1))
-		(printout t crlf crlf)
 	)
+	(printout t crlf crlf)
 	(printout t "Objetivos cumplidos en el programa: " crlf)
 	(progn$ (?objetivo $?obj_programa)
-		(printout t (send ?objetivo get-nombre) crlf)
+		(printout t " - " (send ?objetivo get-nombre) crlf)
 	)
+	(printout t crlf)
 )
-
