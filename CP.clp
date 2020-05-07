@@ -349,34 +349,6 @@
 	(retract ?o2)
 )
 
-; (deftemplate ejercicio_objetivo (slot ejercicio (type INSTANCE)) (slot objetivo (type INSTANCE)))
-
-; (defrule objetivos_cumplidos_ejercicios
-; 	(declare (salience 15))
-; 	?nhoe <- (no_hay_obj_eje)
-; 	?persona <- (Persona (objetivos $?objetivos_persona) (intensidad_inicial ?int_ini) (problemas $?problemas_persona))
-; 	=>
-; 	(bind ?lista_ejercicios (find-all-instances ((?ej Ejercicio)) (eq ?ej:intensidad ?int_ini)))
-	
-; 	(progn$ (?ejercicio ?lista_ejercicios)
-; 		(bind ?problemas_ej (send ?ejercicio get-contraindicado))
-; 		(bind ?problematico FALSE)
-; 		(progn$ (?problema_ej ?problemas_ej)
-; 			(if (member ?problema_ej $?problemas_persona) then (bind ?problematico TRUE))
-; 		)
-; 		(if (eq ?problematico FALSE) then
-; 			(bind ?intensidad (send ?ejercicio get-intensidad))
-; 			(bind ?lista_objetivos (send ?ejercicio get-objetivos))
-; 			(progn$ (?objetivo ?lista_objetivos)
-; 				(if (member ?objetivo $?objetivos_persona) 
-; 					then (assert (ejercicio_objetivo (ejercicio ?ejercicio) (objetivo ?objetivo)))
-; 				)
-; 			)
-; 		)
-; 	)
-; 	(retract ?nhoe)
-; )
-
 (deftemplate lista_ejercicios_por_objetivo (slot objetivo (type INSTANCE)) (multislot ejercicios (type INSTANCE)))
 
 (defrule objetivos_cumplidos_ejercicios
@@ -387,44 +359,19 @@
 	(progn$ (?obj_pers $?objetivos_persona)
 		(bind ?lista_ejercicios (find-all-instances ((?ej Ejercicio)) (and (eq ?int_ini ?ej:intensidad) (member ?obj_pers ?ej:objetivos))))
 		(bind ?aux (create$))
+		(bind ?problematico FALSE)
 		(loop-for-count (?i 1 (length$ ?lista_ejercicios)) do
 			(bind ?ejercicio (nth$ ?i ?lista_ejercicios))
 			(bind ?problemas_ej (send ?ejercicio get-contraindicado))
 			(progn$ (?problema_ej ?problemas_ej)
-				(if (not (member ?problema_ej $?problemas_persona)) then 
-					(bind ?aux (insert$ ?aux 1 ?ejercicio))
-				)
-			)
+ 				(if (member ?problema_ej $?problemas_persona) then (bind ?problematico TRUE))
+ 			)
+			(if (eq ?problematico FALSE) then (bind ?aux (insert$ ?aux 1 ?ejercicio)))
 		)
 		(assert (lista_ejercicios_por_objetivo (objetivo ?obj_pers) (ejercicios ?aux)))
 	)
 	(retract ?nhoe)
 )
-
-;; (delete$ <lista> <indice-inicio> <indice-final>)
-;; Se borrarán todos los elementos del rango entre las posiciones inicio y final, ambas incluidas.
-
-; (defrule combina_ejercicios
-; 	(declare (salience 14))
-; 	?e1 <- (ejercicio_objetivo (ejercicio ?ejercicio))
-; 	?e2 <- (ejercicio_objetivo (ejercicio ?ejercicio))
-; 	(test (neq (fact-index ?e1) (fact-index ?e2)))
-; 	=>
-; 	(retract ?e1)
-; )
-
-; (defrule combina_ejercicios_max
-; 	(declare (salience 14))
-; 	?e1 <- (ejercicio_puntuado (objetivo ?objetivo) (puntuacion ?punt1))
-; 	?e2 <- (ejercicio_puntuado (objetivo ?objetivo) (puntuacion ?punt2))
-; 	(test (neq (fact-index ?e1) (fact-index ?e2)))
-; 	=>
-; 	(assert (ejercicio_puntuado (objetivo ?objetivo) (puntuacion (max ?punt1 ?punt2))))
-; 	(retract ?e1)
-; 	(retract ?e2)
-; )
-
-;(deftemplate ejercicio_puntuado2 (slot ejercicio (type INSTANCE)) (slot objetivo (type INSTANCE)) (slot puntuacion (type INTEGER)))
 
 (deftemplate lista_ejercicios_por_objetivo2 (slot objetivo (type INSTANCE)) (multislot ejercicios (type INSTANCE)))
 
@@ -457,21 +404,23 @@
 	else (assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios ?ejercicios)))
 	)
 )
-;; (eq ?instancia:nom nom_de_la_instancia_que_vull)
-; (defrule agrupa_ejercicios_por_objetivo
-; 	?ej <- (ejercicio_objetivo (objetivo ?objetivo))
-; 	?lista <- (llista_obj (objetivo ?objetivo))
-; 	=>
 
-; )
+(defrule pasa_a_2
+	(declare (salience 12))
+	(lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
+	=>
+	(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios ?ejercicios)))
+)
 
 (defrule asigna_tiempo
 	(declare (salience 12))
 	?persona <- (Persona (tiempo_dispo ?tiempo_disp))
-	?ej_punt <- (ejercicio_puntuado (ejercicio ?ej))
+	?lista <- (lista_ejercicios_por_objetivo2 (ejercicios $?ejercicios))
 	=>
-	(bind ?dur_rep (send ?ej get-duracion_por_rep))
-	(bind ?rep_max (send ?ej get-repeticiones+max))
+	(bind ?r (random 1 (length$ $?ejercicios)))
+	(bind ?ejercicio (nth$ ?r $?ejercicios))
+	(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
+	(bind ?rep_max (send ?ejercicio get-repeticiones+max))
 	(bind ?duracion (* ?dur_rep ?rep_max))
 		
 	(bind ?duracion_real (min ?duracion ?tiempo_disp))
@@ -480,8 +429,8 @@
 	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
 	(send ?ej_rec put-duracion ?duracion_real)
 	(send ?ej_rec put-repeticiones ?rep_reales)
-	(send ?ej_rec put-ejercicio ?ej)
-	(retract ?ej_punt)
+	(send ?ej_rec put-ejercicio ?ejercicio)
+	(retract ?lista)
 
 	(bind ?tiempo_restante (- ?tiempo_disp ?duracion_real))
 	(modify ?persona (tiempo_dispo ?tiempo_restante))
