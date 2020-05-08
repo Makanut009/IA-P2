@@ -39,6 +39,16 @@
 
 (deftemplate lista_ejercicios_por_objetivo2 (slot objetivo (type INSTANCE)) (multislot ejercicios (type INSTANCE)))
 
+(deftemplate lista_objetivos1 (slot nombre (type INTEGER)) (multislot objetivos (type INSTANCE)))
+(deftemplate lista_objetivos2 (slot nombre (type INTEGER)) (multislot objetivos (type INSTANCE)))
+
+(deftemplate ejercicio_objetivo "Ejercicio y el objetivo que cumple"
+	(slot ejercicio)
+	(slot objetivo)
+	(slot duracion)
+	(slot repeticiones)
+)
+
 
 ;;////////////////////
 ;;      FUNCIONES       
@@ -368,6 +378,7 @@
 		(cansancio ?cansancio)
    		(tirantez_muscular ?tirantez))
 	)
+	(retract ?nhes)
 )
 
 (defrule pasa-a-inferir
@@ -488,9 +499,6 @@
 	(retract ?o2)
 )
 
-(deftemplate lista_objetivos1 (multislot objetivos))
-(deftemplate lista_objetivos2 (multislot objetivos))
-
 (defrule objetivos_cumplidos_ejercicios
 	(declare (salience 15))
 	?nhoe <- (no_hay_obj_eje)
@@ -512,9 +520,10 @@
 		(printout t ?obj_pers "  " ?aux crlf)
 		(assert (lista_ejercicios_por_objetivo (objetivo ?obj_pers) (ejercicios ?aux)))
 	)
-	(printout t ?objetivos_persona crlf)
-	(assert (lista_objetivos1 (objetivos (create$))))
-	(assert (lista_objetivos2 (objetivos (create$))))
+	(printout t $?objetivos_persona crlf)
+	(assert (lista_objetivos1 (nombre 1) (objetivos (create$))))
+	(assert (lista_objetivos2 (nombre 2) (objetivos (create$))))
+	(read)
 	(retract ?nhoe)
 )
 
@@ -522,7 +531,7 @@
 	(declare (salience 13))
 	?obj <- (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?puntuacion_habito))
 	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
-	?lista_obj1 <- (lista_objetivos1 (objetivos ?objetivos))
+	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
 	=>
 	(printout t "quita_ejercicios_ya_cumplidos_con_habitos" clrf)
 	(if (> ?puntuacion_habito 200) then
@@ -543,7 +552,7 @@
 			else (bind ?ejercicios2 (insert$ ?ejercicios2 ?i ?ejercicio))
 			)
 		)
-		(if (not (member ?objetivo ?objetivos)) then
+		(if (not (member ?objetivo $?objetivos)) then
 			(printout t "Adeu" crlf)
 			(bind ?aux (insert$ ?objetivos 1 ?objetivo))
 			(modify ?lista_obj1 (objetivos ?aux))
@@ -563,31 +572,25 @@
 
 (defrule pasa_a_2
 	(declare (salience 12))
-	(lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
-	?lista_obj1 <- (lista_objetivos1 (objetivos ?objetivos))
+	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
+	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
 	=>
 	(printout t "pasa_a_2" crlf)
 	(bind ?aux (insert$ ?objetivos 1 ?objetivo))
 	(modify ?lista_obj1 (objetivos ?aux))
 	(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios ?ejercicios)))
+	(retract ?lista)
 )
 
 (defrule copia_l1_a_l2
 	(declare (salience 11))
-	?l1 <- (lista_objetivos1 (objetivos ?objetivos))
-	?l2 <- (lista_objetivos2 (objetivos ?objetivos2))
-	(test(eq (length$ ?objetivos2) 0))
+	?l1 <- (lista_objetivos1 (objetivos $?objetivos))
+	?l2 <- (lista_objetivos2 (objetivos $?objetivos2))
+	(test(eq (length$ $?objetivos2) 0))
 	=>
 	(printout t "MARRAMIAU" crlf)
-	(assert (lista_objetivos2 (objetivos ?objetivos)))
+	(assert (lista_objetivos2 (objetivos $?objetivos)))
 	(retract ?l2)
-)
-
-(deftemplate ejercicio_objetivo "Ejercicio y el objetivo que cumple"
-	(slot ejercicio)
-	(slot objetivo)
-	(slot duracion)
-	(slot repeticiones)
 )
 
 (defrule desglosa_ejercicios
@@ -632,14 +635,15 @@
 	(declare (salience 9))
 	?rutina <- (object (is-a Rutina+diaria) (dia ?dia) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios) (objetivos $?objetivos_rutina))
 	(test (= ?dia 1))
-	(lista_objetivos2 (objetivos ?objetivos))
-	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj ?objetivos)))
+	(lista_objetivos2 (objetivos $?objetivos))
+	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
 	(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
 	(printout t "Miau" crlf)
 	(send ?rutina put-ejercicios (insert$ ?ejercicios 1 ?ej1))
 	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?d1))
 	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	(assert (crear_programa))
 )
 
 ; (defrule crea_rutina
@@ -662,6 +666,7 @@
 
 (defrule crea_programa
 	(declare (salience 8))
+	(crear_programa)
 	=>
 	(bind ?rutinas (find-all-instances ((?ej Rutina+diaria)) TRUE))
 	(bind ?programa (make-instance (gensym*) of Programa))
@@ -682,8 +687,7 @@
 
 		;Ejercicios de la rutina diaria
 		(bind ?ejercicios_rutina (send ?rutina get-ejercicios))
-		(progn$  (?ejercicio_rec ?ejercicios_rutina)
-			(bind ?ejercicio (send ?ejercicio_rec get-ejercicio))
+		(progn$  (?ejercicio ?ejercicios_rutina)
 			(printout t (send ?ejercicio get-nombre) crlf)
 			(bind ?duracion (/ (send ?ejercicio_rec get-duracion) 60))
 			(if (and (> ?duracion 0) (< ?duracion 1)) then
