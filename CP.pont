@@ -1,4 +1,4 @@
-; Fri May 08 17:31:09 CEST 2020
+; Fri May 08 18:07:04 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -248,10 +248,6 @@
 		(type INSTANCE)
 ;+		(allowed-classes Objetivo)
 		(create-accessor read-write))
-	(multislot desfavorable
-		(type INSTANCE)
-;+		(allowed-classes Objetivo)
-		(create-accessor read-write))
 	(single-slot duracion
 ;+		(comment "Duracion de la actividad, en minutos")
 		(type INTEGER)
@@ -262,11 +258,6 @@
 ;+		(comment "Nombre")
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot grupo_muscular
-;+		(comment "Lista de grupos musculares que trabaja esta actividad.")
-		(type SYMBOL)
-		(allowed-values Espalda Piernas Gluteos Abdominales Brazos)
 		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
