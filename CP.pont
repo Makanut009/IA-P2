@@ -1,4 +1,4 @@
-; Sun May 03 12:14:19 CEST 2020
+; Fri May 08 12:29:41 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -7,6 +7,10 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
+	(single-slot tiempo_disp
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot contraindicado
 ;+		(comment "Lista de condicionantes para los cualos este ejercicio es contraindicado.")
 		(type INSTANCE)
@@ -47,14 +51,14 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot indicado
+		(type INSTANCE)
+;+		(allowed-classes Problemas)
+		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
 		(range -3 3)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot ejercicio
 		(type INSTANCE)
@@ -97,22 +101,22 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot duracion+total
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot intensidad
 		(type SYMBOL)
 		(allowed-values Baja Media Alta)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot dia
+	(single-slot duracion+total
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot dificultad
 		(type SYMBOL)
 		(allowed-values moderada normal dificil)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot dia
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -137,6 +141,10 @@
 		(type INSTANCE)
 ;+		(allowed-classes Objetivo)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot tiempo_disp
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot duracion+total
 		(type INTEGER)
@@ -198,14 +206,14 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot indicado
+		(type INSTANCE)
+;+		(allowed-classes Problemas)
+		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
 		(range -3 3)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot repeticiones+max
 ;+		(comment "Maximo de repeticiones de ejercicio")

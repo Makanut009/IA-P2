@@ -160,13 +160,44 @@
 	(bind ?presion_max (pregunta-numerica "Presion sanguinea maxima: " 0.0 200.0))
 
 	(printout t crlf "Introduce el tiempo que tienes disponibe cada dia. Tiene que ser multiple de 5 minutos:" crlf)
-	(assert (Dia1 (* 60 (pregunta-numerica5 "Dia 1: " 30 300))))
-	(assert (Dia2 (* 60 (pregunta-numerica5 "Dia 2: " 30 300))))
-	(assert (Dia3 (* 60 (pregunta-numerica5 "Dia 3: " 30 300))))
-	(assert (Dia4 (* 60 (pregunta-numerica5 "Dia 4: " 30 300))))
-	(assert (Dia5 (* 60 (pregunta-numerica5 "Dia 5: " 30 300))))
-	(assert (Dia6 (* 60 (pregunta-numerica5 "Dia 6: " 30 300))))
-	(assert (Dia7 (* 60 (pregunta-numerica5 "Dia 7: " 30 300))))
+	
+	(bind ?t1 (* 60 (pregunta-numerica5 "Dia 1: " 30 300)))
+	(bind ?t2 (* 60 (pregunta-numerica5 "Dia 2: " 30 300)))
+	(bind ?t3 (* 60 (pregunta-numerica5 "Dia 3: " 30 300)))
+	(bind ?t4 (* 60 (pregunta-numerica5 "Dia 4: " 30 300)))
+	(bind ?t5 (* 60 (pregunta-numerica5 "Dia 5: " 30 300)))
+	(bind ?t6 (* 60 (pregunta-numerica5 "Dia 6: " 30 300)))
+	(bind ?t7 (* 60 (pregunta-numerica5 "Dia 7: " 30 300)))
+
+	(bind ?dia1 (make-instance (gensym*) of Rutina+diaria))
+	(send ?dia1 put-dia 1)
+	(send ?dia1 put-tiempo_disp ?t1)
+	(send ?dia1 put-ejercicios (create$))
+	(send ?dia1 put-objetivos (create$))
+
+	(bind ?dia2 (make-instance (gensym*) of Rutina+diaria))
+	(send ?dia2 put-dia 2)
+	(send ?dia2 put-tiempo_disp ?t2)
+
+	(bind ?dia3 (make-instance (gensym*) of Rutina+diaria))
+	(send ?dia3 put-dia 3)
+	(send ?dia3 put-tiempo_disp ?t3)
+
+	(bind ?dia4 (make-instance (gensym*) of Rutina+diaria))
+	(send ?dia4 put-dia 4)
+	(send ?dia4 put-tiempo_disp ?t4)
+
+	(bind ?dia5 (make-instance (gensym*) of Rutina+diaria))
+	(send ?dia5 put-dia 5)
+	(send ?dia5 put-tiempo_disp ?t5)
+
+	(bind ?dia6 (make-instance (gensym*) of Rutina+diaria))
+	(send ?dia6 put-dia 6)
+	(send ?dia6 put-tiempo_disp ?t6)
+
+	(bind ?dia7 (make-instance (gensym*) of Rutina+diaria))
+	(send ?dia7 put-dia 7)
+	(send ?dia7 put-tiempo_disp ?t7)
 
 	(assert
 		(Persona
@@ -465,6 +496,7 @@
 	?nhoe <- (no_hay_obj_eje)
 	?persona <- (Persona (objetivos $?objetivos_persona) (intensidad_inicial ?int_ini) (problemas $?problemas_persona))
 	=>
+	(printout t "MIAU2" crlf)
 	(progn$ (?obj_pers $?objetivos_persona)
 		(bind ?lista_ejercicios (find-all-instances ((?ej Ejercicio)) (and (eq ?int_ini ?ej:intensidad) (member ?obj_pers ?ej:objetivos))))
 		(bind ?aux (create$))
@@ -477,10 +509,12 @@
  			)
 			(if (eq ?problematico FALSE) then (bind ?aux (insert$ ?aux 1 ?ejercicio)))
 		)
+		(printout t ?obj_pers "  " ?aux crlf)
 		(assert (lista_ejercicios_por_objetivo (objetivo ?obj_pers) (ejercicios ?aux)))
 	)
-	(assert (lista_objetivos1))
-	(assert (lista_objetivos2))
+	(printout t ?objetivos_persona crlf)
+	(assert (lista_objetivos1 (objetivos (create$))))
+	(assert (lista_objetivos2 (objetivos (create$))))
 	(retract ?nhoe)
 )
 
@@ -490,6 +524,7 @@
 	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
 	?lista_obj1 <- (lista_objetivos1 (objetivos ?objetivos))
 	=>
+	(printout t "quita_ejercicios_ya_cumplidos_con_habitos" clrf)
 	(if (> ?puntuacion_habito 200) then
 		(retract ?lista)
 	else (if (> ?puntuacion_habito 150) then
@@ -509,6 +544,7 @@
 			)
 		)
 		(if (not (member ?objetivo ?objetivos)) then
+			(printout t "Adeu" crlf)
 			(bind ?aux (insert$ ?objetivos 1 ?objetivo))
 			(modify ?lista_obj1 (objetivos ?aux))
 		)
@@ -517,6 +553,7 @@
 	)
 	else 
 		(if (not (member ?objetivo ?objetivos)) then
+			(printout t "Hola" crlf)
 			(bind ?aux (insert$ ?objetivos 1 ?objetivo))
 			(modify ?lista_obj1 (objetivos ?aux))
 		)
@@ -527,36 +564,51 @@
 (defrule pasa_a_2
 	(declare (salience 12))
 	(lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
+	?lista_obj1 <- (lista_objetivos1 (objetivos ?objetivos))
 	=>
+	(printout t "pasa_a_2" crlf)
+	(bind ?aux (insert$ ?objetivos 1 ?objetivo))
+	(modify ?lista_obj1 (objetivos ?aux))
 	(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios ?ejercicios)))
 )
 
 (defrule copia_l1_a_l2
-	(declare (salience 100))
+	(declare (salience 11))
 	?l1 <- (lista_objetivos1 (objetivos ?objetivos))
 	?l2 <- (lista_objetivos2 (objetivos ?objetivos2))
 	(test(eq (length$ ?objetivos2) 0))
 	=>
+	(printout t "MARRAMIAU" crlf)
 	(assert (lista_objetivos2 (objetivos ?objetivos)))
 	(retract ?l2)
 )
 
-(deftemplate ejercicio_objetivo (slot ejercicio) (slot objetivo) (duracion ?duracion) (repeticiones ?repeticiones))
+(deftemplate ejercicio_objetivo "Ejercicio y el objetivo que cumple"
+	(slot ejercicio)
+	(slot objetivo)
+	(slot duracion)
+	(slot repeticiones)
+)
 
 (defrule desglosa_ejercicios
-	(declare (salience 12))
+	(declare (salience 10))
 	?lista <- (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios $?ejercicios))
 	=>
-	(progn$ ?ejercicio ?ejercicios
-		; (bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
-		; (bind ?rep_max (send ?ejercicio get-repeticiones+max))
-		; (bind ?duracion (* ?dur_rep ?rep_max))
-		
-		; (bind ?duracion_real (min ?duracion ?tiempo_disp))
-		; (bind ?rep_reales (div ?duracion_real ?dur_rep))
-
-		(assert (ejercicio_objetivo (objetivo ?objetivo) (ejercicio ?ejercicio) (duracion ?duracion_real) (repeticiones ?rep_reales)))
+	(progn$ (?ejercicio ?ejercicios)
+		(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
+		(bind ?rep_min (send ?ejercicio get-repeticiones+min))
+		(bind ?duracion_min (* ?dur_rep ?rep_min))
+		(assert (ejercicio_objetivo (objetivo ?objetivo) (ejercicio ?ejercicio) (duracion ?duracion_min) (repeticiones ?rep_min)))
 	)
+)
+
+	; (bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
+	; (bind ?rep_max (send ?ejercicio get-repeticiones+max))
+	; (bind ?duracion (* ?dur_rep ?rep_max))
+
+	; (bind ?duracion_real (min ?duracion ?tiempo_disp))
+	; (bind ?rep_reales (div ?duracion_real ?dur_rep))
+
 	;(bind ?r (random 1 (length$ $?ejercicios)))
 	;(bind ?ejercicio (nth$ ?r $?ejercicios))
 	;(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
@@ -574,37 +626,46 @@
 
 	;(bind ?tiempo_restante (- ?tiempo_disp ?duracion_real))
 	;(modify ?persona (tiempo_dispo ?tiempo_restante))
-)
 
-(defrule crea_rutina
-	(declare (salience 11))
+
+(defrule dia1
+	(declare (salience 9))
+	?rutina <- (object (is-a Rutina+diaria) (dia ?dia) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios) (objetivos $?objetivos_rutina))
+	(test (= ?dia 1))
+	(lista_objetivos2 (objetivos ?objetivos))
+	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj ?objetivos)))
+	(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
-	(bind ?lista_ejercicios_reco (find-all-instances ((?ej Ejercicio+recomendado)) TRUE))
-	(bind ?duracion_total 0)
-	(bind ?lista_objetivos (create$))
-	(progn$ (?ej_rec ?lista_ejercicios_reco)
-		(bind ?duracion_total (+ (send ?ej_rec get-duracion) ?duracion_total))
-		(bind ?ejercicio (send ?ej_rec get-ejercicio))
-		(bind ?lista_objetivos (insert$ ?lista_objetivos 1 (send ?ejercicio get-objetivos)))
-	)
-
-	(bind ?rutina (make-instance (gensym*) of Rutina+diaria))
-	(send ?rutina put-duracion+total ?duracion_total)
-	(send ?rutina put-objetivos ?lista_objetivos)
-	(send ?rutina put-ejercicios ?lista_ejercicios_reco)
+	(printout t "Miau" crlf)
+	(send ?rutina put-ejercicios (insert$ ?ejercicios 1 ?ej1))
+	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?d1))
+	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
 )
+
+; (defrule crea_rutina
+; 	(declare (salience 11))
+; 	=>
+; 	(bind ?lista_ejercicios_reco (find-all-instances ((?ej Ejercicio+recomendado)) TRUE))
+; 	(bind ?duracion_total 0)
+; 	(bind ?lista_objetivos (create$))
+; 	(progn$ (?ej_rec ?lista_ejercicios_reco)
+; 		(bind ?duracion_total (+ (send ?ej_rec get-duracion) ?duracion_total))
+; 		(bind ?ejercicio (send ?ej_rec get-ejercicio))
+; 		(bind ?lista_objetivos (insert$ ?lista_objetivos 1 (send ?ejercicio get-objetivos)))
+; 	)
+
+; 	(bind ?rutina (make-instance (gensym*) of Rutina+diaria))
+; 	(send ?rutina put-duracion+total ?duracion_total)
+; 	(send ?rutina put-objetivos ?lista_objetivos)
+; 	(send ?rutina put-ejercicios ?lista_ejercicios_reco)
+; )
 
 (defrule crea_programa
-	(declare (salience 10))
+	(declare (salience 8))
 	=>
-	(bind ?lista_rutinas (find-all-instances ((?ej Rutina+diaria)) TRUE))
+	(bind ?rutinas (find-all-instances ((?ej Rutina+diaria)) TRUE))
 	(bind ?programa (make-instance (gensym*) of Programa))
-	
-	(bind ?aux ?lista_rutinas)
-	(loop-for-count (?i 1 6) do 
-		(bind ?lista_rutinas (insert$ ?lista_rutinas 1 ?aux))
-	)
-	(send ?programa put-rutinas+diarias ?lista_rutinas)
+	(send ?programa put-rutinas+diarias ?rutinas)
 )
 
 (defrule print_programa
@@ -650,7 +711,3 @@
 	)
 	(printout t crlf)
 )
-
-
-
-
