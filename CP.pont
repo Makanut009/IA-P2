@@ -1,4 +1,4 @@
-; Fri May 08 12:29:41 CEST 2020
+; Fri May 08 15:56:05 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -51,14 +51,14 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
-		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
 		(range -3 3)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot indicado
+		(type INSTANCE)
+;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot ejercicio
 		(type INSTANCE)
@@ -101,22 +101,22 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot duracion+total
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot intensidad
 		(type SYMBOL)
 		(allowed-values Baja Media Alta)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot duracion+total
+	(single-slot dia
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot dificultad
 		(type SYMBOL)
 		(allowed-values moderada normal dificil)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot dia
-		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -142,11 +142,11 @@
 ;+		(allowed-classes Objetivo)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot tiempo_disp
+	(single-slot duracion+total
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot duracion+total
+	(single-slot tiempo_disp
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -172,11 +172,6 @@
 		(type INSTANCE)
 ;+		(allowed-classes Ejercicio)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot dificultad
-		(type SYMBOL)
-		(allowed-values moderada normal dificil)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Ejercicio "Ejercicio que realiza una persona"
@@ -206,14 +201,14 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
-		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
 		(range -3 3)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot indicado
+		(type INSTANCE)
+;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot repeticiones+max
 ;+		(comment "Maximo de repeticiones de ejercicio")

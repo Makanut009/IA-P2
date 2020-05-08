@@ -1,4 +1,4 @@
-; Fri May 08 12:29:41 CEST 2020
+; Fri May 08 15:56:05 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -392,13 +392,13 @@
 
 ([CP_ProjectKB_Class10] of  String
 
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
 
 ([CP_ProjectKB_Class11] of  String
 
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([CP_ProjectKB_Class12] of  String
 
@@ -458,12 +458,12 @@
 
 ([CP_ProjectKB_Class8] of  String
 
-	(name "Objetivo")
+	(name "Ejercicio")
 	(string_value "nombre"))
 
 ([CP_ProjectKB_Class9] of  String
 
-	(name "Ejercicio")
+	(name "Objetivo")
 	(string_value "nombre"))
 
 ([CREATION_TIMESTAMP_WIDGET] of  Widget
@@ -503,7 +503,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_242570_Class3] of  Map
+([KB_749768_Class3] of  Map
 )
 
 ([KB_759338_Class0] of  String
@@ -699,8 +699,8 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
