@@ -544,7 +544,7 @@
 	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
 	=>
-	(printout t "quita_ejercicios_ya_cumplidos_con_habitos" clrf)
+	(printout t "quita_ejercicios_ya_cumplidos_con_habitos" crlf)
 	(if (> ?puntuacion_habito 200) then
 		(retract ?lista)
 	else (if (> ?puntuacion_habito 150) then
@@ -581,13 +581,13 @@
 
 (defrule pasa_a_2
 	(declare (salience 12))
-	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
+	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios $?ejercicios))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
 	=>
 	(printout t "pasa_a_2" crlf)
-	(bind ?aux (insert$ ?objetivos 1 ?objetivo))
+	(bind ?aux (insert$ $?objetivos 1 ?objetivo))
 	(modify ?lista_obj1 (objetivos ?aux))
-	(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios ?ejercicios)))
+	(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios $?ejercicios)))
 	(retract ?lista)
 )
 
@@ -606,7 +606,7 @@
 	(declare (salience 10))
 	?lista <- (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios $?ejercicios))
 	=>
-	(progn$ (?ejercicio ?ejercicios)
+	(progn$ (?ejercicio $?ejercicios)
 		(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
 		(bind ?rep_min (send ?ejercicio get-repeticiones+min))
 		(bind ?duracion_min (* ?dur_rep ?rep_min))
@@ -634,8 +634,6 @@
 	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
 	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
-	(printout t "Dia 1" crlf)
-
 	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
 	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
 	(bind ?rep_max (send ?ej1 get-repeticiones+max))
@@ -669,12 +667,268 @@
 			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
 		)
 	)
-	(assert (crear_programa))
+)
+
+(defrule dia2
+	(declare (salience 6))
+	?ej_rutina <- (ejercicios_rutina (dia 2) (ejercicios $?ejercicios))
+	?rutina <- (object (is-a Rutina+diaria) (dia 2) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
+	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
+	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
+	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
+	=>
+	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
+	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
+	(bind ?rep_max (send ?ej1 get-repeticiones+max))
+	(bind ?duracion (* ?dur_rep ?rep_max))
+
+	(bind ?duracion_real (min ?duracion ?tiempo_disp))
+	(bind ?rep_reales (div ?duracion_real ?dur_rep))
+
+	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
+	(send ?ej_rec put-ejercicio ?ej1)
+	(send ?ej_rec put-duracion ?duracion_real)
+	(send ?ej_rec put-repeticiones ?rep_reales)
+
+	; Sumar el tiempo del ejercicio a la duracion total de la rutina
+	(bind ?dur_tot (send ?rutina get-duracion+total))
+	(bind ?dur_tot (+ ?dur_tot ?duracion_real))
+	(send ?rutina put-duracion+total ?dur_tot)
+	(send ?rutina put-ejercicios (insert$ ?ejercicios_rec 1 ?ej_rec))
+		
+	; Añadir el ejercicio añadido a la lista de ejercicios que se hacen en la rutina (en el template)
+	(bind ?aux (insert$ ?ejercicios 1 ?ej1))
+	(modify ?ej_rutina (dia 2) (ejercicios ?aux))
+
+	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
+	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	
+	;Treure objectiu complert de lista_objetivos2
+	(loop-for-count (?i 1 (length$ ?objetivos)) do
+		(bind ?obj2 (nth$ ?i ?objetivos))
+		(if (eq ?obj2 ?obj) then
+			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+		)
+	)
+)
+
+(defrule dia3
+	(declare (salience 5))
+	?ej_rutina <- (ejercicios_rutina (dia 3) (ejercicios $?ejercicios))
+	?rutina <- (object (is-a Rutina+diaria) (dia 3) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
+	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
+	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
+	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
+	=>
+	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
+	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
+	(bind ?rep_max (send ?ej1 get-repeticiones+max))
+	(bind ?duracion (* ?dur_rep ?rep_max))
+
+	(bind ?duracion_real (min ?duracion ?tiempo_disp))
+	(bind ?rep_reales (div ?duracion_real ?dur_rep))
+
+	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
+	(send ?ej_rec put-ejercicio ?ej1)
+	(send ?ej_rec put-duracion ?duracion_real)
+	(send ?ej_rec put-repeticiones ?rep_reales)
+
+	; Sumar el tiempo del ejercicio a la duracion total de la rutina
+	(bind ?dur_tot (send ?rutina get-duracion+total))
+	(bind ?dur_tot (+ ?dur_tot ?duracion_real))
+	(send ?rutina put-duracion+total ?dur_tot)
+	(send ?rutina put-ejercicios (insert$ ?ejercicios_rec 1 ?ej_rec))
+		
+	; Añadir el ejercicio añadido a la lista de ejercicios que se hacen en la rutina (en el template)
+	(bind ?aux (insert$ ?ejercicios 1 ?ej1))
+	(modify ?ej_rutina (dia 3) (ejercicios ?aux))
+
+	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
+	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	
+	;Treure objectiu complert de lista_objetivos2
+	(loop-for-count (?i 1 (length$ ?objetivos)) do
+		(bind ?obj2 (nth$ ?i ?objetivos))
+		(if (eq ?obj2 ?obj) then
+			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+		)
+	)
+)
+
+(defrule dia4
+	(declare (salience 4))
+	?ej_rutina <- (ejercicios_rutina (dia 4) (ejercicios $?ejercicios))
+	?rutina <- (object (is-a Rutina+diaria) (dia 4) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
+	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
+	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
+	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
+	=>
+	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
+	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
+	(bind ?rep_max (send ?ej1 get-repeticiones+max))
+	(bind ?duracion (* ?dur_rep ?rep_max))
+
+	(bind ?duracion_real (min ?duracion ?tiempo_disp))
+	(bind ?rep_reales (div ?duracion_real ?dur_rep))
+
+	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
+	(send ?ej_rec put-ejercicio ?ej1)
+	(send ?ej_rec put-duracion ?duracion_real)
+	(send ?ej_rec put-repeticiones ?rep_reales)
+
+	; Sumar el tiempo del ejercicio a la duracion total de la rutina
+	(bind ?dur_tot (send ?rutina get-duracion+total))
+	(bind ?dur_tot (+ ?dur_tot ?duracion_real))
+	(send ?rutina put-duracion+total ?dur_tot)
+	(send ?rutina put-ejercicios (insert$ ?ejercicios_rec 1 ?ej_rec))
+		
+	; Añadir el ejercicio añadido a la lista de ejercicios que se hacen en la rutina (en el template)
+	(bind ?aux (insert$ ?ejercicios 1 ?ej1))
+	(modify ?ej_rutina (dia 4) (ejercicios ?aux))
+
+	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
+	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	
+	;Treure objectiu complert de lista_objetivos2
+	(loop-for-count (?i 1 (length$ ?objetivos)) do
+		(bind ?obj2 (nth$ ?i ?objetivos))
+		(if (eq ?obj2 ?obj) then
+			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+		)
+	)
+)
+
+(defrule dia5
+	(declare (salience 3))
+	?ej_rutina <- (ejercicios_rutina (dia 5) (ejercicios $?ejercicios))
+	?rutina <- (object (is-a Rutina+diaria) (dia 5) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
+	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
+	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
+	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
+	=>
+	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
+	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
+	(bind ?rep_max (send ?ej1 get-repeticiones+max))
+	(bind ?duracion (* ?dur_rep ?rep_max))
+
+	(bind ?duracion_real (min ?duracion ?tiempo_disp))
+	(bind ?rep_reales (div ?duracion_real ?dur_rep))
+
+	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
+	(send ?ej_rec put-ejercicio ?ej1)
+	(send ?ej_rec put-duracion ?duracion_real)
+	(send ?ej_rec put-repeticiones ?rep_reales)
+
+	; Sumar el tiempo del ejercicio a la duracion total de la rutina
+	(bind ?dur_tot (send ?rutina get-duracion+total))
+	(bind ?dur_tot (+ ?dur_tot ?duracion_real))
+	(send ?rutina put-duracion+total ?dur_tot)
+	(send ?rutina put-ejercicios (insert$ ?ejercicios_rec 1 ?ej_rec))
+
+	; Añadir el ejercicio añadido a la lista de ejercicios que se hacen en la rutina (en el template)
+	(bind ?aux (insert$ ?ejercicios 1 ?ej1))
+	(modify ?ej_rutina (dia 5) (ejercicios ?aux))
+
+	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
+	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+
+	;Treure objectiu complert de lista_objetivos2
+	(loop-for-count (?i 1 (length$ ?objetivos)) do
+		(bind ?obj2 (nth$ ?i ?objetivos))
+		(if (eq ?obj2 ?obj) then
+			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+		)
+	)
+)
+
+(defrule dia6
+	(declare (salience 2))
+	?ej_rutina <- (ejercicios_rutina (dia 6) (ejercicios $?ejercicios))
+	?rutina <- (object (is-a Rutina+diaria) (dia 6) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
+	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
+	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
+	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
+	=>
+	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
+	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
+	(bind ?rep_max (send ?ej1 get-repeticiones+max))
+	(bind ?duracion (* ?dur_rep ?rep_max))
+
+	(bind ?duracion_real (min ?duracion ?tiempo_disp))
+	(bind ?rep_reales (div ?duracion_real ?dur_rep))
+
+	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
+	(send ?ej_rec put-ejercicio ?ej1)
+	(send ?ej_rec put-duracion ?duracion_real)
+	(send ?ej_rec put-repeticiones ?rep_reales)
+
+	; Sumar el tiempo del ejercicio a la duracion total de la rutina
+	(bind ?dur_tot (send ?rutina get-duracion+total))
+	(bind ?dur_tot (+ ?dur_tot ?duracion_real))
+	(send ?rutina put-duracion+total ?dur_tot)
+	(send ?rutina put-ejercicios (insert$ ?ejercicios_rec 1 ?ej_rec))
+		
+	; Añadir el ejercicio añadido a la lista de ejercicios que se hacen en la rutina (en el template)
+	(bind ?aux (insert$ ?ejercicios 1 ?ej1))
+	(modify ?ej_rutina (dia 6) (ejercicios ?aux))
+
+	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
+	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	
+	;Treure objectiu complert de lista_objetivos2
+	(loop-for-count (?i 1 (length$ ?objetivos)) do
+		(bind ?obj2 (nth$ ?i ?objetivos))
+		(if (eq ?obj2 ?obj) then
+			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+		)
+	)
+)
+
+(defrule dia7
+	(declare (salience 2))
+	?ej_rutina <- (ejercicios_rutina (dia 7) (ejercicios $?ejercicios))
+	?rutina <- (object (is-a Rutina+diaria) (dia 7) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
+	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
+	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
+	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
+	=>
+	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
+	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
+	(bind ?rep_max (send ?ej1 get-repeticiones+max))
+	(bind ?duracion (* ?dur_rep ?rep_max))
+
+	(bind ?duracion_real (min ?duracion ?tiempo_disp))
+	(bind ?rep_reales (div ?duracion_real ?dur_rep))
+
+	(bind ?ej_rec (make-instance (gensym*) of Ejercicio+recomendado))
+	(send ?ej_rec put-ejercicio ?ej1)
+	(send ?ej_rec put-duracion ?duracion_real)
+	(send ?ej_rec put-repeticiones ?rep_reales)
+
+	; Sumar el tiempo del ejercicio a la duracion total de la rutina
+	(bind ?dur_tot (send ?rutina get-duracion+total))
+	(bind ?dur_tot (+ ?dur_tot ?duracion_real))
+	(send ?rutina put-duracion+total ?dur_tot)
+	(send ?rutina put-ejercicios (insert$ ?ejercicios_rec 1 ?ej_rec))
+		
+	; Añadir el ejercicio añadido a la lista de ejercicios que se hacen en la rutina (en el template)
+	(bind ?aux (insert$ ?ejercicios 1 ?ej1))
+	(modify ?ej_rutina (dia 7) (ejercicios ?aux))
+
+	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
+	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	
+	;Treure objectiu complert de lista_objetivos2
+	(loop-for-count (?i 1 (length$ ?objetivos)) do
+		(bind ?obj2 (nth$ ?i ?objetivos))
+		(if (eq ?obj2 ?obj) then
+			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+		)
+	)
 )
 
 (defrule crea_programa
-	(declare (salience 6))
-	(crear_programa)
+	(declare (salience 1))
 	=>
 	(bind ?rutinas (find-all-instances ((?ej Rutina+diaria)) TRUE))
 	(bind ?programa (make-instance (gensym*) of Programa))

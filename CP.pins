@@ -1,4 +1,4 @@
-; Fri May 08 15:56:05 CEST 2020
+; Fri May 08 17:31:09 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -180,8 +180,10 @@
 	(grupo_muscular Piernas)
 	(intensidad Alta)
 	(nombre "Bicicleta estatica de intensidad alta")
-	(objetivos [30-4-20_Class25])
-	(repeticiones+max 12)
+	(objetivos
+		[30-4-20_Class25]
+		[30-4-20_Class23])
+	(repeticiones+max 10)
 	(repeticiones+min 2)
 	(tipo+de+ejercicio con_aparatos))
 
@@ -348,7 +350,9 @@
 	(grupo_muscular Piernas)
 	(intensidad Baja)
 	(nombre "Bicicleta estatica de intensidad baja")
-	(objetivos [30-4-20_Class25])
+	(objetivos
+		[30-4-20_Class25]
+		[30-4-20_Class23])
 	(repeticiones+max 3)
 	(repeticiones+min 2)
 	(tipo+de+ejercicio con_aparatos))
@@ -360,7 +364,9 @@
 	(grupo_muscular Piernas)
 	(intensidad Media)
 	(nombre "Bicicleta estatica de intensidad media")
-	(objetivos [30-4-20_Class25])
+	(objetivos
+		[30-4-20_Class25]
+		[30-4-20_Class23])
 	(repeticiones+max 6)
 	(repeticiones+min 2)
 	(tipo+de+ejercicio con_aparatos))
