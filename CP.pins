@@ -1,4 +1,4 @@
-; Tue May 12 13:43:49 CEST 2020
+; Tue May 12 14:11:52 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -13,13 +13,16 @@
 
 	(favorable
 		[30-4-20_Class24]
-		[30-4-20_Class23])
-	(nombre "Levantar cajas")
-	(puntuacion 2))
+		[30-4-20_Class23]
+		[CP_Class20018])
+	(nombre "Levantar peso")
+	(puntuacion 1))
 
 ([30-4-20_Class20] of  Habito+personal
 
-	(favorable [30-4-20_Class25])
+	(favorable
+		[30-4-20_Class25]
+		[30-4-20_Class24])
 	(nombre "Compras")
 	(puntuacion 1))
 
@@ -29,17 +32,21 @@
 		[30-4-20_Class23]
 		[30-4-20_Class24]
 		[30-4-20_Class26]
-		[30-4-20_Class28])
+		[30-4-20_Class28]
+		[CP_Class20018]
+		[CP_Class20019]
+		[CP_Class20013])
 	(nombre "Natacion")
 	(puntuacion 3))
 
 ([30-4-20_Class22] of  Habito+personal
 
 	(favorable
-		[30-4-20_Class27]
-		[30-4-20_Class25])
+		[30-4-20_Class25]
+		[30-4-20_Class23]
+		[CP_Class20018])
 	(nombre "Pasear la mascota")
-	(puntuacion 2))
+	(puntuacion 1))
 
 ([30-4-20_Class23] of  Objetivo
 
@@ -47,7 +54,7 @@
 
 ([30-4-20_Class24] of  Objetivo
 
-	(nombre "Tonificar brazo"))
+	(nombre "Tonificar brazos"))
 
 ([30-4-20_Class25] of  Objetivo
 
@@ -143,20 +150,24 @@
 	(grupo_muscular Piernas)
 	(intensidad Baja)
 	(nombre "Estirar quadriceps de intensidad baja")
-	(objetivos
-		[30-4-20_Class45]
-		[30-4-20_Class46])
+	(objetivos [30-4-20_Class46])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
 
-([30-4-20_Class45] of  Objetivo
-
-	(nombre "Mejorar flexibilidad"))
-
 ([30-4-20_Class46] of  Objetivo
 
-	(nombre "Aliviar el dolor"))
+	(nombre "Aliviar dolor cervicales"))
+
+([CP_Class0] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[30-4-20_Class25])
+	(nombre "Pasear")
+	(puntuacion 1))
 
 ([CP_Class1] of  Problema+presion
 
@@ -176,6 +187,28 @@
 	(repeticiones+min 2)
 	(tipo+de+ejercicio con_aparatos))
 
+([CP_Class10001] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[30-4-20_Class25])
+	(nombre "Desplazamiento laboral")
+	(puntuacion 1))
+
+([CP_Class10002] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class27]
+		[30-4-20_Class25])
+	(nombre "Atletismo/Correr")
+	(puntuacion 3))
+
 ([CP_Class10003] of  Habito+personal
 
 	(duracion 0)
@@ -192,7 +225,7 @@
 
 	(duracion 0)
 	(nombre "Beber cerveza")
-	(puntuacion -1))
+	(puntuacion -2))
 
 ([CP_Class15] of  Ejercicio
 
@@ -200,9 +233,7 @@
 	(grupo_muscular Piernas)
 	(intensidad Media)
 	(nombre "Estirar quadriceps de intensidad media")
-	(objetivos
-		[30-4-20_Class45]
-		[30-4-20_Class46])
+	(objetivos [30-4-20_Class46])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -213,9 +244,7 @@
 	(grupo_muscular Piernas)
 	(intensidad Alta)
 	(nombre "Estirar quadriceps de intensidad alta")
-	(objetivos
-		[30-4-20_Class45]
-		[30-4-20_Class46])
+	(objetivos [30-4-20_Class46])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -271,6 +300,124 @@
 	(repeticiones+max 100)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio con_pesas))
+
+([CP_Class20003] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[30-4-20_Class23]
+		[CP_Class20017]
+		[CP_Class20012]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class27]
+		[30-4-20_Class25])
+	(nombre "Bailar")
+	(puntuacion 2))
+
+([CP_Class20004] of  Habito+personal
+
+	(duracion 0)
+	(favorable [30-4-20_Class24])
+	(nombre "Barrer")
+	(puntuacion 1))
+
+([CP_Class20005] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[30-4-20_Class24]
+		[30-4-20_Class26])
+	(nombre "Colada")
+	(puntuacion 1))
+
+([CP_Class20006] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[30-4-20_Class23]
+		[CP_Class20017]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class24]
+		[30-4-20_Class26]
+		[CP_Class20013]
+		[30-4-20_Class25])
+	(nombre "Entrenamiento de deporte en equipo")
+	(puntuacion 3))
+
+([CP_Class20007] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[30-4-20_Class24]
+		[30-4-20_Class26])
+	(nombre "Fregar")
+	(puntuacion 1))
+
+([CP_Class20008] of  Habito+personal
+
+	(duracion 0)
+	(nombre "Leer")
+	(puntuacion -1))
+
+([CP_Class20009] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[CP_Class20018]
+		[30-4-20_Class24]
+		[30-4-20_Class25])
+	(nombre "Movimientos repetitivos")
+	(puntuacion 1))
+
+([CP_Class20010] of  Habito+personal
+
+	(duracion 0)
+	(favorable
+		[30-4-20_Class27]
+		[30-4-20_Class25])
+	(nombre "Trabajar de pie")
+	(puntuacion 1))
+
+([CP_Class20011] of  Habito+personal
+
+	(duracion 0)
+	(nombre "Trabajar sentado")
+	(puntuacion -2))
+
+([CP_Class20012] of  Objetivo
+
+	(nombre "Flexibilidad"))
+
+([CP_Class20013] of  Objetivo
+
+	(nombre "Tonificar pecho"))
+
+([CP_Class20014] of  Objetivo
+
+	(nombre "Aliviar dolor espalda"))
+
+([CP_Class20015] of  Objetivo
+
+	(nombre "Aliviar dolor extremidades inferiores"))
+
+([CP_Class20016] of  Objetivo
+
+	(nombre "Aliviar dolor extremidades superiores"))
+
+([CP_Class20017] of  Objetivo
+
+	(nombre "Equilibrio"))
+
+([CP_Class20018] of  Objetivo
+
+	(nombre "Mantenimiento"))
+
+([CP_Class20019] of  Objetivo
+
+	(nombre "Ponerse en forma"))
 
 ([CP_Class21] of  Ejercicio
 
