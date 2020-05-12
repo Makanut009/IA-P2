@@ -2,7 +2,8 @@
 ;;      TEMPLATES       
 ;;///////////////////
 
-(deftemplate Persona "Datos introducidos por la persona"
+(deftemplate Persona 
+	"Template para almacenar los datos introducidos por la persona"
 	(slot nombre (type STRING))
 	(slot edad (type INTEGER))
 	(slot altura (type INTEGER))
@@ -16,16 +17,16 @@
 	(multislot objetivos (type INSTANCE))
 )
 
-(deftemplate Ejercicio_sencillo "Test recomendado"
-	; (slot nombre (type SYMBOL)
-	; 	(allowed-values Subir_escaleras_1_min Correr_1_min))
+(deftemplate Ejercicio_sencillo 
+	"Template para representar los resultados de un test/ejercicio sencillo"
 	(slot ppm (type INTEGER))
 	(slot cansancio (type INTEGER))
 	(slot mareo (type INTEGER))
 	(slot tirantez_muscular (type INTEGER))
 )
 
-(deftemplate Dieta "Dieta del usuario"
+(deftemplate Dieta 
+	"Template para representar la dieta del usuario"
 	(slot consumo_de_fruta (type INTEGER))
 	(slot consumo_de_verdura (type INTEGER))
 	(slot abuso_de_sal (type INTEGER))
@@ -33,35 +34,67 @@
 	(slot comida_basura (type INTEGER))
 )
 
-(deftemplate objetivo_cumplido_habito (slot objetivo (type INSTANCE)) (slot puntuacion (type INTEGER) (default 0)))
+; TEMPLATES AUXILIARES
+; Estos templates se usan como estructuras auxiliares que facilitan la ejecución
+; del código, pero no representan ningún elemento del enunciado en concreto.
 
-(deftemplate lista_ejercicios_por_objetivo (slot objetivo (type INSTANCE)) (multislot ejercicios (type INSTANCE)))
+(deftemplate objetivo_cumplido_habito 
+	"Template auxiliar para almacenar cada objetivo que cumple un hábito y puntuacion con la que lo hace"
+	(slot objetivo (type INSTANCE))
+	(slot puntuacion (type INTEGER) (default 0))
+)
 
-(deftemplate lista_ejercicios_por_objetivo2 (slot objetivo (type INSTANCE)) (multislot ejercicios (type INSTANCE)))
+(deftemplate lista_ejercicios_por_objetivo 
+	"Template auxiliar que contiene una lista de ejercicios que cumplen un mismo objetivo"
+	(slot objetivo (type INSTANCE))
+	(multislot ejercicios (type INSTANCE))
+)
 
-(deftemplate lista_objetivos1 (slot nombre (type INTEGER)) (multislot objetivos (type INSTANCE)))
-(deftemplate lista_objetivos2 (slot nombre (type INTEGER)) (multislot objetivos (type INSTANCE)))
+(deftemplate lista_ejercicios_por_objetivo2
+	"Template auxiliar que contiene una lista de ejercicios que cumplen un mismo objetivo"
+	(slot objetivo (type INSTANCE))
+	(multislot ejercicios (type INSTANCE))
+)
 
-(deftemplate ejercicio_objetivo "Ejercicio y el objetivo que cumple"
+(deftemplate lista_objetivos1
+	"Template auxiliar para almacenar los objetivos que faltan por cumplir"
+	(slot nombre (type INTEGER))
+	(multislot objetivos (type INSTANCE))
+)
+
+(deftemplate lista_objetivos2
+	"Template auxiliar para almacenar los objetivos que faltan por cumplir"
+	(slot nombre (type INTEGER))
+	(multislot objetivos (type INSTANCE))
+)
+
+(deftemplate ejercicio_objetivo 
+	"Template auxiliar para almacenar cada ejercicio, su objetivo, duracion y repeticiones"
 	(slot ejercicio)
 	(slot objetivo)
 	(slot duracion)
 	(slot repeticiones)
 )
 
-(deftemplate ejercicios_rutina (slot dia (type INTEGER)) (multislot ejercicios (type INSTANCE)))
+(deftemplate ejercicios_rutina
+	"Template auxiliar para almacenar la lista de ejercicios que se asignan a cada día del programa"
+	(slot dia (type INTEGER))
+	(multislot ejercicios (type INSTANCE))
+)
 
 
 ;;////////////////////
 ;;      FUNCIONES       
 ;;///////////////////
 
+; Función para realizar una pregunta de carácter general al usuario
 (deffunction pregunta-general (?pregunta)
 	(format t "%s" ?pregunta) 
 	(bind ?respuesta (readline)) 
 	?respuesta
 )
 
+; Función para realizar una pregunta numérica al usuario
 (deffunction pregunta-numerica (?pregunta ?rangini ?rangfi) 
 	(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
 	(bind ?respuesta (read)) 
@@ -72,6 +105,7 @@
 	?respuesta
 )
 
+; Función para realizar una pregunta numérica al usuario. La respuesta debe ser múltiple de 5.
 (deffunction pregunta-numerica5 (?pregunta ?rangini ?rangfi) 
 	(format t "%s [%d,%d] " ?pregunta ?rangini ?rangfi) 
 	(bind ?respuesta (read)) 
@@ -82,6 +116,7 @@
 	?respuesta
 )
 
+; Función para realizar una pregunta con opciones al usuario
 (deffunction pregunta (?pregunta $?valores-permitidos)
 	(progn$
 		(?var ?valores-permitidos)
@@ -95,6 +130,7 @@
 	?respuesta
 )
 
+; Función para realizar una pregunta de sí o no al usuario
 (deffunction si-o-no-p (?pregunta)
 	(bind ?respuesta (pregunta ?pregunta si no s n))
 	(if (or (eq (lowcase ?respuesta) si) (eq (lowcase ?respuesta) s))
@@ -103,7 +139,8 @@
 	)
 )
 
-(deffunction calcular_int_ini_imc(?imc)
+; Función para calcular la intensidad inicial que se asigna al usuario según su IMC
+(deffunction calcular_int_ini_imc (?imc)
 	(if (< ?imc 15) then -30 else
 	(if (< ?imc 16) then -20 else
 	(if (< ?imc 18.5) then -10 else
@@ -114,7 +151,8 @@
 	-40)))))))
 )
 
-(deffunction calcular_int_ini_dieta(?fruta ?verdura ?sal ?basura ?picar)
+; Función para calcular la intensidad inicial que se asigna al usuario según su dieta
+(deffunction calcular_int_ini_dieta (?fruta ?verdura ?sal ?basura ?picar)
 	(bind ?resultado 0)
 	(bind ?resultado (+ ?resultado (* 2 ?fruta)))
 	(bind ?resultado (+ ?resultado (* 2 ?verdura)))
@@ -124,7 +162,8 @@
 	?resultado
 )
 
-(deffunction calcular_int_ini_ejercicios(?edad ?ppm ?cansancio ?mareo ?tirantez)
+; Función para calcular la intensidad inicial que se asigna al usuario según los ejercicios sencillos / tests que realice
+(deffunction calcular_int_ini_ejercicios (?edad ?ppm ?cansancio ?mareo ?tirantez)
 	(bind ?resultado 0)
 	(bind ?resultado (+ ?resultado (* 2 ?ppm)))
 	;; 10+(220-edad x 0,85).
@@ -138,13 +177,16 @@
 	?resultado
 )
 
+
 ;;////////////////////
 ;;      REGLAS       
 ;;///////////////////
 
-(defmodule MAIN (export ?ALL))
+(defmodule MAIN "Módulo principal del programa"
+	(export ?ALL)
+)
 
-(defrule inicio 
+(defrule inicio "Muestra la presentación del programa"
     (declare (salience 100))
     =>
 	(printout t crlf)
@@ -157,10 +199,11 @@
 
 (defmodule preguntas "Modulo de preguntas que el usuario debe responder"
    (import MAIN ?ALL)
-   (export ?ALL))	
+   (export ?ALL)
+)	
 
-(defrule introducir-persona
-	(declare (salience 50))
+(defrule introducir-persona "Regla para introducir las características de la persona"
+	(declare (salience 95))
 	=>
     (bind ?nombre (pregunta-general "Nombre: "))
 	(bind ?edad (pregunta-numerica "Edad (anos): " 0 120))
@@ -172,7 +215,6 @@
 	(bind ?presion_max (pregunta-numerica "Presion sanguinea maxima: " 0.0 200.0))
 
 	(printout t crlf "Introduce el tiempo que tienes disponibe cada dia. Tiene que ser multiple de 5 minutos:" crlf)
-	
 	(bind ?t1 (* 60 (pregunta-numerica5 "Dia 1: " 30 300)))
 	(bind ?t2 (* 60 (pregunta-numerica5 "Dia 2: " 30 300)))
 	(bind ?t3 (* 60 (pregunta-numerica5 "Dia 3: " 30 300)))
@@ -181,6 +223,7 @@
 	(bind ?t6 (* 60 (pregunta-numerica5 "Dia 6: " 30 300)))
 	(bind ?t7 (* 60 (pregunta-numerica5 "Dia 7: " 30 300)))
 
+	; Creamos la instancia de cada Rutina diaria, con el tiempo disponible, y ejercicios y objetivos vacíos
 	(bind ?dia1 (make-instance (gensym*) of Rutina+diaria))
 	(send ?dia1 put-dia 1)
 	(send ?dia1 put-tiempo_disp ?t1)
@@ -223,6 +266,7 @@
 	(send ?dia7 put-ejercicios (create$))
 	(send ?dia7 put-objetivos (create$))
 
+	; Creamos el hecho con la información de la persona
 	(assert
 		(Persona
    		(nombre ?nombre)
@@ -237,11 +281,12 @@
 	(assert (no_hay_habitos))
 )
 
-(defrule introduce-habitos
-	(declare (salience 30))
+(defrule introduce-habitos "Regla para introducir los hábitos de la persona"
 	?nhb <- (no_hay_habitos)
 	?persona <- (Persona)
 	=>
+
+	;Listamos todos los hábitos para que el usuario los elija
 	(bind ?lista_habitos (find-all-instances ((?a Habito+personal)) TRUE))
 	(printout t crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_habitos)) do
@@ -260,13 +305,15 @@
 		(bind ?lista (insert$ ?lista 1 ?habito))
 		(bind ?respuesta (pregunta-numerica "Alguno mas? " 0 (length$ ?lista_habitos)))
 	)
-	(modify ?persona (habitos ?lista))
+
+	;Insertamos los hábitos elegidos en la lista de hábitos de la persona
+	(modify ?persona (habitos ?lista)) 
+
 	(retract ?nhb)
 	(assert (no_hay_dieta))
 )	
 
-(defrule introducir-dieta
-	(declare (salience 27))
+(defrule introducir-dieta "Regla para introducir la dieta de la persona"
 	?nhd <- (no_hay_dieta)
 	=>
 	(printout t crlf)
@@ -276,6 +323,8 @@
 	(bind ?picar (pregunta-numerica "Valora cuanto sueles picar entre horas: " 0 10))
 	(bind ?basura (pregunta-numerica "Valora tu consumo de bolleria industrial u otra comida basura: " 0 10))
 	(printout t crlf)
+
+	; Creamos el hecho con la información sobre la dieta del usuario
 	(assert
 		(Dieta
    		(consumo_de_fruta ?fruta)
@@ -288,11 +337,12 @@
 	(assert (no_hay_problemas))
 )
 
-(defrule introduce-problemas
-	(declare (salience 25))
+(defrule introduce-problemas "Regla para introducir los problemas de la persona"
 	?nhp <- (no_hay_problemas)	
 	?persona <- (Persona)
 	=>
+
+	;Listamos todos los problemas para que el usuario los elija
 	(printout t "Problemas musculo-esqueleticos: " crlf)
 	(bind ?lista_problemas_musc (find-all-instances ((?p Problemas+musculo-esqueleticos)) TRUE))
 	(printout t crlf "0. No tengo ninguno mas" crlf)
@@ -308,16 +358,20 @@
 		(bind ?lista (insert$ ?lista 1 ?problema))
 		(bind ?respuesta (pregunta-numerica "Tienes algun problema mas? " 0 (length$ ?lista_problemas_musc)))
 	)
+
+	;Insertamos los problemas elegidos en la lista de problemas de la persona
 	(modify ?persona (problemas ?lista))
+
 	(retract ?nhp)
 	(assert (no_hay_objetivos))
 )
 
-(defrule introduce-objetivos
-	(declare (salience 20))
+(defrule introduce-objetivos "Regla para introducir los objetivos de la persona"
 	?nho <- (no_hay_objetivos)
 	?persona <- (Persona)
 	=>
+
+	;Listamos todos los objetivos para que el usuario los elija
 	(bind ?lista_objetivos (find-all-instances ((?o Objetivo)) TRUE))
 	(printout t crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_objetivos)) do
@@ -332,23 +386,28 @@
 		(bind ?lista (insert$ ?lista 1 ?objetivo))
 		(bind ?respuesta (pregunta-numerica "Que objetivo mas tienes? " 0 (length$ ?lista_objetivos)))
 	)
+
+	;Insertamos los objetivos elegidos en la lista de objetivos de la persona
 	(modify ?persona (objetivos ?lista))
+
 	(retract ?nho)
 	(assert (no_hay_ej_sencillos))
 )
 
-(defrule introducir-ejercicios-sencillos
-	(declare (salience 19))
+(defrule introducir-ejercicios-sencillos "Regla para introducir los resultados de los tests / ejercicios sencillos de la persona"
 	?nhes <- (no_hay_ej_sencillos)
-	?persona <- (Persona (edad ?edad))
+	(Persona (edad ?edad))
 	=>
 	(printout t crlf)
+
+	; Si el usuario tiene menos de 40 años le preguntamos si quiere realizar los test. Si tiene más, lo hace obligatoriamente
 	(bind ?respuesta FALSE)
 	(if (< ?edad 40) then
 		(bind ?respuesta (si-o-no-p "Quieres realizar un ejercicio sencillo para tener mas informacion sobre tu estado fisico"))
 	else (bind ?respuesta TRUE))
-	(printout t crlf)
 
+	; Pedimos que el usuario haga el primer test i que introduzca los resultados
+	(printout t crlf)
 	(if (eq ?respuesta TRUE) then
 		(printout t "Corre sostenidamente durante un minuto y contesta las preguntas:" crlf)
 		(bind ?ppm (pregunta-numerica "Cuantas pulsaciones tienes?" 0 200))
@@ -357,12 +416,13 @@
 		(bind ?tirantez (pregunta-numerica "Tienes tirantez muscular en algun lugar del cuerpo?" 0 10))
 		(printout t crlf)
 	else
-		(bind ?ppm (- 220 (* 0.85 ?edad)))
+		(bind ?ppm (- 220 (* 0.85 ?edad))) ;Por defecto asignamos un número que se suele asignar según la edad
 		(bind ?mareo 0)
 		(bind ?cansancio 0)
 		(bind ?tirantez 0)
 	)
 
+	; Creamos el hecho con la información sobre el test que ha realizado el usuario
 	(assert
 		(Ejercicio_sencillo
 		(ppm ?ppm)
@@ -371,6 +431,7 @@
    		(tirantez_muscular ?tirantez))
 	)
 
+	; Pedimos que el usuario haga el segundo test i que introduzca los resultados
 	(if (eq ?respuesta TRUE) then
 		(printout t "Sube y baja escaleras durante un minuto y contesta las preguntas:" crlf)
 		(bind ?ppm (pregunta-numerica "Cuantas pulsaciones tienes?" 0 200))
@@ -379,12 +440,13 @@
 		(bind ?tirantez (pregunta-numerica "Tienes tirantez muscular en algun lugar del cuerpo?" 0 10))
 		(printout t crlf)
 	else
-		(bind ?ppm (- 220 (* 0.85 ?edad)))
+		(bind ?ppm (- 220 (* 0.85 ?edad))) ;Por defecto asignamos un número que se suele asignar según la edad
 		(bind ?mareo 0)
 		(bind ?cansancio 0)
 		(bind ?tirantez 0)
 	)
 
+	; Creamos el hecho con la información sobre el test que ha realizado el usuario
 	(assert
 		(Ejercicio_sencillo
 		(ppm ?ppm)
@@ -395,20 +457,21 @@
 	(retract ?nhes)
 )
 
-(defrule pasa-a-inferir
-	(declare (salience 19))
+
+(defrule pasa-a-inferir "Regla para pasar al módulo de inferencia de datos"
+	(declare (salience 90))
 	=>
 	(focus inferir-datos)
 	(assert (infiere_problemas))
 )
 
-(defmodule inferir-datos "Modulo de inferencia"
+(defmodule inferir-datos "Modulo de inferencia, donde se infieren nuevos datos a partir de los introducidos"
   (import MAIN ?ALL)
   (import preguntas ?ALL)
-  (export ?ALL))
+  (export ?ALL)
+)
 
-(defrule infiere_problemas
-	(declare (salience 18))
+(defrule infiere_problemas "Regla para inferir problemas de la persona según su peso, edad y presión sanguínea"
 	?ip <- (infiere_problemas)
 	?persona <- (Persona (problemas $?problemas) (edad ?edad) (presion_max ?presion_max) (presion_min ?presion_min) (IMC ?imc))
 	=>
@@ -444,17 +507,22 @@
 		(bind ?lista_problemas_inferidos (insert$ ?problema 1 ?lista_problemas_inferidos))
 	)
 
+	;Añadimos los problemas inferidos a la lista de problemas introducidos por la persona
 	(bind ?lista_final (insert$ $?problemas 1 ?lista_problemas_inferidos))
 	(modify ?persona (problemas ?lista_final))
+
 	(retract ?ip)
 )
 
-(defrule calcula_int_inicial
-	(declare (salience 18))
+(defrule calcula_int_inicial "Regla para calcular la intensidad inicial de la persona"
+	(declare (salience 85))
 	?persona <- (Persona (edad ?edad) (habitos $?lista_habitos) (IMC ?IMC) (intensidad_inicial Nula))
-	?dieta <- (Dieta (consumo_de_fruta ?fruta) (consumo_de_verdura ?verdura) (abuso_de_sal ?sal) (comida_basura ?basura) (picar_entre_horas ?picar))
-	?ej_sencillo <- (Ejercicio_sencillo (ppm ?ppm) (cansancio ?cansancio) (mareo ?mareo) (tirantez_muscular ?tirantez))
+	(Dieta (consumo_de_fruta ?fruta) (consumo_de_verdura ?verdura) (abuso_de_sal ?sal) (comida_basura ?basura) (picar_entre_horas ?picar))
+	(Ejercicio_sencillo (ppm ?ppm) (cansancio ?cansancio) (mareo ?mareo) (tirantez_muscular ?tirantez))
 	=>
+
+	; Para cada elemento sumamos o restamos intensidad inicial a la persona
+
 	;IMC
 	(bind ?int_ini (calcular_int_ini_imc ?IMC))
 
@@ -473,6 +541,8 @@
 		(bind ?int_ini (+ ?int_ini ?puntuacion_real))
 	)
 	
+	; Según el número obtenido, clasificamos la intensidad de la persona en tres categorías:
+
 	;		   -30            0            30
 	;-----------|-------------|-------------|---------------
 	;	Baja				Media				   Alta
@@ -485,11 +555,14 @@
 	(assert (no_hay_obj_cumpl))
 )
 
-(defrule objetivos_cumplidos_habitos
-	(declare (salience 17))
+(defrule objetivos_cumplidos_habitos 
+	"Regla para calcular qué objetivos son cumplidos por los hábitos personales del usuario y en qué medida"
+
 	?nhoc <- (no_hay_obj_cumpl)
 	(Persona (habitos $?lista_habitos))
 	=>
+
+	; Si el hábito es favorable para un objetivo, generamos una pareja objetivo-hábito con su puntuación
 	(progn$ (?habito ?lista_habitos)
 		(bind ?lista_objetivos (send ?habito get-favorable))
 		(bind ?duracion (send ?habito get-duracion))
@@ -502,51 +575,68 @@
 	(assert (no_hay_obj_eje))
 )
 
-(defrule combina_objetivos
-	(declare (salience 16))
+(defrule combina_objetivos "Regla para combinar aquellas parejas habito - objetivo que tengan el mismo objetivo"
+	(declare (salience 80))
 	?o1 <- (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?punt1))
 	?o2 <- (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?punt2))
-	(test (neq (fact-index ?o1) (fact-index ?o2)))
+	(test (neq (fact-index ?o1) (fact-index ?o2))) ;Comprobamos que no sean el mismo
 	=>
+	; Creamos un nuevo hecho sumando ambas puntuaciones, y eliminamos los dos originales
 	(assert (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion (+ ?punt1 ?punt2))))
 	(retract ?o1)
 	(retract ?o2)
 )
 
 (defrule objetivos_cumplidos_ejercicios
-	(declare (salience 15))
+	"Regla para generar todas las parejas ejercicio-objetivo tal que el ejercicio cumple
+	el objetivo y el objetivo es uno de los escogidos por la persona"
+
 	?nhoe <- (no_hay_obj_eje)
-	?persona <- (Persona (objetivos $?objetivos_persona) (intensidad_inicial ?int_ini) (problemas $?problemas_persona))
+	(Persona (objetivos $?objetivos_persona) (intensidad_inicial ?int_ini) (problemas $?problemas_persona))
 	=>
-	(printout t "objetivos_cumplidos_ejercicios" crlf)
+
+	;Iteramos por la lista de objetivos de la persona
 	(progn$ (?obj_pers $?objetivos_persona)
 		(bind ?lista_ejercicios (find-all-instances ((?ej Ejercicio)) (and (eq ?int_ini ?ej:intensidad) (member ?obj_pers ?ej:objetivos))))
 		(bind ?aux (create$))
 		(bind ?problematico FALSE)
+
+		;Y generamos una pareja con cada ejercicio que lo cumple
 		(loop-for-count (?i 1 (length$ ?lista_ejercicios)) do
 			(bind ?ejercicio (nth$ ?i ?lista_ejercicios))
+
+			; Cogemos solo aquellos ejercicios que no son contraindicados para ningún problema de la persona
 			(bind ?problemas_ej (send ?ejercicio get-contraindicado))
 			(progn$ (?problema_ej ?problemas_ej)
  				(if (member ?problema_ej $?problemas_persona) then (bind ?problematico TRUE))
  			)
 			(if (eq ?problematico FALSE) then (bind ?aux (insert$ ?aux 1 ?ejercicio)))
 		)
+
+		; Los introducimos en la lista de ejercicios del objetivo correspondiente
 		(assert (lista_ejercicios_por_objetivo (objetivo ?obj_pers) (ejercicios ?aux)))
 	)
+
 	(assert (lista_objetivos1 (nombre 1) (objetivos (create$))))
 	(assert (lista_objetivos2 (nombre 2) (objetivos (create$))))
 	(retract ?nhoe)
 )
 
-(defrule quita_ejercicios_ya_cumplidos_con_habitos
-	(declare (salience 13))
-	?obj <- (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?puntuacion_habito))
+(defrule quita_ejercicios_ya_cumplidos_con_habitos 
+	"Regla para eliminar todas aquellas listas de ejercicios que cumplen un
+	objetivo que consideramos que el usuario ya cumple con sus hábitos"
+
+	(declare (salience 75))
+	(objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?puntuacion_habito))
 	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
 	=>
-	(printout t "quita_ejercicios_ya_cumplidos_con_habitos" crlf)
+
+	; Si la puntuacion de los hábitos que cumplen el objetivo es muy alta, eliminamos la lista
 	(if (> ?puntuacion_habito 200) then
 		(retract ?lista)
+
+	; Si la puntuacion de los hábitos que cumplen el objetivo es alta, bajamos la intensidad de los ejercicios que cumplen dicho objetivo
 	else (if (> ?puntuacion_habito 150) then
 		(bind ?ejercicios2 (create$))
 		(loop-for-count (?i 1 (length$ ?ejercicios)) do
@@ -570,6 +660,8 @@
 		(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios ?ejercicios2)))
 		(retract ?lista)
 	)
+
+	; Sinó, simplemente copiamos la lista a otra template auxiliar
 	else 
 		(if (not (member ?objetivo ?objetivos)) then
 			(bind ?aux (insert$ ?objetivos 1 ?objetivo))
@@ -579,33 +671,32 @@
 	)
 )
 
-(defrule pasa_a_2
-	(declare (salience 12))
+(defrule pasa_a_2 "Regla auxiliar para pasar listas de objetivos a otra template"
+	(declare (salience 70))
 	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios $?ejercicios))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
 	=>
-	(printout t "pasa_a_2" crlf)
 	(bind ?aux (insert$ $?objetivos 1 ?objetivo))
 	(modify ?lista_obj1 (objetivos ?aux))
 	(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios $?ejercicios)))
 	(retract ?lista)
 )
 
-(defrule copia_l1_a_l2
-	(declare (salience 11))
+(defrule copia_l1_a_l2 "Regla auxiliar para copiar los objetivos pendientes de una lista a otra cuando la segunda se queda vacía"
+	(declare (salience 65))
 	?l1 <- (lista_objetivos1 (objetivos $?objetivos))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos2))
 	(test(eq (length$ $?objetivos2) 0))
 	=>
-	(printout t "MARRAMIAU" crlf)
 	(assert (lista_objetivos2 (objetivos $?objetivos)))
 	(retract ?l2)
 )
 
-(defrule desglosa_ejercicios
-	(declare (salience 10))
+(defrule desglosa_ejercicios "Regla auxiliar para generar hechos ejercicio_objetivo a partir de las listas de ejercicios por objetivo"
+	(declare (salience 60))
 	?lista <- (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios $?ejercicios))
 	=>
+	;Para cada ejercicio de la lista, generamos un nuevo hecho 
 	(progn$ (?ejercicio $?ejercicios)
 		(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
 		(bind ?rep_min (send ?ejercicio get-repeticiones+min))
@@ -614,8 +705,8 @@
 	)
 )
 
-(defrule crea_rutinas_vacias
-	(declare (salience 8))
+(defrule crea_rutinas_vacias "Regla para crear un hecho para cada día, que contendrá los ejercicios de cada uno"
+	(declare (salience 55))
 	=>
 	(assert (ejercicios_rutina (dia 1) (ejercicios (create$))))
 	(assert (ejercicios_rutina (dia 2) (ejercicios (create$))))
@@ -626,8 +717,8 @@
 	(assert (ejercicios_rutina (dia 7) (ejercicios (create$))))
 )
 
-(defrule dia1
-	(declare (salience 7))
+(defrule dia1 "Regla para asignar ejercicios al primer día del programa"
+	(declare (salience 50))
 	?ej_rutina <- (ejercicios_rutina (dia 1) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 1) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -669,8 +760,8 @@
 	)
 )
 
-(defrule dia2
-	(declare (salience 6))
+(defrule dia2 "Regla para asignar ejercicios al segundo día del programa"
+	(declare (salience 45))
 	?ej_rutina <- (ejercicios_rutina (dia 2) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 2) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -712,8 +803,8 @@
 	)
 )
 
-(defrule dia3
-	(declare (salience 5))
+(defrule dia3 "Regla para asignar ejercicios al tercer día del programa"
+	(declare (salience 40))
 	?ej_rutina <- (ejercicios_rutina (dia 3) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 3) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -755,8 +846,8 @@
 	)
 )
 
-(defrule dia4
-	(declare (salience 4))
+(defrule dia4 "Regla para asignar ejercicios al cuarto día del programa"
+	(declare (salience 35))
 	?ej_rutina <- (ejercicios_rutina (dia 4) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 4) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -798,8 +889,8 @@
 	)
 )
 
-(defrule dia5
-	(declare (salience 3))
+(defrule dia5 "Regla para asignar ejercicios al quinto día del programa"
+	(declare (salience 30))
 	?ej_rutina <- (ejercicios_rutina (dia 5) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 5) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -841,8 +932,8 @@
 	)
 )
 
-(defrule dia6
-	(declare (salience 2))
+(defrule dia6 "Regla para asignar ejercicios al sexto día del programa"
+	(declare (salience 25))
 	?ej_rutina <- (ejercicios_rutina (dia 6) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 6) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -884,8 +975,8 @@
 	)
 )
 
-(defrule dia7
-	(declare (salience 2))
+(defrule dia7 "Regla para asignar ejercicios al séptimo día del programa"
+	(declare (salience 20))
 	?ej_rutina <- (ejercicios_rutina (dia 7) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 7) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -927,17 +1018,17 @@
 	)
 )
 
-(defrule crea_programa
-	(declare (salience 1))
+(defrule crea_programa "Regla para crear el programa a partir de las rutinas construidas"
+	(declare (salience 15))
 	=>
 	(bind ?rutinas (find-all-instances ((?ej Rutina+diaria)) TRUE))
 	(bind ?programa (make-instance (gensym*) of Programa))
 	(send ?programa put-rutinas+diarias ?rutinas)
 )
 
-(defrule print_programa
+(defrule print_programa "Regla para imprimir el programa construido"
 	(object (is-a Programa) (rutinas+diarias $?rutinas))
-	?persona <- (Persona (nombre ?nombre))
+	(Persona (nombre ?nombre))
 	=>
 	(printout t crlf crlf "PROGRAMA RECOMENDADO para " ?nombre ":")
 	(bind ?dia 1)
@@ -970,6 +1061,8 @@
 		)
 		(bind ?dia (+ ?dia 1))
 	)
+
+	;Objetivos que cumple el programa en global
 	(printout t crlf "Objetivos cumplidos en el programa: " crlf)
 	(progn$ (?objetivo $?obj_programa)
 		(printout t " - " (send ?objetivo get-nombre) crlf)
