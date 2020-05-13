@@ -187,7 +187,7 @@
 )
 
 (defrule inicio "Muestra la presentación del programa"
-    (declare (salience 100))
+    (declare (salience 200))
     =>
 	(printout t crlf)
     (printout t "Bienvenido a Coaching Potato" crlf)
@@ -203,7 +203,7 @@
 )	
 
 (defrule introducir-persona "Regla para introducir las características de la persona"
-	(declare (salience 95))
+	(declare (salience 195))
 	=>
     (bind ?nombre (pregunta-general "Nombre: "))
 	(bind ?edad (pregunta-numerica "Edad (anos): " 0 120))
@@ -266,6 +266,17 @@
 	(send ?dia7 put-ejercicios (create$))
 	(send ?dia7 put-objetivos (create$))
 
+	(bind ?count 0)
+	(if (> ?t1 0) then (bind ?count (+ ?count 1)))
+	(if (> ?t2 0) then (bind ?count (+ ?count 1)))
+	(if (> ?t3 0) then (bind ?count (+ ?count 1)))
+	(if (> ?t4 0) then (bind ?count (+ ?count 1)))
+	(if (> ?t5 0) then (bind ?count (+ ?count 1)))
+	(if (> ?t6 0) then (bind ?count (+ ?count 1)))
+	(if (> ?t7 0) then (bind ?count (+ ?count 1)))
+
+	(assert (dias_disponibles ?count))
+
 	; Creamos el hecho con la información de la persona
 	(assert
 		(Persona
@@ -282,6 +293,7 @@
 )
 
 (defrule introduce-habitos "Regla para introducir los hábitos de la persona"
+	(declare (salience 190))
 	?nhb <- (no_hay_habitos)
 	?persona <- (Persona)
 	=>
@@ -314,6 +326,7 @@
 )	
 
 (defrule introducir-dieta "Regla para introducir la dieta de la persona"
+	(declare (salience 185))
 	?nhd <- (no_hay_dieta)
 	=>
 	(printout t crlf)
@@ -338,6 +351,7 @@
 )
 
 (defrule introduce-problemas "Regla para introducir los problemas de la persona"
+	(declare (salience 180))
 	?nhp <- (no_hay_problemas)	
 	?persona <- (Persona)
 	=>
@@ -367,6 +381,7 @@
 )
 
 (defrule introduce-objetivos "Regla para introducir los objetivos de la persona"
+	(declare (salience 175))
 	?nho <- (no_hay_objetivos)
 	?persona <- (Persona)
 	=>
@@ -395,6 +410,7 @@
 )
 
 (defrule introducir-ejercicios-sencillos "Regla para introducir los resultados de los tests / ejercicios sencillos de la persona"
+	(declare (salience 170))
 	?nhes <- (no_hay_ej_sencillos)
 	(Persona (edad ?edad))
 	=>
@@ -459,7 +475,7 @@
 
 
 (defrule pasa-a-inferir "Regla para pasar al módulo de inferencia de datos"
-	(declare (salience 90))
+	(declare (salience 165))
 	=>
 	(focus inferir-datos)
 	(assert (infiere_problemas))
@@ -472,6 +488,7 @@
 )
 
 (defrule infiere_problemas "Regla para inferir problemas de la persona según su peso, edad y presión sanguínea"
+	(declare (salience 160))
 	?ip <- (infiere_problemas)
 	?persona <- (Persona (problemas $?problemas) (edad ?edad) (presion_max ?presion_max) (presion_min ?presion_min) (IMC ?imc))
 	=>
@@ -515,7 +532,7 @@
 )
 
 (defrule calcula_int_inicial "Regla para calcular la intensidad inicial de la persona"
-	(declare (salience 85))
+	(declare (salience 155))
 	?persona <- (Persona (edad ?edad) (habitos $?lista_habitos) (IMC ?IMC) (intensidad_inicial Nula))
 	(Dieta (consumo_de_fruta ?fruta) (consumo_de_verdura ?verdura) (abuso_de_sal ?sal) (comida_basura ?basura) (picar_entre_horas ?picar))
 	(Ejercicio_sencillo (ppm ?ppm) (cansancio ?cansancio) (mareo ?mareo) (tirantez_muscular ?tirantez))
@@ -537,7 +554,7 @@
 		(bind ?duracion (send ?habito get-duracion))
 		(bind ?puntuacion (send ?habito get-puntuacion))
 		(bind ?frec (send ?habito get-frecuencia))
-		(bind ?puntuacion_real (* ?puntuacion (* ?frec ?duracion)))
+		(bind ?puntuacion_real (* ?puntuacion ?frec ?duracion))
 		(bind ?int_ini (+ ?int_ini ?puntuacion_real))
 	)
 	
@@ -555,9 +572,45 @@
 	(assert (no_hay_obj_cumpl))
 )
 
+(defrule limita_tiempo_segun_intensidad
+	"Regla para limitar el tiempo que el usuario puede hacer deporte cada día, según su intensidad"
+	
+	(declare (salience 150))
+	(Persona (intensidad_inicial ?int_ini))
+	(object (is-a Rutina+diaria) (tiempo_disp ?td))
+	(dias_disponibles ?dias)
+	=>
+	(bind ?rutinas (find-all-instances ((?r Rutina+diaria)) TRUE))
+	(progn$ (?rutina ?rutinas)
+		(bind ?tx (div (send ?rutina get-tiempo_disp) 60))
+		(if (eq ?int_ini Baja) then 
+			(if (> ?dias 3) then
+				(if (> ?tx 60) then (send ?rutina put-tiempo_disp (* 60 60)))
+			else 
+				(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
+			)
+		)
+		(if (eq ?int_ini Media) then 
+			(if (> ?dias 4) then
+				(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
+			else 
+				(if (> ?tx 120) then (send ?rutina put-tiempo_disp (* 120 60)))
+			)
+		)
+		(if (eq ?int_ini Alta) then 
+			(if (> ?dias 5) then
+				(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
+			else 
+				(if (> ?tx 120) then (send ?rutina put-tiempo_disp (* 120 60)))
+			)
+		)
+	)
+)
+
 (defrule objetivos_cumplidos_habitos 
 	"Regla para calcular qué objetivos son cumplidos por los hábitos personales del usuario y en qué medida"
 
+	(declare (salience 145))
 	?nhoc <- (no_hay_obj_cumpl)
 	(Persona (habitos $?lista_habitos))
 	=>
@@ -576,7 +629,7 @@
 )
 
 (defrule combina_objetivos "Regla para combinar aquellas parejas habito - objetivo que tengan el mismo objetivo"
-	(declare (salience 80))
+	(declare (salience 140))
 	?o1 <- (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?punt1))
 	?o2 <- (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?punt2))
 	(test (neq (fact-index ?o1) (fact-index ?o2))) ;Comprobamos que no sean el mismo
@@ -591,6 +644,7 @@
 	"Regla para generar todas las parejas ejercicio-objetivo tal que el ejercicio cumple
 	el objetivo y el objetivo es uno de los escogidos por la persona"
 
+	(declare (salience 135))
 	?nhoe <- (no_hay_obj_eje)
 	(Persona (objetivos $?objetivos_persona) (intensidad_inicial ?int_ini) (problemas $?problemas_persona))
 	=>
@@ -626,7 +680,7 @@
 	"Regla para eliminar todas aquellas listas de ejercicios que cumplen un
 	objetivo que consideramos que el usuario ya cumple con sus hábitos"
 
-	(declare (salience 75))
+	(declare (salience 130))
 	(objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?puntuacion_habito))
 	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
@@ -672,7 +726,7 @@
 )
 
 (defrule pasa_a_2 "Regla auxiliar para pasar listas de objetivos a otra template"
-	(declare (salience 70))
+	(declare (salience 125))
 	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios $?ejercicios))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
 	=>
@@ -683,7 +737,7 @@
 )
 
 (defrule copia_l1_a_l2 "Regla auxiliar para copiar los objetivos pendientes de una lista a otra cuando la segunda se queda vacía"
-	(declare (salience 65))
+	(declare (salience 120))
 	?l1 <- (lista_objetivos1 (objetivos $?objetivos))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos2))
 	(test(eq (length$ $?objetivos2) 0))
@@ -693,7 +747,7 @@
 )
 
 (defrule desglosa_ejercicios "Regla auxiliar para generar hechos ejercicio_objetivo a partir de las listas de ejercicios por objetivo"
-	(declare (salience 60))
+	(declare (salience 115))
 	?lista <- (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios $?ejercicios))
 	=>
 	;Para cada ejercicio de la lista, generamos un nuevo hecho 
@@ -706,7 +760,7 @@
 )
 
 (defrule crea_rutinas_vacias "Regla para crear un hecho para cada día, que contendrá los ejercicios de cada uno"
-	(declare (salience 55))
+	(declare (salience 110))
 	=>
 	(assert (ejercicios_rutina (dia 1) (ejercicios (create$))))
 	(assert (ejercicios_rutina (dia 2) (ejercicios (create$))))
@@ -718,7 +772,7 @@
 )
 
 (defrule dia1 "Regla para asignar ejercicios al primer día del programa"
-	(declare (salience 50))
+	(declare (salience 105))
 	?ej_rutina <- (ejercicios_rutina (dia 1) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 1) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -761,7 +815,7 @@
 )
 
 (defrule dia2 "Regla para asignar ejercicios al segundo día del programa"
-	(declare (salience 45))
+	(declare (salience 100))
 	?ej_rutina <- (ejercicios_rutina (dia 2) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 2) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -804,7 +858,7 @@
 )
 
 (defrule dia3 "Regla para asignar ejercicios al tercer día del programa"
-	(declare (salience 40))
+	(declare (salience 95))
 	?ej_rutina <- (ejercicios_rutina (dia 3) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 3) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -847,7 +901,7 @@
 )
 
 (defrule dia4 "Regla para asignar ejercicios al cuarto día del programa"
-	(declare (salience 35))
+	(declare (salience 90))
 	?ej_rutina <- (ejercicios_rutina (dia 4) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 4) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -890,7 +944,7 @@
 )
 
 (defrule dia5 "Regla para asignar ejercicios al quinto día del programa"
-	(declare (salience 30))
+	(declare (salience 85))
 	?ej_rutina <- (ejercicios_rutina (dia 5) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 5) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -933,7 +987,7 @@
 )
 
 (defrule dia6 "Regla para asignar ejercicios al sexto día del programa"
-	(declare (salience 25))
+	(declare (salience 80))
 	?ej_rutina <- (ejercicios_rutina (dia 6) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 6) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -976,7 +1030,7 @@
 )
 
 (defrule dia7 "Regla para asignar ejercicios al séptimo día del programa"
-	(declare (salience 20))
+	(declare (salience 75))
 	?ej_rutina <- (ejercicios_rutina (dia 7) (ejercicios $?ejercicios))
 	?rutina <- (object (is-a Rutina+diaria) (dia 7) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
@@ -1019,7 +1073,7 @@
 )
 
 (defrule crea_programa "Regla para crear el programa a partir de las rutinas construidas"
-	(declare (salience 15))
+	(declare (salience 70))
 	=>
 	(bind ?rutinas (find-all-instances ((?ej Rutina+diaria)) TRUE))
 	(bind ?programa (make-instance (gensym*) of Programa))
