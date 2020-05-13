@@ -537,7 +537,7 @@
 		(bind ?duracion (send ?habito get-duracion))
 		(bind ?puntuacion (send ?habito get-puntuacion))
 		(bind ?frec (send ?habito get-frecuencia))
-		(bind ?puntuacion_real (* ?puntuacion ?frec)) ;(* ?frec ?duracion)))
+		(bind ?puntuacion_real (* ?puntuacion (* ?frec ?duracion)))
 		(bind ?int_ini (+ ?int_ini ?puntuacion_real))
 	)
 	
@@ -633,11 +633,11 @@
 	=>
 
 	; Si la puntuacion de los hábitos que cumplen el objetivo es muy alta, eliminamos la lista
-	(if (> ?puntuacion_habito 200) then
+	(if (> ?puntuacion_habito 2000) then
 		(retract ?lista)
 
 	; Si la puntuacion de los hábitos que cumplen el objetivo es alta, bajamos la intensidad de los ejercicios que cumplen dicho objetivo
-	else (if (> ?puntuacion_habito 150) then
+	else (if (> ?puntuacion_habito 1500) then
 		(bind ?ejercicios2 (create$))
 		(loop-for-count (?i 1 (length$ ?ejercicios)) do
 			(bind ?ejercicio (nth$ ?i ?ejercicios))
