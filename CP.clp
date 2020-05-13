@@ -165,8 +165,8 @@
 ; Función para calcular la intensidad inicial que se asigna al usuario según los ejercicios sencillos / tests que realice
 (deffunction calcular_int_ini_ejercicios (?edad ?ppm ?cansancio ?mareo ?tirantez)
 	(bind ?resultado 0)
-	(bind ?resultado (+ ?resultado (* 2 ?ppm)))
-	;; 10+(220-edad x 0,85).
+
+	;; Se aplica un factor de 10 + (220-edad x 0,85)
 	(bind ?ppmIdealCorriendo (- 220 (* ?edad 0.85)))
 	(bind ?ppmIdealA (+ ?ppmIdealCorriendo 10))
 	(if (> ?ppm ?ppmIdealA) then (bind ?resultado (- ?resultado 15)))
@@ -432,7 +432,7 @@
 		(bind ?tirantez (pregunta-numerica "Tienes tirantez muscular en algun lugar del cuerpo?" 0 10))
 		(printout t crlf)
 	else
-		(bind ?ppm (- 220 (* 0.85 ?edad))) ;Por defecto asignamos un número que se suele asignar según la edad
+		(bind ?ppm (- 220 (* 0.85 ?edad))) ; Valor por defecto (ideal) para no afectar a la intensidad
 		(bind ?mareo 0)
 		(bind ?cansancio 0)
 		(bind ?tirantez 0)
@@ -456,7 +456,7 @@
 		(bind ?tirantez (pregunta-numerica "Tienes tirantez muscular en algun lugar del cuerpo?" 0 10))
 		(printout t crlf)
 	else
-		(bind ?ppm (- 220 (* 0.85 ?edad))) ;Por defecto asignamos un número que se suele asignar según la edad
+		(bind ?ppm (- 220 (* 0.85 ?edad))) ; Valor por defecto (ideal) para no afectar a la intensidad
 		(bind ?mareo 0)
 		(bind ?cansancio 0)
 		(bind ?tirantez 0)
@@ -542,20 +542,18 @@
 
 	;IMC
 	(bind ?int_ini (calcular_int_ini_imc ?IMC))
-
+	
 	;DIETA
 	(bind ?int_ini (+ ?int_ini (calcular_int_ini_dieta ?fruta ?verdura ?sal ?basura ?picar)))
-
+	
 	;EJERCICIOS SENCILLOS
 	(bind ?int_ini (+ ?int_ini (calcular_int_ini_ejercicios ?edad ?ppm ?cansancio ?mareo ?tirantez)))
-
+	
 	;HABITOS PERSONALES
 	(progn$ (?habito ?lista_habitos)
-		(bind ?duracion (send ?habito get-duracion))
 		(bind ?puntuacion (send ?habito get-puntuacion))
 		(bind ?frec (send ?habito get-frecuencia))
-		(bind ?puntuacion_real (* ?puntuacion ?frec ?duracion))
-		(bind ?int_ini (+ ?int_ini ?puntuacion_real))
+		(bind ?int_ini (+ ?int_ini (* ?puntuacion ?frec)))
 	)
 	
 	; Según el número obtenido, clasificamos la intensidad de la persona en tres categorías:
