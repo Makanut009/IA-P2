@@ -775,7 +775,6 @@
 	?rutina <- (object (is-a Rutina+diaria) (dia 1) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
 	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
-	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
 	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
 	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
@@ -818,7 +817,6 @@
 	?rutina <- (object (is-a Rutina+diaria) (dia 2) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
 	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
-	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
 	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
 	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
@@ -861,7 +859,6 @@
 	?rutina <- (object (is-a Rutina+diaria) (dia 3) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
 	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
-	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
 	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
 	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
@@ -904,7 +901,6 @@
 	?rutina <- (object (is-a Rutina+diaria) (dia 4) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
 	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
-	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
 	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
 	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
@@ -947,7 +943,6 @@
 	?rutina <- (object (is-a Rutina+diaria) (dia 5) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
 	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
-	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
 	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
 	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
@@ -990,7 +985,6 @@
 	?rutina <- (object (is-a Rutina+diaria) (dia 6) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
 	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
-	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
 	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
 	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
@@ -1033,7 +1027,6 @@
 	?rutina <- (object (is-a Rutina+diaria) (dia 7) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos))
 	(ejercicio_objetivo (ejercicio ?ej1&:(not (member ?ej1 ?ejercicios))) (duracion ?d1&:(< ?d1 ?tiempo_disp)) (objetivo ?obj&:(member ?obj $?objetivos)))
-	;(not(ejercicio_objetivo (ejercicio ?ej2&:(not (member ?ej2 ?ejercicios))) (duracion ?d2&:(< ?d2 ?d1))))
 	=>
 	; Añadir ejercicio recomendado a la lista de la rutina, con su ejercicio, duracion y repeticiones
 	(bind ?dur_rep (send ?ej1 get-duracion_por_rep))
@@ -1106,6 +1099,12 @@
 
 		;Objetivos que cumple la rutina diaria
 		(bind ?objetivos_rutina (send ?rutina get-objetivos))
+		(printout t crlf "Objetivos cumplidos: " crlf)
+		(progn$ (?objetivo $?objetivos_rutina)
+			(printout t " - " (send ?objetivo get-nombre) crlf)
+		)
+
+		;Los añadimos a la lista total de objetivos cumplidos en el programa
 		(progn$  (?objetivo ?objetivos_rutina)
 			(if (not (member ?objetivo ?obj_programa)) then
 				(bind ?obj_programa (insert$ ?obj_programa 1 ?objetivo))
@@ -1115,7 +1114,7 @@
 	)
 
 	;Objetivos que cumple el programa en global
-	(printout t crlf "Objetivos cumplidos en el programa: " crlf)
+	(printout t crlf crlf "Objetivos cumplidos en el programa: " crlf)
 	(progn$ (?objetivo $?obj_programa)
 		(printout t " - " (send ?objetivo get-nombre) crlf)
 	)
