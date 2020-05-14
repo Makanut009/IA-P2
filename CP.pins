@@ -1,4 +1,4 @@
-; Thu May 14 14:24:23 CEST 2020
+; Thu May 14 16:12:15 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -82,11 +82,11 @@
 	(grupo_muscular Piernas)
 	(nombre "Rodilla operada"))
 
-([30-4-20_Class32] of  Problema+cardiorespiratorio
+([30-4-20_Class32] of  Problema+cardiorrespiratorio
 
 	(nombre "Asma"))
 
-([30-4-20_Class33] of  Problema+cardiorespiratorio
+([30-4-20_Class33] of  Problema+cardiorrespiratorio
 
 	(nombre "Coronavirus"))
 
@@ -455,31 +455,31 @@
 
 	(nombre "Ponerse en forma"))
 
-([CP_Class20021] of  Problema+cardiorespiratorio
+([CP_Class20021] of  Problema+cardiorrespiratorio
 
 	(nombre "Angina de pecho"))
 
-([CP_Class20022] of  Problema+cardiorespiratorio
+([CP_Class20022] of  Problema+cardiorrespiratorio
 
 	(nombre "Bronquitis"))
 
-([CP_Class20023] of  Problema+cardiorespiratorio
+([CP_Class20023] of  Problema+cardiorrespiratorio
 
 	(nombre "Hipoventilación"))
 
-([CP_Class20024] of  Problema+cardiorespiratorio
+([CP_Class20024] of  Problema+cardiorrespiratorio
 
 	(nombre "Insuficiencia cardíaca"))
 
-([CP_Class20025] of  Problema+cardiorespiratorio
+([CP_Class20025] of  Problema+cardiorrespiratorio
 
 	(nombre "Neumonía"))
 
-([CP_Class20026] of  Problema+cardiorespiratorio
+([CP_Class20026] of  Problema+cardiorrespiratorio
 
 	(nombre "Taquicardia"))
 
-([CP_Class20027] of  Problema+cardiorespiratorio
+([CP_Class20027] of  Problema+cardiorrespiratorio
 
 	(nombre "Tuberculosis"))
 

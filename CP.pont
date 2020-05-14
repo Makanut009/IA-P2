@@ -1,4 +1,4 @@
-; Thu May 14 14:24:23 CEST 2020
+; Thu May 14 16:12:15 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -274,7 +274,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Problema+cardiorespiratorio "Problema cardio-respiratorio que tiene el usuario."
+(defclass Problema+cardiorrespiratorio "Problema cardio-respiratorio que tiene el usuario."
 	(is-a Problema)
 	(role concrete))
 
