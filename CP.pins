@@ -1,4 +1,4 @@
-; Thu May 14 14:21:40 CEST 2020
+; Thu May 14 14:24:23 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -72,21 +72,21 @@
 
 	(nombre "Tonificar abdomen"))
 
-([30-4-20_Class30] of  Problemas+musculo-esqueleticos
+([30-4-20_Class30] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Brazos)
 	(nombre "Dolor en el brazo"))
 
-([30-4-20_Class31] of  Problemas+musculo-esqueleticos
+([30-4-20_Class31] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Piernas)
 	(nombre "Rodilla operada"))
 
-([30-4-20_Class32] of  Problemas+cardiorespiratorios
+([30-4-20_Class32] of  Problema+cardiorespiratorio
 
 	(nombre "Asma"))
 
-([30-4-20_Class33] of  Problemas+cardiorespiratorios
+([30-4-20_Class33] of  Problema+cardiorespiratorio
 
 	(nombre "Coronavirus"))
 
@@ -455,135 +455,135 @@
 
 	(nombre "Ponerse en forma"))
 
-([CP_Class20021] of  Problemas+cardiorespiratorios
+([CP_Class20021] of  Problema+cardiorespiratorio
 
 	(nombre "Angina de pecho"))
 
-([CP_Class20022] of  Problemas+cardiorespiratorios
+([CP_Class20022] of  Problema+cardiorespiratorio
 
 	(nombre "Bronquitis"))
 
-([CP_Class20023] of  Problemas+cardiorespiratorios
+([CP_Class20023] of  Problema+cardiorespiratorio
 
 	(nombre "Hipoventilación"))
 
-([CP_Class20024] of  Problemas+cardiorespiratorios
+([CP_Class20024] of  Problema+cardiorespiratorio
 
 	(nombre "Insuficiencia cardíaca"))
 
-([CP_Class20025] of  Problemas+cardiorespiratorios
+([CP_Class20025] of  Problema+cardiorespiratorio
 
 	(nombre "Neumonía"))
 
-([CP_Class20026] of  Problemas+cardiorespiratorios
+([CP_Class20026] of  Problema+cardiorespiratorio
 
 	(nombre "Taquicardia"))
 
-([CP_Class20027] of  Problemas+cardiorespiratorios
+([CP_Class20027] of  Problema+cardiorespiratorio
 
 	(nombre "Tuberculosis"))
 
-([CP_Class20028] of  Problemas+musculo-esqueleticos
+([CP_Class20028] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Manos)
 	(nombre "Artritis en las manos"))
 
-([CP_Class20029] of  Problemas+musculo-esqueleticos
+([CP_Class20029] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Piernas)
 	(nombre "Artritis en las rodillas"))
 
-([CP_Class20030] of  Problemas+musculo-esqueleticos
+([CP_Class20030] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Cuello)
 	(nombre "Artrosis cervical"))
 
-([CP_Class20031] of  Problemas+musculo-esqueleticos
+([CP_Class20031] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Manos)
 	(nombre "Artrosis en las manos"))
 
-([CP_Class20032] of  Problemas+musculo-esqueleticos
+([CP_Class20032] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Espalda)
 	(nombre "Artrosis lumbar"))
 
-([CP_Class20033] of  Problemas+musculo-esqueleticos
+([CP_Class20033] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Codo)
 	(nombre "Codo operado"))
 
-([CP_Class20034] of  Problemas+musculo-esqueleticos
+([CP_Class20034] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Abdominales)
 	(nombre "Dolor abdominal"))
 
-([CP_Class20035] of  Problemas+musculo-esqueleticos
+([CP_Class20035] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Espalda)
 	(nombre "Dolor de espalda"))
 
-([CP_Class20036] of  Problemas+musculo-esqueleticos
+([CP_Class20036] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Pies)
 	(nombre "Dolor de tobillo"))
 
-([CP_Class20037] of  Problemas+musculo-esqueleticos
+([CP_Class20037] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Manos)
 	(nombre "Entumecimiento manos"))
 
-([CP_Class20038] of  Problemas+musculo-esqueleticos
+([CP_Class20038] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Codo)
 	(nombre "Epicondilitis"))
 
-([CP_Class20039] of  Problemas+musculo-esqueleticos
+([CP_Class20039] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Espalda)
 	(nombre "Escoliosis"))
 
-([CP_Class20040] of  Problemas+musculo-esqueleticos
+([CP_Class20040] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Piernas)
 	(nombre "Hemorroides"))
 
-([CP_Class20041] of  Problemas+musculo-esqueleticos
+([CP_Class20041] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Espalda)
 	(nombre "Hernia discal"))
 
-([CP_Class20042] of  Problemas+musculo-esqueleticos
+([CP_Class20042] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Espalda)
 	(nombre "Lumbago"))
 
-([CP_Class20043] of  Problemas+musculo-esqueleticos
+([CP_Class20043] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Espalda)
 	(nombre "Lumbalgia"))
 
-([CP_Class20044] of  Problemas+musculo-esqueleticos
+([CP_Class20044] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Abdominales)
 	(nombre "Peritonitis"))
 
-([CP_Class20045] of  Problemas+musculo-esqueleticos
+([CP_Class20045] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Cuello)
 	(nombre "Síndrome cervical por tensión"))
 
-([CP_Class20046] of  Problemas+musculo-esqueleticos
+([CP_Class20046] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Hombro)
 	(nombre "Tendinitis del manguito de los rotadores"))
 
-([CP_Class20047] of  Problemas+musculo-esqueleticos
+([CP_Class20047] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Manos)
 	(nombre "Tendinitis en las manos"))
 
-([CP_Class20048] of  Problemas+musculo-esqueleticos
+([CP_Class20048] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Cuello)
 	(nombre "Torticolis"))

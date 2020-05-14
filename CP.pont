@@ -1,4 +1,4 @@
-; Thu May 14 14:21:40 CEST 2020
+; Thu May 14 14:24:23 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -274,11 +274,11 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Problemas+cardiorespiratorios "Problema cardio-respiratorio que tiene el usuario."
+(defclass Problema+cardiorespiratorio "Problema cardio-respiratorio que tiene el usuario."
 	(is-a Problema)
 	(role concrete))
 
-(defclass Problemas+musculo-esqueleticos "Problema musculo-esqueletico que tiene el usuario."
+(defclass Problema+musculo-esqueletico "Problema musculo-esqueletico que tiene el usuario."
 	(is-a Problema)
 	(role concrete)
 	(multislot grupo_muscular
