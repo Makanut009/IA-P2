@@ -1,4 +1,4 @@
-; Thu May 14 11:36:34 CEST 2020
+; Thu May 14 14:21:40 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -14,7 +14,7 @@
 	(multislot contraindicado
 ;+		(comment "Lista de condicionantes para los cualos este ejercicio es contraindicado.")
 		(type INSTANCE)
-;+		(allowed-classes Problemas)
+;+		(allowed-classes Problema)
 		(create-accessor read-write))
 	(multislot objetivos
 ;+		(comment "Objetivos que cumple esta actividad.")
@@ -45,10 +45,6 @@
 ;+		(comment "Minimo de repeticiones de ejercicio")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
 		(create-accessor read-write))
 	(single-slot puntuacion
 		(type INTEGER)
@@ -101,22 +97,22 @@
 		(allowed-values tarea_domestica desplazamiento trabajo fuera_del_trabajo)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot duracion+total
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot intensidad
 		(type SYMBOL)
 		(allowed-values Baja Media Alta)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot duracion+total
+	(single-slot dia
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot dificultad
 		(type SYMBOL)
 		(allowed-values moderada normal dificil)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot dia
-		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -142,11 +138,11 @@
 ;+		(allowed-classes Objetivo)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot tiempo_disp
+	(single-slot duracion+total
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot duracion+total
+	(single-slot tiempo_disp
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -205,7 +201,7 @@
 	(multislot contraindicado
 ;+		(comment "Lista de condicionantes para los cualos este ejercicio es contraindicado.")
 		(type INSTANCE)
-;+		(allowed-classes Problemas)
+;+		(allowed-classes Problema)
 		(create-accessor read-write))
 	(single-slot nombre
 ;+		(comment "Nombre")
@@ -221,10 +217,6 @@
 ;+		(comment "Minimo de repeticiones de ejercicio")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot indicado
-		(type INSTANCE)
-;+		(allowed-classes Problemas)
 		(create-accessor read-write)))
 
 (defclass Condicionante "Condicionantes que tiene la persona, que afectan a su capacidad para realizarcierto tipo de ejercicios."
@@ -273,7 +265,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Problemas
+(defclass Problema
 	(is-a Condicionante)
 	(role concrete)
 	(single-slot nombre
@@ -283,11 +275,11 @@
 		(create-accessor read-write)))
 
 (defclass Problemas+cardiorespiratorios "Problema cardio-respiratorio que tiene el usuario."
-	(is-a Problemas)
+	(is-a Problema)
 	(role concrete))
 
 (defclass Problemas+musculo-esqueleticos "Problema musculo-esqueletico que tiene el usuario."
-	(is-a Problemas)
+	(is-a Problema)
 	(role concrete)
 	(multislot grupo_muscular
 ;+		(comment "Lista de grupos musculares que trabaja esta actividad.")
@@ -296,13 +288,13 @@
 		(create-accessor read-write)))
 
 (defclass Problema+peso "Problema relacionado con el IMC del usuario."
-	(is-a Problemas)
+	(is-a Problema)
 	(role concrete))
 
 (defclass Problema+edad
-	(is-a Problemas)
+	(is-a Problema)
 	(role concrete))
 
 (defclass Problema+presion
-	(is-a Problemas)
+	(is-a Problema)
 	(role concrete))
