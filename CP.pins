@@ -1,4 +1,4 @@
-; Thu May 14 16:12:15 CEST 2020
+; Fri May 15 14:32:32 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -571,7 +571,7 @@
 ([CP_Class20045] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Cuello)
-	(nombre "Síndrome cervical por tensión"))
+	(nombre "Sidrome cervical por tension"))
 
 ([CP_Class20046] of  Problema+musculo-esqueletico
 

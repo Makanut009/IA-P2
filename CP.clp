@@ -464,11 +464,11 @@
 (defrule pasa-a-inferir "Regla para pasar al módulo de inferencia de datos"
 	(declare (salience 165))
 	=>
-	(focus inferir-datos)
+	(focus inferencia)
 	(assert (infiere_problemas))
 )
 
-(defmodule inferir-datos "Modulo de inferencia, donde se infieren nuevos datos a partir de los introducidos"
+(defmodule inferencia "Modulo de inferencia, donde se infieren nuevos datos a partir de los introducidos"
   (import MAIN ?ALL)
   (import preguntas ?ALL)
   (export ?ALL)
@@ -725,12 +725,27 @@
 	
 )
 
+
+
+; (defrule pasa-a-resolucion "Regla para pasar al módulo de resolucion"
+; 	(declare (salience 113))
+; 	=>
+; 	(focus resolucion)
+; )
+
+; (defmodule resolucion "Modulo de resolución, donde se crean las rutinas y se les asignan los ejercicios"
+;   (import MAIN ?ALL)
+;   (import preguntas ?ALL)
+;   (import inferencia ?ALL)
+;   (export ?ALL)
+; )
 (defrule copia_l1_a_l2 "Regla auxiliar para copiar los objetivos pendientes de una lista a otra cuando la segunda se queda vacía"
 	(declare (salience 115))
 	?l1 <- (lista_objetivos1 (objetivos $?objetivos))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos2))
 	(test(eq (length$ $?objetivos2) 0))
 	=>
+	;(printout t "xd" crlf)
 	(assert (lista_objetivos2 (objetivos $?objetivos)))
 	(retract ?l2)
 )
@@ -781,14 +796,17 @@
 	(if (not (member ?obj ?objetivos_rutina)) then
 		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
 	)
-	
-	;Treure objectiu complert de lista_objetivos2
-	(loop-for-count (?i 1 (length$ ?objetivos)) do
-		(bind ?obj2 (nth$ ?i ?objetivos))
-		(if (eq ?obj2 ?obj) then
-			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+
+	;Treure objectius complerts de lista_objetivos2
+	(bind $?objetivos_ejercicio (send ?ej1 get-objetivos))
+	(progn$ (?o $?objetivos_ejercicio)
+		(loop-for-count (?i 1 (length$ $?objetivos)) do
+			(bind ?obj2 (nth$ ?i $?objetivos))
+			(if (eq ?obj2 ?o) then
+				(modify ?l2 (objetivos (delete$ $?objetivos ?i ?i)))
+			)	
 		)
-	)
+	)	
 )
 
 (defrule dia2 "Regla para asignar ejercicios al segundo día del programa"
@@ -826,13 +844,16 @@
 		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
 	)
 	
-	;Treure objectiu complert de lista_objetivos2
-	(loop-for-count (?i 1 (length$ ?objetivos)) do
-		(bind ?obj2 (nth$ ?i ?objetivos))
-		(if (eq ?obj2 ?obj) then
-			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+	;Treure objectius complerts de lista_objetivos2
+	(bind $?objetivos_ejercicio (send ?ej1 get-objetivos))
+	(progn$ (?o $?objetivos_ejercicio)
+		(loop-for-count (?i 1 (length$ $?objetivos)) do
+			(bind ?obj2 (nth$ ?i $?objetivos))
+			(if (eq ?obj2 ?o) then
+				(modify ?l2 (objetivos (delete$ $?objetivos ?i ?i)))
+			)	
 		)
-	)
+	)	
 )
 
 (defrule dia3 "Regla para asignar ejercicios al tercer día del programa"
@@ -870,13 +891,16 @@
 		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
 	)
 	
-	;Treure objectiu complert de lista_objetivos2
-	(loop-for-count (?i 1 (length$ ?objetivos)) do
-		(bind ?obj2 (nth$ ?i ?objetivos))
-		(if (eq ?obj2 ?obj) then
-			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+	;Treure objectius complerts de lista_objetivos2
+	(bind $?objetivos_ejercicio (send ?ej1 get-objetivos))
+	(progn$ (?o $?objetivos_ejercicio)
+		(loop-for-count (?i 1 (length$ $?objetivos)) do
+			(bind ?obj2 (nth$ ?i $?objetivos))
+			(if (eq ?obj2 ?o) then
+				(modify ?l2 (objetivos (delete$ $?objetivos ?i ?i)))
+			)	
 		)
-	)
+	)	
 )
 
 (defrule dia4 "Regla para asignar ejercicios al cuarto día del programa"
@@ -914,13 +938,16 @@
 		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
 	)
 	
-	;Treure objectiu complert de lista_objetivos2
-	(loop-for-count (?i 1 (length$ ?objetivos)) do
-		(bind ?obj2 (nth$ ?i ?objetivos))
-		(if (eq ?obj2 ?obj) then
-			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+	;Treure objectius complerts de lista_objetivos2
+	(bind $?objetivos_ejercicio (send ?ej1 get-objetivos))
+	(progn$ (?o $?objetivos_ejercicio)
+		(loop-for-count (?i 1 (length$ $?objetivos)) do
+			(bind ?obj2 (nth$ ?i $?objetivos))
+			(if (eq ?obj2 ?o) then
+				(modify ?l2 (objetivos (delete$ $?objetivos ?i ?i)))
+			)	
 		)
-	)
+	)	
 )
 
 (defrule dia5 "Regla para asignar ejercicios al quinto día del programa"
@@ -958,13 +985,16 @@
 		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
 	)
 
-	;Treure objectiu complert de lista_objetivos2
-	(loop-for-count (?i 1 (length$ ?objetivos)) do
-		(bind ?obj2 (nth$ ?i ?objetivos))
-		(if (eq ?obj2 ?obj) then
-			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+	;Treure objectius complerts de lista_objetivos2
+	(bind $?objetivos_ejercicio (send ?ej1 get-objetivos))
+	(progn$ (?o $?objetivos_ejercicio)
+		(loop-for-count (?i 1 (length$ $?objetivos)) do
+			(bind ?obj2 (nth$ ?i $?objetivos))
+			(if (eq ?obj2 ?o) then
+				(modify ?l2 (objetivos (delete$ $?objetivos ?i ?i)))
+			)	
 		)
-	)
+	)	
 )
 
 (defrule dia6 "Regla para asignar ejercicios al sexto día del programa"
@@ -1002,13 +1032,16 @@
 		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
 	)
 	
-	;Treure objectiu complert de lista_objetivos2
-	(loop-for-count (?i 1 (length$ ?objetivos)) do
-		(bind ?obj2 (nth$ ?i ?objetivos))
-		(if (eq ?obj2 ?obj) then
-			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+	;Treure objectius complerts de lista_objetivos2
+	(bind $?objetivos_ejercicio (send ?ej1 get-objetivos))
+	(progn$ (?o $?objetivos_ejercicio)
+		(loop-for-count (?i 1 (length$ $?objetivos)) do
+			(bind ?obj2 (nth$ ?i $?objetivos))
+			(if (eq ?obj2 ?o) then
+				(modify ?l2 (objetivos (delete$ $?objetivos ?i ?i)))
+			)	
 		)
-	)
+	)	
 )
 
 (defrule dia7 "Regla para asignar ejercicios al séptimo día del programa"
@@ -1046,13 +1079,16 @@
 		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
 	)
 	
-	;Treure objectiu complert de lista_objetivos2
-	(loop-for-count (?i 1 (length$ ?objetivos)) do
-		(bind ?obj2 (nth$ ?i ?objetivos))
-		(if (eq ?obj2 ?obj) then
-			(modify ?l2 (objetivos (delete$ ?objetivos ?i ?i)))
+	;Treure objectius complerts de lista_objetivos2
+	(bind $?objetivos_ejercicio (send ?ej1 get-objetivos))
+	(progn$ (?o $?objetivos_ejercicio)
+		(loop-for-count (?i 1 (length$ $?objetivos)) do
+			(bind ?obj2 (nth$ ?i $?objetivos))
+			(if (eq ?obj2 ?o) then
+				(modify ?l2 (objetivos (delete$ $?objetivos ?i ?i)))
+			)	
 		)
-	)
+	)	
 )
 
 (defrule crea_programa "Regla para crear el programa a partir de las rutinas construidas"
