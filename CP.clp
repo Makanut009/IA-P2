@@ -358,7 +358,7 @@
 
 	;Listamos todos los problemas para que el usuario los elija
 	(printout t "Problemas musculo-esqueleticos: " crlf)
-	(bind ?lista_problemas_musc (find-all-instances ((?p Problemas+musculo-esqueleticos)) TRUE))
+	(bind ?lista_problemas_musc (find-all-instances ((?p Problema+musculo-esqueletico)) TRUE))
 	(printout t crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_problemas_musc)) do
 		(bind ?aux (nth$ ?i ?lista_problemas_musc))
