@@ -796,21 +796,20 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
+	(bind ?aux ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj ?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?objetivos_rutina)) then
+			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(loop-for-count (?i 1 (length$ $?objetivos_pendientes)) do
-			(bind ?obj2 (nth$ ?i $?objetivos_pendientes))
-			(if (eq ?obj ?obj2) then
-				(modify ?l2 (objetivos (delete$ $?objetivos_pendientes ?i ?i)))
-			)
+		(if (member ?obj $?aux) then
+			(bind ?aux (delete-member$ $?aux ?obj))
 		)
 	)
+	(modify ?l2 (objetivos ?aux))
 )
 
 (defrule dia2 "Regla para asignar ejercicios al segundo día del programa"
@@ -850,21 +849,20 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
+	(bind ?aux ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj ?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?objetivos_rutina)) then
+			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(loop-for-count (?i 1 (length$ $?objetivos_pendientes)) do
-			(bind ?obj2 (nth$ ?i $?objetivos_pendientes))
-			(if (eq ?obj ?obj2) then
-				(modify ?l2 (objetivos (delete$ $?objetivos_pendientes ?i ?i)))
-			)
+		(if (member ?obj $?aux) then
+			(bind ?aux (delete-member$ $?aux ?obj))
 		)
 	)
+	(modify ?l2 (objetivos ?aux))
 )
 
 (defrule dia3 "Regla para asignar ejercicios al tercer día del programa"
@@ -904,21 +902,20 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
+	(bind ?aux ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj ?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?objetivos_rutina)) then
+			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(loop-for-count (?i 1 (length$ $?objetivos_pendientes)) do
-			(bind ?obj2 (nth$ ?i $?objetivos_pendientes))
-			(if (eq ?obj ?obj2) then
-				(modify ?l2 (objetivos (delete$ $?objetivos_pendientes ?i ?i)))
-			)
+		(if (member ?obj $?aux) then
+			(bind ?aux (delete-member$ $?aux ?obj))
 		)
 	)
+	(modify ?l2 (objetivos ?aux))
 )
 
 (defrule dia4 "Regla para asignar ejercicios al cuarto día del programa"
@@ -958,21 +955,20 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
+	(bind ?aux ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj ?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?objetivos_rutina)) then
+			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(loop-for-count (?i 1 (length$ $?objetivos_pendientes)) do
-			(bind ?obj2 (nth$ ?i $?objetivos_pendientes))
-			(if (eq ?obj ?obj2) then
-				(modify ?l2 (objetivos (delete$ $?objetivos_pendientes ?i ?i)))
-			)
+		(if (member ?obj $?aux) then
+			(bind ?aux (delete-member$ $?aux ?obj))
 		)
 	)
+	(modify ?l2 (objetivos ?aux))
 )
 
 (defrule dia5 "Regla para asignar ejercicios al quinto día del programa"
@@ -1012,21 +1008,20 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
+	(bind ?aux ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj ?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?objetivos_rutina)) then
+			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(loop-for-count (?i 1 (length$ $?objetivos_pendientes)) do
-			(bind ?obj2 (nth$ ?i $?objetivos_pendientes))
-			(if (eq ?obj ?obj2) then
-				(modify ?l2 (objetivos (delete$ $?objetivos_pendientes ?i ?i)))
-			)
+		(if (member ?obj $?aux) then
+			(bind ?aux (delete-member$ $?aux ?obj))
 		)
 	)
+	(modify ?l2 (objetivos ?aux))
 )
 
 (defrule dia6 "Regla para asignar ejercicios al sexto día del programa"
@@ -1066,21 +1061,20 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
+	(bind ?aux ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj ?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?objetivos_rutina)) then
+			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(loop-for-count (?i 1 (length$ $?objetivos_pendientes)) do
-			(bind ?obj2 (nth$ ?i $?objetivos_pendientes))
-			(if (eq ?obj ?obj2) then
-				(modify ?l2 (objetivos (delete$ $?objetivos_pendientes ?i ?i)))
-			)
+		(if (member ?obj $?aux) then
+			(bind ?aux (delete-member$ $?aux ?obj))
 		)
 	)
+	(modify ?l2 (objetivos ?aux))
 )
 
 (defrule dia7 "Regla para asignar ejercicios al séptimo día del programa"
@@ -1120,21 +1114,20 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
+	(bind ?aux ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj ?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?objetivos_rutina)) then
+			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(loop-for-count (?i 1 (length$ $?objetivos_pendientes)) do
-			(bind ?obj2 (nth$ ?i $?objetivos_pendientes))
-			(if (eq ?obj ?obj2) then
-				(modify ?l2 (objetivos (delete$ $?objetivos_pendientes ?i ?i)))
-			)
+		(if (member ?obj $?aux) then
+			(bind ?aux (delete-member$ $?aux ?obj))
 		)
 	)
+	(modify ?l2 (objetivos ?aux))
 )
 
 (defrule pasa-a-solucion "Regla para pasar al módulo de solución"
