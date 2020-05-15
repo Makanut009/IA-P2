@@ -44,18 +44,6 @@
 	(slot puntuacion (type INTEGER) (default 0))
 )
 
-(deftemplate lista_ejercicios_por_objetivo 
-	"Template auxiliar que contiene una lista de ejercicios que cumplen un mismo objetivo"
-	(slot objetivo (type INSTANCE))
-	(multislot ejercicios (type INSTANCE))
-)
-
-(deftemplate lista_ejercicios_por_objetivo2
-	"Template auxiliar que contiene una lista de ejercicios que cumplen un mismo objetivo"
-	(slot objetivo (type INSTANCE))
-	(multislot ejercicios (type INSTANCE))
-)
-
 (deftemplate lista_objetivos1
 	"Template auxiliar para almacenar los objetivos que faltan por cumplir"
 	(slot nombre (type INTEGER))
@@ -69,11 +57,10 @@
 )
 
 (deftemplate ejercicio_objetivo 
-	"Template auxiliar para almacenar cada ejercicio, su objetivo, duracion y repeticiones"
+	"Template auxiliar para almacenar cada ejercicio, su objetivo y duracion mínima"
 	(slot ejercicio)
 	(slot objetivo)
 	(slot duracion)
-	(slot repeticiones)
 )
 
 (deftemplate ejercicios_rutina
@@ -638,9 +625,9 @@
 	(retract ?o2)
 )
 
-(defrule objetivos_cumplidos_ejercicios
+(defrule crea_ejercicios
 	"Regla para generar todas las parejas ejercicio-objetivo tal que el ejercicio cumple
-	el objetivo y el objetivo es uno de los escogidos por la persona"
+	el objetivo y dicho objetivo es uno de los escogidos por la persona"
 
 	(declare (salience 135))
 	?nhoe <- (no_hay_obj_eje)
@@ -662,13 +649,14 @@
 			(progn$ (?problema_ej ?problemas_ej)
  				(if (member ?problema_ej $?problemas_persona) then (bind ?problematico TRUE))
  			)
-			(if (eq ?problematico FALSE) then (bind ?aux (insert$ ?aux 1 ?ejercicio)))
+			(if (eq ?problematico FALSE) then
+				(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
+				(bind ?rep_min (send ?ejercicio get-repeticiones+min))
+				(bind ?duracion_min (* ?dur_rep ?rep_min))
+				(assert (ejercicio_objetivo (ejercicio ?ejercicio) (objetivo ?obj_pers) (duracion ?duracion_min)))
+			)
 		)
-
-		; Los introducimos en la lista de ejercicios del objetivo correspondiente
-		(assert (lista_ejercicios_por_objetivo (objetivo ?obj_pers) (ejercicios ?aux)))
 	)
-
 	(assert (lista_objetivos1 (nombre 1) (objetivos (create$))))
 	(assert (lista_objetivos2 (nombre 2) (objetivos (create$))))
 	(retract ?nhoe)
@@ -680,81 +668,71 @@
 
 	(declare (salience 130))
 	(objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?puntuacion_habito))
-	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios ?ejercicios))
-	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
+	?ej_obj <- (ejercicio_objetivo (objetivo ?objetivo) (ejercicio ?ejercicio))
 	=>
 
 	; Si la puntuacion de los hábitos que cumplen el objetivo es muy alta, eliminamos la lista
 	(if (> ?puntuacion_habito 2000) then
-		(retract ?lista)
+		(retract ?ej_obj)
 
 	; Si la puntuacion de los hábitos que cumplen el objetivo es alta, bajamos la intensidad de los ejercicios que cumplen dicho objetivo
 	else (if (> ?puntuacion_habito 1500) then
-		(bind ?ejercicios2 (create$))
-		(loop-for-count (?i 1 (length$ ?ejercicios)) do
-			(bind ?ejercicio (nth$ ?i ?ejercicios))
-			(bind ?intensidad (send ?ejercicio get-intensidad))
-			(bind ?nombre (send ?ejercicio get-nombre))
-			(if (eq ?intensidad Alta) then
-				(bind ?ej2 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Media))))
-				(bind ?ejercicios2 (insert$ ?ejercicios2 ?i ?ej2))
-			else (if (eq ?intensidad Media) then
-					(bind ?ej2 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Baja))))
-					(bind ?ejercicios2 (insert$ ?ejercicios2 ?i ?ej2))
-				)
-			else (bind ?ejercicios2 (insert$ ?ejercicios2 ?i ?ejercicio))
+		(bind ?intensidad (send ?ejercicio get-intensidad))
+		(bind ?nombre (send ?ejercicio get-nombre))
+		(if (eq ?intensidad Alta) then
+			(bind ?ej2 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Media))))
+			(modify ?ej_obj (ejercicio ?ej2))
+		else (if (eq ?intensidad Media) then
+				(bind ?ej2 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Baja))))
+				(modify ?ej_obj (ejercicio ?ej2))
 			)
 		)
-		(if (not (member ?objetivo $?objetivos)) then
-			(bind ?aux (insert$ ?objetivos 1 ?objetivo))
-			(modify ?lista_obj1 (objetivos ?aux))
-		)
-		(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios ?ejercicios2)))
-		(retract ?lista)
-	)
+	))
+)
 
-	; Sinó, simplemente copiamos la lista a otra template auxiliar
-	else 
-		(if (not (member ?objetivo ?objetivos)) then
-			(bind ?aux (insert$ ?objetivos 1 ?objetivo))
-			(modify ?lista_obj1 (objetivos ?aux))
-		)
-		(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios ?ejercicios)))
+(defrule lista_objetivos "Regla para listar todos los objetivos que se deben cumplir"
+	(declare (salience 125))
+	(ejercicio_objetivo (objetivo ?objetivo))
+	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
+	=>
+	(if (not (member ?objetivo $?objetivos)) then
+		(bind ?aux (insert$ ?objetivos 1 ?objetivo))
+		(modify ?lista_obj1 (objetivos ?aux))
 	)
 )
 
-(defrule pasa_a_2 "Regla auxiliar para pasar listas de objetivos a otra template"
-	(declare (salience 125))
-	?lista <- (lista_ejercicios_por_objetivo (objetivo ?objetivo) (ejercicios $?ejercicios))
+(defrule si_no_hay_objetivos "Regla para generar ejercicios y objetivos si la persona no tiene objetivos"
+	(declare (salience 120))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
+	(test(eq (length$ $?objetivos) 0))
 	=>
-	(bind ?aux (insert$ $?objetivos 1 ?objetivo))
-	(modify ?lista_obj1 (objetivos ?aux))
-	(assert (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios $?ejercicios)))
-	(retract ?lista)
+	(bind ?estiramientos (find-all-instances ((?ej Ejercicio)) (eq ?ej:tipo+de+ejercicio estiramiento)))
+	(progn$ (?estiramiento ?estiramientos)
+		(bind ?objetivos (send ?estiramiento get-objetivos))
+		(progn$ (?objetivo ?objetivos)
+	
+			(bind ?dur_rep (send ?estiramiento get-duracion_por_rep))
+			(bind ?rep_min (send ?estiramiento get-repeticiones+min))
+			(bind ?duracion_min (* ?dur_rep ?rep_min))
+			(assert (ejercicio_objetivo (ejercicio ?estiramiento) (objetivo ?objetivo) (duracion ?duracion_min)))
+
+			(if (not (member ?objetivo $?objetivos)) then
+				(bind ?aux (insert$ ?objetivos 1 ?objetivo))
+				(modify ?lista_obj1 (objetivos ?aux))
+			)
+		)
+	)
+	
 )
 
 (defrule copia_l1_a_l2 "Regla auxiliar para copiar los objetivos pendientes de una lista a otra cuando la segunda se queda vacía"
-	(declare (salience 120))
+	(declare (salience 115))
 	?l1 <- (lista_objetivos1 (objetivos $?objetivos))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos2))
 	(test(eq (length$ $?objetivos2) 0))
 	=>
 	(assert (lista_objetivos2 (objetivos $?objetivos)))
 	(retract ?l2)
-)
-
-(defrule desglosa_ejercicios "Regla auxiliar para generar hechos ejercicio_objetivo a partir de las listas de ejercicios por objetivo"
-	(declare (salience 115))
-	?lista <- (lista_ejercicios_por_objetivo2 (objetivo ?objetivo) (ejercicios $?ejercicios))
-	=>
-	;Para cada ejercicio de la lista, generamos un nuevo hecho 
-	(progn$ (?ejercicio $?ejercicios)
-		(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
-		(bind ?rep_min (send ?ejercicio get-repeticiones+min))
-		(bind ?duracion_min (* ?dur_rep ?rep_min))
-		(assert (ejercicio_objetivo (objetivo ?objetivo) (ejercicio ?ejercicio) (duracion ?duracion_min) (repeticiones ?rep_min)))
-	)
 )
 
 (defrule crea_rutinas_vacias "Regla para crear un hecho para cada día, que contendrá los ejercicios de cada uno"
@@ -800,7 +778,9 @@
 	(modify ?ej_rutina (dia 1) (ejercicios ?aux))
 
 	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
-	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	(if (not (member ?obj ?objetivos_rutina)) then
+		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	)
 	
 	;Treure objectiu complert de lista_objetivos2
 	(loop-for-count (?i 1 (length$ ?objetivos)) do
@@ -842,7 +822,9 @@
 	(modify ?ej_rutina (dia 2) (ejercicios ?aux))
 
 	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
-	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	(if (not (member ?obj ?objetivos_rutina)) then
+		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	)
 	
 	;Treure objectiu complert de lista_objetivos2
 	(loop-for-count (?i 1 (length$ ?objetivos)) do
@@ -884,7 +866,9 @@
 	(modify ?ej_rutina (dia 3) (ejercicios ?aux))
 
 	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
-	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	(if (not (member ?obj ?objetivos_rutina)) then
+		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	)
 	
 	;Treure objectiu complert de lista_objetivos2
 	(loop-for-count (?i 1 (length$ ?objetivos)) do
@@ -926,7 +910,9 @@
 	(modify ?ej_rutina (dia 4) (ejercicios ?aux))
 
 	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
-	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	(if (not (member ?obj ?objetivos_rutina)) then
+		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	)
 	
 	;Treure objectiu complert de lista_objetivos2
 	(loop-for-count (?i 1 (length$ ?objetivos)) do
@@ -968,7 +954,9 @@
 	(modify ?ej_rutina (dia 5) (ejercicios ?aux))
 
 	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
-	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	(if (not (member ?obj ?objetivos_rutina)) then
+		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	)
 
 	;Treure objectiu complert de lista_objetivos2
 	(loop-for-count (?i 1 (length$ ?objetivos)) do
@@ -1010,7 +998,9 @@
 	(modify ?ej_rutina (dia 6) (ejercicios ?aux))
 
 	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
-	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	(if (not (member ?obj ?objetivos_rutina)) then
+		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	)
 	
 	;Treure objectiu complert de lista_objetivos2
 	(loop-for-count (?i 1 (length$ ?objetivos)) do
@@ -1052,7 +1042,9 @@
 	(modify ?ej_rutina (dia 7) (ejercicios ?aux))
 
 	(send ?rutina put-tiempo_disp (- ?tiempo_disp ?duracion_real))
-	(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	(if (not (member ?obj ?objetivos_rutina)) then
+		(send ?rutina put-objetivos (insert$ ?objetivos_rutina 1 ?obj))
+	)
 	
 	;Treure objectiu complert de lista_objetivos2
 	(loop-for-count (?i 1 (length$ ?objetivos)) do
