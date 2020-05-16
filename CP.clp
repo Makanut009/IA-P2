@@ -496,30 +496,36 @@
 	(if (> ?imc 40.0) then
 		(bind ?problema (find-instance ((?p Problema+peso)) (eq ?p:nombre "Extremadamente obeso")))
 		(bind ?lista_problemas_inferidos (insert$ ?problema 1 ?lista_problemas_inferidos))
+		(printout t "[PROBLEMA INFERIDO: Extremadamente obeso]" crlf)
 	)
 	(if (< ?imc 18.5) then
 		(bind ?problema (find-instance ((?p Problema+peso)) (eq ?p:nombre "Extremadamente delgado")))
 		(bind ?lista_problemas_inferidos (insert$ ?problema 1 ?lista_problemas_inferidos))
+		(printout t "[PROBLEMA INFERIDO: Extremadamente delgado]" crlf)
 	)
 	
 	;;;;;;;PROBLEMAS DE EDAD;;;;;;
 	(if (> ?edad 65) then 
 		(bind ?problema (find-instance ((?p Problema+edad)) (eq ?p:nombre "Edad avanzada")))
 		(bind ?lista_problemas_inferidos (insert$ ?problema 1 ?lista_problemas_inferidos))
+		(printout t "[PROBLEMA INFERIDO: Edad avanzada]" crlf)
 	)
 	(if (< ?edad 10) then
 		(bind ?problema (find-instance ((?p Problema+edad)) (eq ?p:nombre "Edad temprana")))
 		(bind ?lista_problemas_inferidos (insert$ ?problema 1 ?lista_problemas_inferidos))
+		(printout t "[PROBLEMA INFERIDO: Edad temprana]" crlf)
 	)
 	
 	;;;;;;;PROBLEMAS DE PRESION;;;;;;
 	(if (or (> ?presion_max 130) (> ?presion_min 90)) then
 		(bind ?problema (find-instance ((?p Problema+presion)) TRUE))
 		(bind ?lista_problemas_inferidos (insert$ ?problema 1 ?lista_problemas_inferidos))
+		(printout t "[PROBLEMA INFERIDO: Presion alterada]" crlf)
 	)
 	(if (or (< ?presion_max 90) (< ?presion_min 60)) then
 		(bind ?problema (find-instance ((?p Problema+presion)) TRUE))
 		(bind ?lista_problemas_inferidos (insert$ ?problema 1 ?lista_problemas_inferidos))
+		(printout t "[PROBLEMA INFERIDO: Presion alterada]" crlf)
 	)
 
 	;Añadimos los problemas inferidos a la lista de problemas introducidos por la persona
@@ -567,6 +573,8 @@
 	(if (<= ?int_ini -30) then (bind ?int_ini_cat Baja)
 	else (if (< ?int_ini 30) then (bind ?int_ini_cat Media)
 	else (bind ?int_ini_cat Alta)))
+
+	(printout t "[INTENSIDAD INICIAL CALCULADA: " ?int_ini_cat "]" crlf crlf)
 	
 	(modify ?persona (intensidad_inicial ?int_ini_cat))
 	(assert (no_hay_obj_cumpl))
@@ -577,21 +585,25 @@
 	
 	(declare (salience 150))
 	(Persona (intensidad_inicial ?int_ini))
-	(object (is-a Rutina+diaria) (tiempo_disp ?td))
 	=>
 	(bind ?rutinas (find-all-instances ((?r Rutina+diaria)) TRUE))
 	(progn$ (?rutina ?rutinas)
 		(bind ?tx (div (send ?rutina get-tiempo_disp) 60))
+		(bind ?dia (send ?rutina get-dia))
 		(if (eq ?int_ini Baja) then
 			(if (> ?tx 60) then (send ?rutina put-tiempo_disp (* 60 60)))
+			(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 60 minutos]" crlf)
 		)
 		(if (eq ?int_ini Media) then
 			(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
+			(printout t "[TIEMPO DISPONIBLE DIARIO " ?dia " LIMITADO: 90 minutos]" crlf)
 		)
 		(if (eq ?int_ini Alta) then
 			(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 120 60)))
+			(printout t "[TIEMPO DISPONIBLE DIARIO " ?dia " LIMITADO: 120 minutos]" crlf)
 		)
 	)
+	(printout t crlf)
 )
 
 (defrule objetivos_cumplidos_habitos 
@@ -675,6 +687,8 @@
 
 	; Si la puntuacion de los hábitos que cumplen el objetivo es muy alta, eliminamos la lista
 	(if (> ?puntuacion_habito 2000) then
+		(bind ?nombre (send ?objetivo get-nombre))
+		(printout t "[OBJETIVO DESCARTADO POR HABITOS: " ?nombre "]" crlf)
 		(retract ?ej_obj)
 
 	; Si la puntuacion de los hábitos que cumplen el objetivo es alta, bajamos la intensidad de los ejercicios que cumplen dicho objetivo
