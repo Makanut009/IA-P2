@@ -1,4 +1,4 @@
-; Fri May 15 14:32:32 CEST 2020
+; Sat May 16 08:46:27 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -7,7 +7,8 @@
 
 	(favorable [30-4-20_Class24])
 	(nombre "Planchar")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito tarea_domestica))
 
 ([30-4-20_Class19] of  Habito+personal
 
@@ -16,7 +17,8 @@
 		[30-4-20_Class23]
 		[CP_Class20018])
 	(nombre "Levantar peso")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito trabajo))
 
 ([30-4-20_Class20] of  Habito+personal
 
@@ -24,7 +26,8 @@
 		[30-4-20_Class25]
 		[30-4-20_Class24])
 	(nombre "Compras")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito fuera_del_trabajo))
 
 ([30-4-20_Class21] of  Habito+personal
 
@@ -37,7 +40,8 @@
 		[CP_Class20019]
 		[CP_Class20013])
 	(nombre "Natacion")
-	(puntuacion 3))
+	(puntuacion 3)
+	(tipo_habito fuera_del_trabajo))
 
 ([30-4-20_Class22] of  Habito+personal
 
@@ -46,7 +50,8 @@
 		[30-4-20_Class23]
 		[CP_Class20018])
 	(nombre "Pasear la mascota")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito desplazamiento))
 
 ([30-4-20_Class23] of  Objetivo
 
@@ -75,12 +80,7 @@
 ([30-4-20_Class30] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Brazos)
-	(nombre "Dolor en el brazo"))
-
-([30-4-20_Class31] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Piernas)
-	(nombre "Rodilla operada"))
+	(nombre "Dolor o afectacion en los brazos"))
 
 ([30-4-20_Class32] of  Problema+cardiorrespiratorio
 
@@ -120,7 +120,6 @@
 
 ([30-4-20_Class42] of  Ejercicio
 
-	(contraindicado [30-4-20_Class31])
 	(duracion_por_rep 4)
 	(grupo_muscular Gluteos)
 	(intensidad Baja)
@@ -167,7 +166,8 @@
 		[CP_Class20018]
 		[30-4-20_Class25])
 	(nombre "Pasear")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito desplazamiento))
 
 ([CP_Class1] of  Problema+presion
 
@@ -207,7 +207,8 @@
 		[CP_Class20018]
 		[30-4-20_Class25])
 	(nombre "Desplazamiento laboral")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito desplazamiento))
 
 ([CP_Class10002] of  Habito+personal
 
@@ -219,25 +220,29 @@
 		[30-4-20_Class27]
 		[30-4-20_Class25])
 	(nombre "Atletismo/Correr")
-	(puntuacion 3))
+	(puntuacion 3)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class10003] of  Habito+personal
 
 	(duracion 0)
 	(nombre "Mirar la television")
-	(puntuacion -1))
+	(puntuacion -1)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class10004] of  Habito+personal
 
 	(duracion 0)
 	(nombre "Fumar")
-	(puntuacion -3))
+	(puntuacion -3)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class10005] of  Habito+personal
 
 	(duracion 0)
 	(nombre "Beber cerveza")
-	(puntuacion -2))
+	(puntuacion -2)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class15] of  Ejercicio
 
@@ -313,6 +318,25 @@
 	(repeticiones+min 10)
 	(tipo+de+ejercicio con_pesas))
 
+([CP_Class20000] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class34]
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Rollbacks intensidad alta")
+	(objetivos
+		[30-4-20_Class23]
+		[CP_Class20017]
+		[CP_Class20019]
+		[30-4-20_Class28])
+	(repeticiones+max 15)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio cardio))
+
 ([CP_Class20001] of  Ejercicio
 
 	(duracion_por_rep 10)
@@ -350,14 +374,16 @@
 		[30-4-20_Class27]
 		[30-4-20_Class25])
 	(nombre "Bailar")
-	(puntuacion 2))
+	(puntuacion 2)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class20004] of  Habito+personal
 
 	(duracion 0)
 	(favorable [30-4-20_Class24])
 	(nombre "Barrer")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito tarea_domestica))
 
 ([CP_Class20005] of  Habito+personal
 
@@ -366,7 +392,8 @@
 		[30-4-20_Class24]
 		[30-4-20_Class26])
 	(nombre "Colada")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito tarea_domestica))
 
 ([CP_Class20006] of  Habito+personal
 
@@ -381,7 +408,8 @@
 		[CP_Class20013]
 		[30-4-20_Class25])
 	(nombre "Entrenamiento de deporte en equipo")
-	(puntuacion 3))
+	(puntuacion 3)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class20007] of  Habito+personal
 
@@ -390,13 +418,15 @@
 		[30-4-20_Class24]
 		[30-4-20_Class26])
 	(nombre "Fregar")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito tarea_domestica))
 
 ([CP_Class20008] of  Habito+personal
 
 	(duracion 0)
 	(nombre "Leer")
-	(puntuacion -1))
+	(puntuacion -1)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class20009] of  Habito+personal
 
@@ -406,7 +436,8 @@
 		[30-4-20_Class24]
 		[30-4-20_Class25])
 	(nombre "Movimientos repetitivos")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito trabajo))
 
 ([CP_Class20010] of  Habito+personal
 
@@ -415,13 +446,15 @@
 		[30-4-20_Class27]
 		[30-4-20_Class25])
 	(nombre "Trabajar de pie")
-	(puntuacion 1))
+	(puntuacion 1)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class20011] of  Habito+personal
 
 	(duracion 0)
 	(nombre "Trabajar sentado")
-	(puntuacion -2))
+	(puntuacion -2)
+	(tipo_habito fuera_del_trabajo))
 
 ([CP_Class20012] of  Objetivo
 
@@ -465,15 +498,15 @@
 
 ([CP_Class20023] of  Problema+cardiorrespiratorio
 
-	(nombre "Hipoventilación"))
+	(nombre "Hipoventilacion"))
 
 ([CP_Class20024] of  Problema+cardiorrespiratorio
 
-	(nombre "Insuficiencia cardíaca"))
+	(nombre "Insuficiencia cardiaca"))
 
 ([CP_Class20025] of  Problema+cardiorrespiratorio
 
-	(nombre "Neumonía"))
+	(nombre "Neumonia"))
 
 ([CP_Class20026] of  Problema+cardiorrespiratorio
 
@@ -486,111 +519,40 @@
 ([CP_Class20028] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Manos)
-	(nombre "Artritis en las manos"))
+	(nombre "Dolor o afectacion de las manos"))
 
 ([CP_Class20029] of  Problema+musculo-esqueletico
 
-	(grupo_muscular Piernas)
-	(nombre "Artritis en las rodillas"))
+	(grupo_muscular Abdominales)
+	(nombre "Dolor o afectacion de abdomen"))
 
 ([CP_Class20030] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Cuello)
-	(nombre "Artrosis cervical"))
-
-([CP_Class20031] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Manos)
-	(nombre "Artrosis en las manos"))
+	(nombre "Dolor o afectacion de cuello"))
 
 ([CP_Class20032] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Espalda)
-	(nombre "Artrosis lumbar"))
+	(nombre "Dolor o afectacion de espalda"))
 
 ([CP_Class20033] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Codo)
-	(nombre "Codo operado"))
+	(nombre "Dolor o afectacion de codo"))
 
 ([CP_Class20034] of  Problema+musculo-esqueletico
 
-	(grupo_muscular Abdominales)
-	(nombre "Dolor abdominal"))
-
-([CP_Class20035] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Espalda)
-	(nombre "Dolor de espalda"))
+	(grupo_muscular Piernas)
+	(nombre "Dolor o afectacion de piernas"))
 
 ([CP_Class20036] of  Problema+musculo-esqueletico
 
 	(grupo_muscular Pies)
-	(nombre "Dolor de tobillo"))
-
-([CP_Class20037] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Manos)
-	(nombre "Entumecimiento manos"))
-
-([CP_Class20038] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Codo)
-	(nombre "Epicondilitis"))
-
-([CP_Class20039] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Espalda)
-	(nombre "Escoliosis"))
-
-([CP_Class20040] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Piernas)
-	(nombre "Hemorroides"))
-
-([CP_Class20041] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Espalda)
-	(nombre "Hernia discal"))
-
-([CP_Class20042] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Espalda)
-	(nombre "Lumbago"))
-
-([CP_Class20043] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Espalda)
-	(nombre "Lumbalgia"))
-
-([CP_Class20044] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Abdominales)
-	(nombre "Peritonitis"))
-
-([CP_Class20045] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Cuello)
-	(nombre "Sidrome cervical por tension"))
-
-([CP_Class20046] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Hombro)
-	(nombre "Tendinitis del manguito de los rotadores"))
-
-([CP_Class20047] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Manos)
-	(nombre "Tendinitis en las manos"))
-
-([CP_Class20048] of  Problema+musculo-esqueletico
-
-	(grupo_muscular Cuello)
-	(nombre "Torticolis"))
+	(nombre "Dolor o afectacion de pies"))
 
 ([CP_Class21] of  Ejercicio
 
-	(contraindicado [30-4-20_Class31])
 	(duracion_por_rep 3)
 	(grupo_muscular Gluteos)
 	(intensidad Media)
@@ -602,7 +564,6 @@
 
 ([CP_Class22] of  Ejercicio
 
-	(contraindicado [30-4-20_Class31])
 	(duracion_por_rep 3)
 	(grupo_muscular Gluteos)
 	(intensidad Alta)
@@ -614,13 +575,45 @@
 
 ([CP_Class3] of  Ejercicio
 
-	(contraindicado [30-4-20_Class34])
+	(contraindicado
+		[30-4-20_Class34]
+		[CP_Class20029]
+		[CP_Class20032])
 	(duracion_por_rep 3)
 	(grupo_muscular Abdominales)
 	(intensidad Baja)
 	(nombre "Abdominales de intensidad baja")
 	(objetivos [30-4-20_Class28])
 	(repeticiones+max 30)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class30001] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Plancha con rodilla al pecho intensidad media")
+	(objetivos
+		[30-4-20_Class23]
+		[CP_Class20017]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class24])
+	(repeticiones+max 24)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class30002] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Flexiones intensidad media")
+	(objetivos
+		[30-4-20_Class23]
+		[CP_Class20019]
+		[30-4-20_Class24])
+	(repeticiones+max 15)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
 
@@ -1049,6 +1042,10 @@
 
 ([CP_Class30040] of  Ejercicio
 
+	(contraindicado
+		[CP_Class1]
+		[CP_Class20024]
+		[CP_Class20026])
 	(duracion_por_rep 300)
 	(intensidad Baja)
 	(nombre "Zumba intensidad baja")
@@ -1063,6 +1060,10 @@
 
 ([CP_Class30041] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 600)
 	(intensidad Media)
 	(nombre "Zumba intensidad media")
@@ -1077,6 +1078,10 @@
 
 ([CP_Class30042] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 900)
 	(intensidad Alta)
 	(nombre "Zumba intensidad alta")
@@ -1203,8 +1208,8 @@
 ([CP_Class30052] of  Ejercicio
 
 	(duracion_por_rep 10)
-	(intensidad Media)
-	(nombre "Plancha con rodilla al pecho intensidad media")
+	(intensidad Baja)
+	(nombre "Plancha con rodilla al pecho intensidad baja")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -1212,8 +1217,8 @@
 		[CP_Class20019]
 		[30-4-20_Class28]
 		[30-4-20_Class24])
-	(repeticiones+max 24)
-	(repeticiones+min 20)
+	(repeticiones+max 20)
+	(repeticiones+min 15)
 	(tipo+de+ejercicio suelo))
 
 ([CP_Class30053] of  Ejercicio
@@ -1655,14 +1660,14 @@
 ([CP_Class30084] of  Ejercicio
 
 	(duracion_por_rep 5)
-	(intensidad Media)
-	(nombre "Flexiones intensidad media")
+	(intensidad Baja)
+	(nombre "Flexiones intensidad baja")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
 		[30-4-20_Class24])
-	(repeticiones+max 15)
-	(repeticiones+min 10)
+	(repeticiones+max 10)
+	(repeticiones+min 5)
 	(tipo+de+ejercicio suelo))
 
 ([CP_Class30085] of  Ejercicio
@@ -1770,6 +1775,10 @@
 
 ([CP_Class30092] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Media)
 	(nombre "Climbers intensidad media")
@@ -1784,6 +1793,10 @@
 
 ([CP_Class30093] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Alta)
 	(nombre "Climbers intensidad alta")
@@ -1832,6 +1845,10 @@
 
 ([CP_Class30099] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 10)
 	(intensidad Alta)
 	(nombre "Burpees con salto de 180 grados intensidad alta")
@@ -1849,6 +1866,10 @@
 
 ([CP_Class30100] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Baja)
 	(nombre "Patinador intensidad baja")
@@ -1865,6 +1886,10 @@
 
 ([CP_Class30101] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Alta)
 	(nombre "Patinador intensidad alta")
@@ -1881,6 +1906,10 @@
 
 ([CP_Class30102] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Media)
 	(nombre "Patinador intensidad media")
@@ -1897,7 +1926,11 @@
 
 ([CP_Class30103] of  Ejercicio
 
-	(contraindicado [30-4-20_Class34])
+	(contraindicado
+		[30-4-20_Class34]
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Media)
 	(nombre "Rollbacks intensidad media")
@@ -1912,17 +1945,21 @@
 
 ([CP_Class30104] of  Ejercicio
 
-	(contraindicado [30-4-20_Class34])
+	(contraindicado
+		[30-4-20_Class34]
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
 	(duracion_por_rep 5)
-	(intensidad Alta)
-	(nombre "Rollbacks intensidad alta")
+	(intensidad Baja)
+	(nombre "Rollbacks intensidad baja")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
 		[CP_Class20019]
 		[30-4-20_Class28])
-	(repeticiones+max 15)
-	(repeticiones+min 15)
+	(repeticiones+max 5)
+	(repeticiones+min 5)
 	(tipo+de+ejercicio cardio))
 
 ([CP_Class30105] of  Ejercicio
@@ -2137,6 +2174,9 @@
 
 ([CP_Class30123] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20028]
+		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Baja)
 	(nombre "Aperturas en banco inclinado intensidad baja")
@@ -2149,6 +2189,9 @@
 
 ([CP_Class30124] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20028]
+		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Alta)
 	(nombre "Aperturas en banco inclinado intensidad alta")
@@ -2161,6 +2204,9 @@
 
 ([CP_Class30125] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20028]
+		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Media)
 	(nombre "Aperturas en banco inclinado intensidad media")
@@ -2173,7 +2219,10 @@
 
 ([CP_Class4] of  Ejercicio
 
-	(contraindicado [30-4-20_Class34])
+	(contraindicado
+		[30-4-20_Class34]
+		[CP_Class20029]
+		[CP_Class20032])
 	(duracion_por_rep 3)
 	(grupo_muscular Abdominales)
 	(intensidad Media)
@@ -2183,9 +2232,72 @@
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
 
+([CP_Class40003] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Burpees con salto de 180 grados intensidad media")
+	(objetivos
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class24]
+		[30-4-20_Class27]
+		[30-4-20_Class25])
+	(repeticiones+max 10)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio cardio))
+
+([CP_Class40004] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Burpees con salto de 180 grados intensidad baja")
+	(objetivos
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class24]
+		[30-4-20_Class27]
+		[30-4-20_Class25])
+	(repeticiones+max 5)
+	(repeticiones+min 5)
+	(tipo+de+ejercicio cardio))
+
+([CP_Class40005] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20024]
+		[CP_Class20026]
+		[CP_Class1])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Climbers intensidad baja")
+	(objetivos
+		[30-4-20_Class23]
+		[30-4-20_Class28]
+		[30-4-20_Class27]
+		[30-4-20_Class25])
+	(repeticiones+max 5)
+	(repeticiones+min 5)
+	(tipo+de+ejercicio cardio))
+
 ([CP_Class5] of  Ejercicio
 
-	(contraindicado [30-4-20_Class34])
+	(contraindicado
+		[30-4-20_Class34]
+		[CP_Class20029]
+		[CP_Class20032])
 	(duracion_por_rep 2)
 	(grupo_muscular Abdominales)
 	(intensidad Alta)
