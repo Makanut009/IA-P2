@@ -818,11 +818,12 @@
 
 (defrule dia2 "Regla para asignar ejercicios al segundo día del programa"
 	(declare (salience 105))
+	(ejercicios_rutina (dia 1) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 2) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 2) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos_pendientes))
 	(test(neq (length$ $?objetivos_pendientes) 0))
-	(ejercicio_objetivo (ejercicio ?ejercicio&:(not (member ?ejercicio ?ejercicios_rutina))) 
+	(ejercicio_objetivo (ejercicio ?ejercicio&:(and (not (member ?ejercicio ?ejercicios_rutina)) (not (member ?ejercicio ?ejercicios_rutina_anterior))))
 						(duracion ?duracion_min&:(< ?duracion_min ?tiempo_disp))
 						(objetivo ?objetivo&:(member ?objetivo $?objetivos_pendientes))
 	)
@@ -871,11 +872,12 @@
 
 (defrule dia3 "Regla para asignar ejercicios al tercer día del programa"
 	(declare (salience 105))
+	(ejercicios_rutina (dia 2) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 3) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 3) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos_pendientes))
 	(test(neq (length$ $?objetivos_pendientes) 0))
-	(ejercicio_objetivo (ejercicio ?ejercicio&:(not (member ?ejercicio ?ejercicios_rutina))) 
+	(ejercicio_objetivo (ejercicio ?ejercicio&:(and (not (member ?ejercicio ?ejercicios_rutina)) (not (member ?ejercicio ?ejercicios_rutina_anterior))))
 						(duracion ?duracion_min&:(< ?duracion_min ?tiempo_disp))
 						(objetivo ?objetivo&:(member ?objetivo $?objetivos_pendientes))
 	)
@@ -924,11 +926,12 @@
 
 (defrule dia4 "Regla para asignar ejercicios al cuarto día del programa"
 	(declare (salience 105))
+	(ejercicios_rutina (dia 3) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 4) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 4) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos_pendientes))
 	(test(neq (length$ $?objetivos_pendientes) 0))
-	(ejercicio_objetivo (ejercicio ?ejercicio&:(not (member ?ejercicio ?ejercicios_rutina))) 
+	(ejercicio_objetivo (ejercicio ?ejercicio&:(and (not (member ?ejercicio ?ejercicios_rutina)) (not (member ?ejercicio ?ejercicios_rutina_anterior))))
 						(duracion ?duracion_min&:(< ?duracion_min ?tiempo_disp))
 						(objetivo ?objetivo&:(member ?objetivo $?objetivos_pendientes))
 	)
@@ -977,11 +980,12 @@
 
 (defrule dia5 "Regla para asignar ejercicios al quinto día del programa"
 	(declare (salience 105))
+	(ejercicios_rutina (dia 4) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 5) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 5) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos_pendientes))
 	(test(neq (length$ $?objetivos_pendientes) 0))
-	(ejercicio_objetivo (ejercicio ?ejercicio&:(not (member ?ejercicio ?ejercicios_rutina))) 
+	(ejercicio_objetivo (ejercicio ?ejercicio&:(and (not (member ?ejercicio ?ejercicios_rutina)) (not (member ?ejercicio ?ejercicios_rutina_anterior))))
 						(duracion ?duracion_min&:(< ?duracion_min ?tiempo_disp))
 						(objetivo ?objetivo&:(member ?objetivo $?objetivos_pendientes))
 	)
@@ -1030,11 +1034,12 @@
 
 (defrule dia6 "Regla para asignar ejercicios al sexto día del programa"
 	(declare (salience 105))
+	(ejercicios_rutina (dia 5) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 6) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 6) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos_pendientes))
 	(test(neq (length$ $?objetivos_pendientes) 0))
-	(ejercicio_objetivo (ejercicio ?ejercicio&:(not (member ?ejercicio ?ejercicios_rutina))) 
+	(ejercicio_objetivo (ejercicio ?ejercicio&:(and (not (member ?ejercicio ?ejercicios_rutina)) (not (member ?ejercicio ?ejercicios_rutina_anterior))))
 						(duracion ?duracion_min&:(< ?duracion_min ?tiempo_disp))
 						(objetivo ?objetivo&:(member ?objetivo $?objetivos_pendientes))
 	)
@@ -1083,11 +1088,12 @@
 
 (defrule dia7 "Regla para asignar ejercicios al séptimo día del programa"
 	(declare (salience 105))
+	(ejercicios_rutina (dia 6) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 7) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 7) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
 	?l2 <- (lista_objetivos2 (objetivos $?objetivos_pendientes))
 	(test(neq (length$ $?objetivos_pendientes) 0))
-	(ejercicio_objetivo (ejercicio ?ejercicio&:(not (member ?ejercicio ?ejercicios_rutina))) 
+	(ejercicio_objetivo (ejercicio ?ejercicio&:(and (not (member ?ejercicio ?ejercicios_rutina)) (not (member ?ejercicio ?ejercicios_rutina_anterior))))
 						(duracion ?duracion_min&:(< ?duracion_min ?tiempo_disp))
 						(objetivo ?objetivo&:(member ?objetivo $?objetivos_pendientes))
 	)
