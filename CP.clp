@@ -591,16 +591,22 @@
 		(bind ?tx (div (send ?rutina get-tiempo_disp) 60))
 		(bind ?dia (send ?rutina get-dia))
 		(if (eq ?int_ini Baja) then
-			(if (> ?tx 60) then (send ?rutina put-tiempo_disp (* 60 60)))
-			(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 60 minutos]" crlf)
+			(if (> ?tx 60) then 
+				(send ?rutina put-tiempo_disp (* 60 60))
+				(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 60 minutos]" crlf)
+			)
 		)
 		(if (eq ?int_ini Media) then
-			(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
-			(printout t "[TIEMPO DISPONIBLE DIARIO " ?dia " LIMITADO: 90 minutos]" crlf)
+			(if (> ?tx 90) then 
+				(send ?rutina put-tiempo_disp (* 90 60))
+				(printout t "[TIEMPO DISPONIBLE DIARIO " ?dia " LIMITADO: 90 minutos]" crlf)
+			)
 		)
 		(if (eq ?int_ini Alta) then
-			(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 120 60)))
-			(printout t "[TIEMPO DISPONIBLE DIARIO " ?dia " LIMITADO: 120 minutos]" crlf)
+			(if (> ?tx 90) then 
+				(send ?rutina put-tiempo_disp (* 120 60))
+				(printout t "[TIEMPO DISPONIBLE DIARIO " ?dia " LIMITADO: 120 minutos]" crlf)
+			)
 		)
 	)
 	(printout t crlf)
