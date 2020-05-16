@@ -253,17 +253,6 @@
 	(send ?dia7 put-ejercicios (create$))
 	(send ?dia7 put-objetivos (create$))
 
-	(bind ?count 0)
-	(if (> ?t1 0) then (bind ?count (+ ?count 1)))
-	(if (> ?t2 0) then (bind ?count (+ ?count 1)))
-	(if (> ?t3 0) then (bind ?count (+ ?count 1)))
-	(if (> ?t4 0) then (bind ?count (+ ?count 1)))
-	(if (> ?t5 0) then (bind ?count (+ ?count 1)))
-	(if (> ?t6 0) then (bind ?count (+ ?count 1)))
-	(if (> ?t7 0) then (bind ?count (+ ?count 1)))
-
-	(assert (dias_disponibles ?count))
-
 	; Creamos el hecho con la información de la persona
 	(assert
 		(Persona
@@ -563,31 +552,18 @@
 	(declare (salience 150))
 	(Persona (intensidad_inicial ?int_ini))
 	(object (is-a Rutina+diaria) (tiempo_disp ?td))
-	(dias_disponibles ?dias)
 	=>
 	(bind ?rutinas (find-all-instances ((?r Rutina+diaria)) TRUE))
 	(progn$ (?rutina ?rutinas)
 		(bind ?tx (div (send ?rutina get-tiempo_disp) 60))
-		(if (eq ?int_ini Baja) then 
-			(if (> ?dias 3) then
-				(if (> ?tx 60) then (send ?rutina put-tiempo_disp (* 60 60)))
-			else 
-				(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
-			)
+		(if (eq ?int_ini Baja) then
+			(if (> ?tx 60) then (send ?rutina put-tiempo_disp (* 60 60)))
 		)
-		(if (eq ?int_ini Media) then 
-			(if (> ?dias 4) then
-				(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
-			else 
-				(if (> ?tx 120) then (send ?rutina put-tiempo_disp (* 120 60)))
-			)
+		(if (eq ?int_ini Media) then
+			(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
 		)
-		(if (eq ?int_ini Alta) then 
-			(if (> ?dias 5) then
-				(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 90 60)))
-			else 
-				(if (> ?tx 120) then (send ?rutina put-tiempo_disp (* 120 60)))
-			)
+		(if (eq ?int_ini Alta) then
+			(if (> ?tx 90) then (send ?rutina put-tiempo_disp (* 120 60)))
 		)
 	)
 )
