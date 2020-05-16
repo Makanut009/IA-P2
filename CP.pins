@@ -1,4 +1,4 @@
-; Sat May 16 12:56:33 CEST 2020
+; Sat May 16 14:25:05 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -2777,6 +2777,381 @@
 	(repeticiones+max 5)
 	(repeticiones+min 5)
 	(tipo+de+ejercicio cardio))
+
+([CP_Class40008] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Rodillas al pecho intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40009] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Rodillas al pecho intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40010] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Rodillas al pecho intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40011] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar hombros intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40012] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar hombros intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40013] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar hombros intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40014] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar dorsales intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40015] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar dorsales intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40016] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar dorsales intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40017] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar triceps intensidad baja")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40018] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar triceps intensidad alta")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40019] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar triceps intensidad media")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40020] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Rotacion de hombros intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40021] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Rotacion de hombros intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40022] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Rotacion de hombros intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40023] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Extension de espalda intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40024] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Extension de espalda intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40025] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Extension de espalda intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40026] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Torsion de cadera intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40027] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Torsion de cadera intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40028] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Torsion de cadera intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40029] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estiramiento de la cara posterior del hombro intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40030] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estiramiento de la cara posterior del hombro intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40031] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estiramiento de la cara posterior del hombro intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40032] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estiramiento de la cara anterior del hombro intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40033] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estiramiento de la cara anterior del hombro intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40034] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estiramiento de la cara anterior del hombro intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40035] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estiramiento de cadera intensidad baja")
+	(objetivos
+		[CP_Class20012]
+		[30-4-20_Class26])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40036] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estiramiento de cadera intensidad alta")
+	(objetivos
+		[CP_Class20012]
+		[30-4-20_Class26])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40037] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estiramiento de cadera intensidad media")
+	(objetivos
+		[CP_Class20012]
+		[30-4-20_Class26])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
 
 ([CP_Class5] of  Ejercicio
 
