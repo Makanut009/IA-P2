@@ -703,10 +703,10 @@
 	)
 )
 
-(defrule si_no_hay_objetivos "Regla para generar ejercicios y objetivos si la persona no tiene objetivos"
+(defrule si_hay_pocos_objetivos "Regla para generar ejercicios y objetivos si la persona tiene pocos objetivos"
 	(declare (salience 120))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
-	(test(eq (length$ $?objetivos) 0))
+	(test(< (length$ $?objetivos) 3))
 	=>
 	(bind ?estiramientos (find-all-instances ((?ej Ejercicio)) (eq ?ej:tipo+de+ejercicio estiramiento)))
 	(progn$ (?estiramiento ?estiramientos)
