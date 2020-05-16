@@ -729,23 +729,23 @@
 	(test(< (length$ $?objetivos) 3))
 	(Persona (intensidad_inicial ?int_ini))
 	=>
-	(bind ?estiramientos (find-all-instances ((?ej Ejercicio)) (and (eq ?ej:tipo+de+ejercicio estiramiento) (eq ?ej:intensidad ?int_ini))))
-	(progn$ (?estiramiento ?estiramientos)
-		(bind ?objetivos (send ?estiramiento get-objetivos))
-		(progn$ (?objetivo ?objetivos)
-	
-			(bind ?dur_rep (send ?estiramiento get-duracion_por_rep))
-			(bind ?rep_min (send ?estiramiento get-repeticiones+min))
+	(bind $?s_objetivos (create$ "Equilibrio" "Flexibilidad" "Aliviar dolor espalda" "Aliviar dolor extremidades inferiores" "Aliviar dolor extremidades superiores" "Aliviar dolor cervicales"))
+	(bind $?aux $?objetivos)
+	(progn$ (?s_objetivo $?s_objetivos)
+		(bind ?objetivo (nth$ 1 (find-instance ((?obj Objetivo)) (= (str-compare ?obj:nombre ?s_objetivo) 0))))
+		(bind ?ejercicios (find-all-instances ((?ej Ejercicio)) (member ?objetivo ?ej:objetivos)))
+		(progn$ (?ejercicio ?ejercicios)
+			(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
+			(bind ?rep_min (send ?ejercicio get-repeticiones+min))
 			(bind ?duracion_min (* ?dur_rep ?rep_min))
-			(assert (ejercicio_objetivo (ejercicio ?estiramiento) (objetivo ?objetivo) (duracion ?duracion_min)))
+			(assert (ejercicio_objetivo (ejercicio ?ejercicio) (objetivo ?objetivo) (duracion ?duracion_min)))
 
-			(if (not (member ?objetivo $?objetivos)) then
-				(bind ?aux (insert$ ?objetivos 1 ?objetivo))
-				(modify ?lista_obj1 (objetivos ?aux))
+			(if (not (member ?objetivo $?aux)) then
+				(bind $?aux (insert$ $?aux 1 ?objetivo))
 			)
 		)
 	)
-	
+	(modify ?lista_obj1 (objetivos $?aux))	
 )
 
 (defrule pasa-a-resolucion "Regla para pasar al módulo de resolucion"
