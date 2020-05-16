@@ -707,8 +707,9 @@
 	(declare (salience 120))
 	?lista_obj1 <- (lista_objetivos1 (objetivos $?objetivos))
 	(test(< (length$ $?objetivos) 3))
+	(Persona (intensidad_inicial ?int_ini))
 	=>
-	(bind ?estiramientos (find-all-instances ((?ej Ejercicio)) (eq ?ej:tipo+de+ejercicio estiramiento)))
+	(bind ?estiramientos (find-all-instances ((?ej Ejercicio)) (and (eq ?ej:tipo+de+ejercicio estiramiento) (eq ?ej:intensidad ?int_ini))))
 	(progn$ (?estiramiento ?estiramientos)
 		(bind ?objetivos (send ?estiramiento get-objetivos))
 		(progn$ (?objetivo ?objetivos)
@@ -817,7 +818,7 @@
 )
 
 (defrule dia2 "Regla para asignar ejercicios al segundo día del programa"
-	(declare (salience 105))
+	(declare (salience 100))
 	(ejercicios_rutina (dia 1) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 2) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 2) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -871,7 +872,7 @@
 )
 
 (defrule dia3 "Regla para asignar ejercicios al tercer día del programa"
-	(declare (salience 105))
+	(declare (salience 95))
 	(ejercicios_rutina (dia 2) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 3) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 3) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -925,7 +926,7 @@
 )
 
 (defrule dia4 "Regla para asignar ejercicios al cuarto día del programa"
-	(declare (salience 105))
+	(declare (salience 90))
 	(ejercicios_rutina (dia 3) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 4) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 4) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -979,7 +980,7 @@
 )
 
 (defrule dia5 "Regla para asignar ejercicios al quinto día del programa"
-	(declare (salience 105))
+	(declare (salience 85))
 	(ejercicios_rutina (dia 4) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 5) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 5) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -1033,7 +1034,7 @@
 )
 
 (defrule dia6 "Regla para asignar ejercicios al sexto día del programa"
-	(declare (salience 105))
+	(declare (salience 80))
 	(ejercicios_rutina (dia 5) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 6) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 6) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -1087,7 +1088,7 @@
 )
 
 (defrule dia7 "Regla para asignar ejercicios al séptimo día del programa"
-	(declare (salience 105))
+	(declare (salience 75))
 	(ejercicios_rutina (dia 6) (ejercicios $?ejercicios_rutina_anterior))
 	?ej_rutina <- (ejercicios_rutina (dia 7) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 7) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
