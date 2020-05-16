@@ -733,7 +733,7 @@
 	(bind $?aux $?objetivos)
 	(progn$ (?s_objetivo $?s_objetivos)
 		(bind ?objetivo (nth$ 1 (find-instance ((?obj Objetivo)) (= (str-compare ?obj:nombre ?s_objetivo) 0))))
-		(bind ?ejercicios (find-all-instances ((?ej Ejercicio)) (member ?objetivo ?ej:objetivos)))
+		(bind ?ejercicios (find-all-instances ((?ej Ejercicio)) (and (member ?objetivo ?ej:objetivos) (eq ?int_ini ?ej:intensidad))))
 		(progn$ (?ejercicio ?ejercicios)
 			(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
 			(bind ?rep_min (send ?ejercicio get-repeticiones+min))
@@ -821,20 +821,22 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
-	(bind ?aux ?objetivos_pendientes)
+	(bind ?aux ?objetivos_rutina)
+	(bind ?aux2 ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj $?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?aux)) then
+			(bind ?aux (insert$ $?aux 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(if (member ?obj $?aux) then
-			(bind ?aux (delete-member$ $?aux ?obj))
+		(if (member ?obj $?aux2) then
+			(bind ?aux2 (delete-member$ $?aux2 ?obj))
 		)
 	)
-	(modify ?l2 (objetivos ?aux))
+	(send ?rutina put-objetivos $?aux)
+	(modify ?l2 (objetivos ?aux2))
 )
 
 (defrule dia2 "Regla para asignar ejercicios al segundo día del programa"
@@ -875,20 +877,22 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
-	(bind ?aux ?objetivos_pendientes)
+	(bind ?aux ?objetivos_rutina)
+	(bind ?aux2 ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj $?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?aux)) then
+			(bind ?aux (insert$ $?aux 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(if (member ?obj $?aux) then
-			(bind ?aux (delete-member$ $?aux ?obj))
+		(if (member ?obj $?aux2) then
+			(bind ?aux2 (delete-member$ $?aux2 ?obj))
 		)
 	)
-	(modify ?l2 (objetivos ?aux))
+	(send ?rutina put-objetivos $?aux)
+	(modify ?l2 (objetivos ?aux2))
 )
 
 (defrule dia3 "Regla para asignar ejercicios al tercer día del programa"
@@ -929,20 +933,22 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
-	(bind ?aux ?objetivos_pendientes)
+	(bind ?aux ?objetivos_rutina)
+	(bind ?aux2 ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj $?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?aux)) then
+			(bind ?aux (insert$ $?aux 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(if (member ?obj $?aux) then
-			(bind ?aux (delete-member$ $?aux ?obj))
+		(if (member ?obj $?aux2) then
+			(bind ?aux2 (delete-member$ $?aux2 ?obj))
 		)
 	)
-	(modify ?l2 (objetivos ?aux))
+	(send ?rutina put-objetivos $?aux)
+	(modify ?l2 (objetivos ?aux2))
 )
 
 (defrule dia4 "Regla para asignar ejercicios al cuarto día del programa"
@@ -983,20 +989,22 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
-	(bind ?aux ?objetivos_pendientes)
+	(bind ?aux ?objetivos_rutina)
+	(bind ?aux2 ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj $?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?aux)) then
+			(bind ?aux (insert$ $?aux 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(if (member ?obj $?aux) then
-			(bind ?aux (delete-member$ $?aux ?obj))
+		(if (member ?obj $?aux2) then
+			(bind ?aux2 (delete-member$ $?aux2 ?obj))
 		)
 	)
-	(modify ?l2 (objetivos ?aux))
+	(send ?rutina put-objetivos $?aux)
+	(modify ?l2 (objetivos ?aux2))
 )
 
 (defrule dia5 "Regla para asignar ejercicios al quinto día del programa"
@@ -1037,20 +1045,22 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
-	(bind ?aux ?objetivos_pendientes)
+	(bind ?aux ?objetivos_rutina)
+	(bind ?aux2 ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj $?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?aux)) then
+			(bind ?aux (insert$ $?aux 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(if (member ?obj $?aux) then
-			(bind ?aux (delete-member$ $?aux ?obj))
+		(if (member ?obj $?aux2) then
+			(bind ?aux2 (delete-member$ $?aux2 ?obj))
 		)
 	)
-	(modify ?l2 (objetivos ?aux))
+	(send ?rutina put-objetivos $?aux)
+	(modify ?l2 (objetivos ?aux2))
 )
 
 (defrule dia6 "Regla para asignar ejercicios al sexto día del programa"
@@ -1091,20 +1101,22 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
-	(bind ?aux ?objetivos_pendientes)
+	(bind ?aux ?objetivos_rutina)
+	(bind ?aux2 ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj $?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?aux)) then
+			(bind ?aux (insert$ $?aux 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(if (member ?obj $?aux) then
-			(bind ?aux (delete-member$ $?aux ?obj))
+		(if (member ?obj $?aux2) then
+			(bind ?aux2 (delete-member$ $?aux2 ?obj))
 		)
 	)
-	(modify ?l2 (objetivos ?aux))
+	(send ?rutina put-objetivos $?aux)
+	(modify ?l2 (objetivos ?aux2))
 )
 
 (defrule dia7 "Regla para asignar ejercicios al séptimo día del programa"
@@ -1145,20 +1157,22 @@
 
 	; Para cada objetivo que cumple el ejercicio asignado
 	(bind $?objetivos_ejercicio (send ?ejercicio get-objetivos))
-	(bind ?aux ?objetivos_pendientes)
+	(bind ?aux ?objetivos_rutina)
+	(bind ?aux2 ?objetivos_pendientes)
 	(progn$ (?obj $?objetivos_ejercicio)
 
 		; Añadirlo a la lista de objetivos cumplidos en la rutina
-		(if (not (member ?obj $?objetivos_rutina)) then
-			(send ?rutina put-objetivos (insert$ $?objetivos_rutina 1 ?obj))
+		(if (not (member ?obj $?aux)) then
+			(bind ?aux (insert$ $?aux 1 ?obj))
 		)
 
 		; Si está en la lista de objetivos pendientes, eliminarlo de la lista
-		(if (member ?obj $?aux) then
-			(bind ?aux (delete-member$ $?aux ?obj))
+		(if (member ?obj $?aux2) then
+			(bind ?aux2 (delete-member$ $?aux2 ?obj))
 		)
 	)
-	(modify ?l2 (objetivos ?aux))
+	(send ?rutina put-objetivos $?aux)
+	(modify ?l2 (objetivos ?aux2))
 )
 
 (defrule pasa-a-solucion "Regla para pasar al módulo de solución"
