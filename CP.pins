@@ -1,4 +1,4 @@
-; Sat May 16 14:25:05 CEST 2020
+; Sat May 16 17:49:13 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -669,6 +669,18 @@
 	(repeticiones+max 30)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
+
+([CP_Class30000] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Ejercicio del gato intensidad baja")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20014])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
 
 ([CP_Class30001] of  Ejercicio
 
@@ -2676,6 +2688,30 @@
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
 
+([CP_Class40001] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Ejercicio del gato intensidad media")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20014])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class40002] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Ejercicio del gato intensidad alta")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20014])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
 ([CP_Class40003] of  Ejercicio
 
 	(contraindicado
@@ -3169,6 +3205,1347 @@
 		[CP_Class20018]
 		[CP_Class20019])
 	(repeticiones+max 150)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50003] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estiramiento capsular en rotacion interna intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50004] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estiramiento capsular en rotacion interna intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50005] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estiramiento capsular en rotacion interna intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50006] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar isquiosurales y gemelos intensidad baja")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50007] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar isquiosurales y gemelos intensidad alta")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50008] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar isquiosurales y gemelos intensidad media")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50009] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar flexores de cadera intensidad baja")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50010] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar flexores de cadera intensidad alta")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50011] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar flexores de cadera intensidad media")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50012] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar psoas iliaco intensidad baja")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50013] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar psoas iliaco intensidad alta")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50014] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar psoas iliaco intensidad media")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50015] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Elevaciones intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50016] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Elevaciones intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50017] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Elevaciones intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50018] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Flexiones verticales intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50019] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Flexiones verticales intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50020] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Flexiones verticales intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50021] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar triceps sural intensidad baja")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50022] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar triceps sural intensidad alta")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50023] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar triceps sural intensidad media")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50024] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar isquiotibiales intensidad baja")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50025] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar isquiotibiales intensidad alta")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50026] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar isquiotibiales intensidad media")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50027] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar tensor de la fascia lata intensidad baja")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50028] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar tensor de la fascia lata intensidad alta")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50029] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar tensor de la fascia lata intensidad media")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50030] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar piramidal y gluteos intensidad baja")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50031] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar piramidal y gluteos intensidad alta")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50032] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar piramidal y gluteos intensidad media")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50033] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar psoas iliaco estirando el brazo intensidad baja")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50034] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar psoas iliaco estirando el brazo intensidad alta")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50035] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar psoas iliaco estirando el brazo intensidad media")
+	(objetivos
+		[CP_Class20015]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50036] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estiramiento mariposa intensidad baja")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50037] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estiramiento mariposa intensidad alta")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50038] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estiramiento mariposa intensidad media")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50039] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Sentadilla con una sola pierna intensidad baja")
+	(objetivos
+		[CP_Class20017]
+		[30-4-20_Class25])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50040] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Sentadilla con una sola pierna intensidad alta")
+	(objetivos
+		[CP_Class20017]
+		[30-4-20_Class25])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50041] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Sentadilla con una sola pierna intensidad media")
+	(objetivos
+		[CP_Class20017]
+		[30-4-20_Class25])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50042] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Sentadilla con salto una sola pierna intensidad baja")
+	(objetivos
+		[CP_Class20017]
+		[30-4-20_Class25])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50043] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Sentadilla con salto una sola pierna intensidad alta")
+	(objetivos
+		[CP_Class20017]
+		[30-4-20_Class25])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50044] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Sentadilla con salto una sola pierna intensidad media")
+	(objetivos
+		[CP_Class20017]
+		[30-4-20_Class25])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50045] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20034]
+		[30-4-20_Class34]
+		[30-4-20_Class37])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Estocada con patada al frente intensidad baja")
+	(objetivos [CP_Class20017])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50046] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20034]
+		[30-4-20_Class34]
+		[30-4-20_Class37])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Estocada con patada al frente intensidad alta")
+	(objetivos [CP_Class20017])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50047] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20034]
+		[30-4-20_Class34]
+		[30-4-20_Class37])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Estocada con patada al frente intensidad media")
+	(objetivos [CP_Class20017])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50048] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Flexion cervical intensidad baja")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50049] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Flexion cervical intensidad alta")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50050] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Flexion cervical intensidad media")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50051] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar trapecio superior intensidad baja")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50052] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar trapecio superior intensidad alta")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50053] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar trapecio superior intensidad media")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50054] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Ejercicio del pendulo intensidad baja")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50055] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Ejercicio del pendulo intensidad alta")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50056] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Ejercicio del pendulo intensidad media")
+	(objetivos
+		[CP_Class20014]
+		[CP_Class20016]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50057] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Retraccion del omoplato intensidad baja")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012]
+		[30-4-20_Class26])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50058] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Retraccion del omoplato intensidad alta")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012]
+		[30-4-20_Class26])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50059] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Retraccion del omoplato intensidad media")
+	(objetivos
+		[CP_Class20016]
+		[CP_Class20012]
+		[30-4-20_Class26])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50060] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar extensiones de cuello intensidad baja")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50061] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar extensiones de cuello intensidad alta")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50062] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar extensiones de cuello intensidad media")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50063] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20034]
+		[30-4-20_Class32]
+		[30-4-20_Class33])
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Skipping intensidad baja")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class25])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50064] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20034]
+		[30-4-20_Class32]
+		[30-4-20_Class33])
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Skipping intensidad alta")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class25])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50065] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20034]
+		[30-4-20_Class32]
+		[30-4-20_Class33])
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Skipping intensidad media")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class25])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50066] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Estirar oblicuo de cuello intensidad baja")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50067] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Estirar oblicuo de cuello intensidad alta")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50068] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Estirar oblicuo de cuello intensidad media")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50069] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Baja)
+	(nombre "Apertura de la garganta intensidad baja")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50070] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Alta)
+	(nombre "Apertura de la garganta intensidad alta")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50071] of  Ejercicio
+
+	(duracion_por_rep 10)
+	(intensidad Media)
+	(nombre "Apertura de la garganta intensidad media")
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20012])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50072] of  Ejercicio
+
+	(duracion_por_rep 180)
+	(intensidad Baja)
+	(nombre "Pilates intensidad baja")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class24]
+		[30-4-20_Class25])
+	(repeticiones+max 2)
+	(repeticiones+min 1)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50073] of  Ejercicio
+
+	(duracion_por_rep 540)
+	(intensidad Alta)
+	(nombre "Pilates intensidad alta")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class24]
+		[30-4-20_Class25])
+	(repeticiones+max 2)
+	(repeticiones+min 1)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50074] of  Ejercicio
+
+	(duracion_por_rep 360)
+	(intensidad Media)
+	(nombre "Pilates intensidad media")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class24]
+		[30-4-20_Class25])
+	(repeticiones+max 2)
+	(repeticiones+min 1)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50075] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class32]
+		[30-4-20_Class33]
+		[CP_Class20029])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Fondo de pecho intensidad baja")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50076] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class32]
+		[30-4-20_Class33]
+		[CP_Class20029])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Fondo de pecho intensidad alta")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50077] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class32]
+		[30-4-20_Class33]
+		[CP_Class20029])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Fondo de pecho intensidad media")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50078] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[30-4-20_Class30]
+		[CP_Class20033]
+		[CP_Class20032]
+		[CP_Class20027])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Pullover intensidad baja")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio con_pesas))
+
+([CP_Class50079] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[30-4-20_Class30]
+		[CP_Class20033]
+		[CP_Class20032]
+		[CP_Class20027])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Pullover intensidad alta")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio con_pesas))
+
+([CP_Class50080] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class37]
+		[30-4-20_Class30]
+		[CP_Class20033]
+		[CP_Class20032]
+		[CP_Class20027])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Pullover intensidad media")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio con_pesas))
+
+([CP_Class50081] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Estiramiento de pectoral intensidad baja")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50082] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Estiramiento de pectoral intensidad alta")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50083] of  Ejercicio
+
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Estiramiento de pectoral intensidad media")
+	(objetivos
+		[CP_Class20012]
+		[CP_Class20019]
+		[CP_Class20013])
+	(repeticiones+max 20)
+	(repeticiones+min 15)
+	(tipo+de+ejercicio estiramiento))
+
+([CP_Class50084] of  Ejercicio
+
+	(contraindicado
+		[CP_Class1]
+		[30-4-20_Class30]
+		[CP_Class20032])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Flexiones inclinadas intensidad baja")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20013])
+	(repeticiones+max 5)
+	(repeticiones+min 3)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50085] of  Ejercicio
+
+	(contraindicado
+		[CP_Class1]
+		[30-4-20_Class30]
+		[CP_Class20032])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Flexiones inclinadas intensidad alta")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20013])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50086] of  Ejercicio
+
+	(contraindicado
+		[CP_Class1]
+		[30-4-20_Class30]
+		[CP_Class20032])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Flexiones inclinadas intensidad media")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20013])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50087] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20029]
+		[CP_Class20032]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Tijeras con las piernas intensidad baja")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class25])
+	(repeticiones+max 5)
+	(repeticiones+min 3)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50088] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20029]
+		[CP_Class20032]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Tijeras con las piernas intensidad alta")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class25])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50089] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20029]
+		[CP_Class20032]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Tijeras con las piernas intensidad media")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28]
+		[30-4-20_Class25])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50090] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class30]
+		[CP_Class20032]
+		[CP_Class1])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Flexiones isometricas intensidad baja")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20013])
+	(repeticiones+max 5)
+	(repeticiones+min 3)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50091] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class30]
+		[CP_Class20032]
+		[CP_Class1])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Flexiones isometricas intensidad alta")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20013])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50092] of  Ejercicio
+
+	(contraindicado
+		[30-4-20_Class30]
+		[CP_Class20032]
+		[CP_Class1])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Flexiones isometricas intensidad media")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20013])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50093] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20029]
+		[CP_Class20032]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "McGill Crunch intensidad baja")
+	(objetivos
+		[30-4-20_Class28]
+		[30-4-20_Class26]
+		[30-4-20_Class25]
+		[CP_Class20018]
+		[CP_Class20019])
+	(repeticiones+max 5)
+	(repeticiones+min 3)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50094] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20029]
+		[CP_Class20032]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "McGill Crunch intensidad alta")
+	(objetivos
+		[30-4-20_Class28]
+		[30-4-20_Class26]
+		[30-4-20_Class25]
+		[CP_Class20018]
+		[CP_Class20019])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50095] of  Ejercicio
+
+	(contraindicado
+		[CP_Class20029]
+		[CP_Class20032]
+		[CP_Class20034]
+		[30-4-20_Class34])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "McGill Crunch intensidad media")
+	(objetivos
+		[30-4-20_Class28]
+		[30-4-20_Class26]
+		[30-4-20_Class25]
+		[CP_Class20018]
+		[CP_Class20019])
+	(repeticiones+max 15)
+	(repeticiones+min 10)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50096] of  Ejercicio
+
+	(contraindicado [CP_Class20029])
+	(duracion_por_rep 5)
+	(intensidad Baja)
+	(nombre "Curl de isquiotibiales intensidad baja")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28])
+	(repeticiones+max 5)
+	(repeticiones+min 3)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50097] of  Ejercicio
+
+	(contraindicado [CP_Class20029])
+	(duracion_por_rep 5)
+	(intensidad Alta)
+	(nombre "Curl de isquiotibiales intensidad alta")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28])
+	(repeticiones+max 25)
+	(repeticiones+min 20)
+	(tipo+de+ejercicio suelo))
+
+([CP_Class50098] of  Ejercicio
+
+	(contraindicado [CP_Class20029])
+	(duracion_por_rep 5)
+	(intensidad Media)
+	(nombre "Curl de isquiotibiales intensidad media")
+	(objetivos
+		[CP_Class20018]
+		[CP_Class20019]
+		[30-4-20_Class28])
+	(repeticiones+max 15)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
 
