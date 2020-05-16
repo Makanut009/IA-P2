@@ -1,4 +1,4 @@
-; Sat May 16 12:34:47 CEST 2020
+; Sat May 16 12:56:33 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -115,7 +115,10 @@
 	(grupo_muscular Brazos)
 	(intensidad Baja)
 	(nombre "Levantar pesas de intensidad baja")
-	(objetivos [30-4-20_Class24])
+	(objetivos
+		[30-4-20_Class24]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 20)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio con_pesas))
@@ -130,7 +133,9 @@
 	(objetivos
 		[30-4-20_Class27]
 		[CP_Class20018]
-		[CP_Class20019])
+		[CP_Class20019]
+		[CP_Class20017]
+		[30-4-20_Class25])
 	(repeticiones+max 15)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
@@ -148,7 +153,9 @@
 	(nombre "Hiperextensiones de intensidad baja")
 	(objetivos
 		[30-4-20_Class26]
-		[30-4-20_Class27])
+		[30-4-20_Class27]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 10)
 	(repeticiones+min 3)
 	(tipo+de+ejercicio con_aparatos))
@@ -159,7 +166,9 @@
 	(grupo_muscular Piernas)
 	(intensidad Baja)
 	(nombre "Estirar quadriceps de intensidad baja")
-	(objetivos [30-4-20_Class46])
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20018])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -196,7 +205,9 @@
 	(nombre "Bicicleta estatica de intensidad alta")
 	(objetivos
 		[30-4-20_Class25]
-		[30-4-20_Class23])
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 10)
 	(repeticiones+min 2)
 	(tipo+de+ejercicio con_aparatos))
@@ -268,7 +279,9 @@
 	(grupo_muscular Piernas)
 	(intensidad Media)
 	(nombre "Estirar quadriceps de intensidad media")
-	(objetivos [30-4-20_Class46])
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20018])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -279,7 +292,9 @@
 	(grupo_muscular Piernas)
 	(intensidad Alta)
 	(nombre "Estirar quadriceps de intensidad alta")
-	(objetivos [30-4-20_Class46])
+	(objetivos
+		[30-4-20_Class46]
+		[CP_Class20018])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio estiramiento))
@@ -297,7 +312,9 @@
 	(nombre "Hiperextensiones de intensidad media")
 	(objetivos
 		[30-4-20_Class26]
-		[30-4-20_Class27])
+		[30-4-20_Class27]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 20)
 	(repeticiones+min 3)
 	(tipo+de+ejercicio con_aparatos))
@@ -315,7 +332,9 @@
 	(nombre "Hiperextensiones de intensidad alta")
 	(objetivos
 		[30-4-20_Class26]
-		[30-4-20_Class27])
+		[30-4-20_Class27]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 30)
 	(repeticiones+min 3)
 	(tipo+de+ejercicio con_aparatos))
@@ -329,7 +348,10 @@
 	(grupo_muscular Brazos)
 	(intensidad Media)
 	(nombre "Levantar pesas de intensidad media")
-	(objetivos [30-4-20_Class24])
+	(objetivos
+		[30-4-20_Class24]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 50)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio con_pesas))
@@ -343,7 +365,10 @@
 	(grupo_muscular Brazos)
 	(intensidad Alta)
 	(nombre "Levantar pesas de intensidad alta")
-	(objetivos [30-4-20_Class24])
+	(objetivos
+		[30-4-20_Class24]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 100)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio con_pesas))
@@ -602,7 +627,9 @@
 	(objetivos
 		[30-4-20_Class27]
 		[CP_Class20019]
-		[CP_Class20018])
+		[CP_Class20018]
+		[CP_Class20017]
+		[30-4-20_Class25])
 	(repeticiones+max 25)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
@@ -617,7 +644,9 @@
 	(objetivos
 		[30-4-20_Class27]
 		[CP_Class20018]
-		[CP_Class20019])
+		[CP_Class20019]
+		[CP_Class20017]
+		[30-4-20_Class25])
 	(repeticiones+max 40)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
@@ -632,7 +661,11 @@
 	(grupo_muscular Abdominales)
 	(intensidad Baja)
 	(nombre "Abdominales de intensidad baja")
-	(objetivos [30-4-20_Class28])
+	(objetivos
+		[30-4-20_Class28]
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 30)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
@@ -2634,7 +2667,11 @@
 	(grupo_muscular Abdominales)
 	(intensidad Media)
 	(nombre "Abdominales de intensidad media")
-	(objetivos [30-4-20_Class28])
+	(objetivos
+		[30-4-20_Class28]
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 75)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
@@ -2751,7 +2788,11 @@
 	(grupo_muscular Abdominales)
 	(intensidad Alta)
 	(nombre "Abdominales de intensidad alta")
-	(objetivos [30-4-20_Class28])
+	(objetivos
+		[30-4-20_Class28]
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 150)
 	(repeticiones+min 10)
 	(tipo+de+ejercicio suelo))
@@ -2769,7 +2810,9 @@
 	(nombre "Bicicleta estatica de intensidad baja")
 	(objetivos
 		[30-4-20_Class25]
-		[30-4-20_Class23])
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 3)
 	(repeticiones+min 2)
 	(tipo+de+ejercicio con_aparatos))
@@ -2787,7 +2830,9 @@
 	(nombre "Bicicleta estatica de intensidad media")
 	(objetivos
 		[30-4-20_Class25]
-		[30-4-20_Class23])
+		[30-4-20_Class23]
+		[CP_Class20018]
+		[CP_Class20019])
 	(repeticiones+max 6)
 	(repeticiones+min 2)
 	(tipo+de+ejercicio con_aparatos))
