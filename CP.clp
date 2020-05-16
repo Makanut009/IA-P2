@@ -108,7 +108,7 @@
 	(progn$
 		(?var ?valores-permitidos)
 		(lowcase ?var))
-		(format t "¿%s? (%s) " ?pregunta (implode$ ?valores-permitidos))
+		(format t "%s (%s) " ?pregunta (implode$ ?valores-permitidos))
 		(bind ?respuesta (read))
 		(while (not (member (lowcase ?respuesta) ?valores-permitidos)) do
 		(format t "¿%s? (%s) " ?pregunta (implode$ ?valores-permitidos))
@@ -119,8 +119,8 @@
 
 ; Función para realizar una pregunta de sí o no al usuario
 (deffunction si-o-no-p (?pregunta)
-	(bind ?respuesta (pregunta ?pregunta si no s n))
-	(if (or (eq (lowcase ?respuesta) si) (eq (lowcase ?respuesta) s))
+	(bind ?respuesta (pregunta ?pregunta si no))
+	(if (eq (lowcase ?respuesta) si)
 		then TRUE
 		else FALSE
 	)
@@ -276,7 +276,7 @@
 
 	;Listamos todos los hábitos para que el usuario los elija
 	(bind ?lista_habitos (find-all-instances ((?a Habito+personal)) TRUE))
-	(printout t crlf "0. No tengo ninguno mas" crlf)
+	(printout t crlf crlf "HABITOS:" crlf crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_habitos)) do
 		(bind ?habito (nth$ ?i ?lista_habitos))
 		(printout t ?i ". " (send ?habito get-nombre) crlf)
@@ -305,7 +305,7 @@
 	(declare (salience 185))
 	?nhd <- (no_hay_dieta)
 	=>
-	(printout t crlf)
+	(printout t crlf crlf "DIETA:" crlf crlf)
 	(bind ?fruta (pregunta-numerica "Valora tu consumo de fruta: " 0 10))
 	(bind ?verdura (pregunta-numerica "Valora tu consumo de verdura: " 0 10))
 	(bind ?sal (pregunta-numerica "Valora cuanta sal consumes normalmente: " 0 10))
@@ -332,8 +332,8 @@
 	?persona <- (Persona)
 	=>
 
-	;Listamos todos los problemas para que el usuario los elija
-	(printout t "Problemas musculo-esqueleticos: " crlf)
+	;Listamos todos los problemas musculo-esqueleticos para que el usuario los elija
+	(printout t crlf "PROBLEMAS MUSCULO-ESQUELETICOS: " crlf)
 	(bind ?lista_problemas_musc (find-all-instances ((?p Problema+musculo-esqueletico)) TRUE))
 	(printout t crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_problemas_musc)) do
@@ -349,8 +349,29 @@
 		(bind ?respuesta (pregunta-numerica "Tienes algun problema mas? " 0 (length$ ?lista_problemas_musc)))
 	)
 
+	;Listamos todos los problemas cardiorrespiratorios para que el usuario los elija
+	(printout t crlf crlf "PROBLEMAS CARDIORRESPIRATORIOS: " crlf)
+	(bind ?lista_problemas_cardioresp (find-all-instances ((?p Problema+cardiorrespiratorio)) TRUE))
+	(printout t crlf "0. No tengo ninguno mas" crlf)
+	(loop-for-count (?i 1 (length$ ?lista_problemas_cardioresp)) do
+		(bind ?aux (nth$ ?i ?lista_problemas_cardioresp))
+		(printout t ?i ". " (send ?aux get-nombre) crlf)
+	)
+	(printout t  crlf)
+	(bind ?lista (create$))
+	(bind ?count 0)
+	(bind ?respuesta (pregunta-numerica "Que problema de estos tienes? " 0 (length$ ?lista_problemas_cardioresp)))
+	(while (> ?respuesta 0) do 
+		(bind ?problema (nth$ ?respuesta ?lista_problemas_cardioresp))
+		(bind ?lista (insert$ ?lista 1 ?problema))
+		(bind ?count (+ ?count 1))
+		(bind ?respuesta (pregunta-numerica "Tienes algun problema mas? " 0 (length$ ?lista_problemas_cardioresp)))
+	)
+
 	;Insertamos los problemas elegidos en la lista de problemas de la persona
 	(modify ?persona (problemas ?lista))
+
+	(assert (cardiorresp ?count))
 
 	(retract ?nhp)
 	(assert (no_hay_objetivos))
@@ -363,6 +384,7 @@
 	=>
 
 	;Listamos todos los objetivos para que el usuario los elija
+	(printout t crlf crlf "OBJETIVOS: " crlf)
 	(bind ?lista_objetivos (find-all-instances ((?o Objetivo)) TRUE))
 	(printout t crlf "0. No tengo ninguno mas" crlf)
 	(loop-for-count (?i 1 (length$ ?lista_objetivos)) do
@@ -390,12 +412,12 @@
 	?nhes <- (no_hay_ej_sencillos)
 	(Persona (edad ?edad))
 	=>
-	(printout t crlf)
+	(printout t crlf crlf)
 
 	; Si el usuario tiene menos de 40 años le preguntamos si quiere realizar los test. Si tiene más, lo hace obligatoriamente
 	(bind ?respuesta FALSE)
 	(if (< ?edad 40) then
-		(bind ?respuesta (si-o-no-p "Quieres realizar un ejercicio sencillo para tener mas informacion sobre tu estado fisico"))
+		(bind ?respuesta (si-o-no-p "Quieres realizar un ejercicio sencillo para tener mas informacion sobre tu estado fisico?"))
 	else (bind ?respuesta TRUE))
 
 	; Pedimos que el usuario haga el primer test i que introduzca los resultados
@@ -512,6 +534,7 @@
 	?persona <- (Persona (edad ?edad) (habitos $?lista_habitos) (IMC ?IMC) (intensidad_inicial Nula))
 	(Dieta (consumo_de_fruta ?fruta) (consumo_de_verdura ?verdura) (abuso_de_sal ?sal) (comida_basura ?basura) (picar_entre_horas ?picar))
 	(Ejercicio_sencillo (ppm ?ppm) (cansancio ?cansancio) (mareo ?mareo) (tirantez_muscular ?tirantez))
+	(cardiorresp ?count)
 	=>
 
 	; Para cada elemento sumamos o restamos intensidad inicial a la persona
@@ -531,6 +554,9 @@
 		(bind ?frec (send ?habito get-frecuencia))
 		(bind ?int_ini (+ ?int_ini (* ?puntuacion ?frec)))
 	)
+
+	;PROBLEMAS CARDIORRESPIRATORIOS
+	(bind ?int_ini (- ?int_ini (* ?count 2)))
 	
 	; Según el número obtenido, clasificamos la intensidad de la persona en tres categorías:
 
@@ -705,6 +731,8 @@
 	(declare (salience 117))
 	=>
 	(focus resolucion)
+	(printout t crlf "Pulsa enter para generar tu programa recomendado ")
+	(readline)
 )
 
 (defmodule resolucion "Modulo de resolución, donde se crean las rutinas y se les asignan los ejercicios"
