@@ -5056,9 +5056,9 @@
 	(bind ?ppmIdealA (+ ?ppmIdealCorriendo 10))
 	(if (> ?ppm ?ppmIdealA) then (bind ?resultado (- ?resultado 15)))
 
-	(if (> ?cansancio 5) then (bind ?resultado (- ?resultado ?cansancio)))
-	(bind ?resultado (- ?resultado ?mareo))
-	(bind ?resultado (- ?resultado ?tirantez))
+	(if (> ?cansancio 5) then (bind ?resultado (- ?resultado (* 2 ?cansancio))))
+	(bind ?resultado (- ?resultado (* 2 ?mareo)))
+	(bind ?resultado (- ?resultado (* 2 ?tirantez)))
 	?resultado
 )
 
@@ -5256,7 +5256,6 @@
 		(printout t ?i ". " (send ?aux get-nombre) crlf)
 	)
 	(printout t  crlf)
-	(bind ?lista (create$))
 	(bind ?count 0)
 	(bind ?respuesta (pregunta-numerica "Que problema de estos tienes? " 0 (length$ ?lista_problemas_cardioresp)))
 	(while (> ?respuesta 0) do 
@@ -5586,14 +5585,19 @@
 			; Cogemos solo aquellos ejercicios que no son contraindicados para ningún problema de la persona
 			(bind ?problemas_ej (send ?ejercicio get-contraindicado))
 			(progn$ (?problema_ej ?problemas_ej)
- 				(if (member ?problema_ej $?problemas_persona) then (bind ?problematico TRUE))
+ 				(if (member ?problema_ej $?problemas_persona) then 
+                    (bind ?problematico TRUE)
+                    (bind ?nombre (send ?ejercicio get-nombre))
+                    (bind ?nombre2 (send ?problema_ej get-nombre))
+                    (printout t "[EJERCICIO " ?nombre " DESCARTADO POR PROBLEMA " ?nombre2 "]" crlf)
+                )
  			)
 			(if (eq ?problematico FALSE) then
 				(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
 				(bind ?rep_min (send ?ejercicio get-repeticiones+min))
 				(bind ?duracion_min (* ?dur_rep ?rep_min))
 				(assert (ejercicio_objetivo (ejercicio ?ejercicio) (objetivo ?obj_pers) (duracion ?duracion_min) (rebajado FALSE)))
-			)
+            )
 		)
 	)
 	(assert (lista_objetivos1 (nombre 1) (objetivos (create$))))
