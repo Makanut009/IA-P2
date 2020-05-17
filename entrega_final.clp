@@ -1,3 +1,7 @@
+;;//////////////////////////////////
+;;      CLASES DE LA ONTOLOGIA       
+;;/////////////////////////////////
+
 ; Sun May 17 10:08:47 CEST 2020
 ; 
 ;+ (version "3.5")
@@ -299,8 +303,16 @@
 	(is-a Problema)
 	(role concrete))
 
+
+
+
+;;////////////////////
+;;      INSTANCIAS       
+;;///////////////////
+
 (definstances instancies
-    ; Sun May 17 10:08:47 CEST 2020
+
+; Sun May 17 10:08:47 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
