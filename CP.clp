@@ -61,6 +61,7 @@
 	(slot ejercicio)
 	(slot objetivo)
 	(slot duracion)
+	(slot rebajado)
 )
 
 (deftemplate ejercicios_rutina
@@ -646,8 +647,9 @@
 		(bind ?lista_objetivos (send ?habito get-favorable))
 		(bind ?duracion (send ?habito get-duracion))
 		(bind ?frec (send ?habito get-frecuencia))
+		(bind ?puntuacion (send ?habito get-puntuacion))
 		(progn$ (?objetivo ?lista_objetivos)
-			(assert (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion (* ?duracion ?frec))))
+			(assert (objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion (* ?puntuacion ?duracion ?frec))))
 		)
 	)
 	(retract ?nhoc)
@@ -678,7 +680,6 @@
 	;Iteramos por la lista de objetivos de la persona
 	(progn$ (?obj_pers $?objetivos_persona)
 		(bind ?lista_ejercicios (find-all-instances ((?ej Ejercicio)) (and (eq ?int_ini ?ej:intensidad) (member ?obj_pers ?ej:objetivos))))
-		(bind ?aux (create$))
 		(bind ?problematico FALSE)
 
 		;Y generamos una pareja con cada ejercicio que lo cumple
@@ -694,7 +695,7 @@
 				(bind ?dur_rep (send ?ejercicio get-duracion_por_rep))
 				(bind ?rep_min (send ?ejercicio get-repeticiones+min))
 				(bind ?duracion_min (* ?dur_rep ?rep_min))
-				(assert (ejercicio_objetivo (ejercicio ?ejercicio) (objetivo ?obj_pers) (duracion ?duracion_min)))
+				(assert (ejercicio_objetivo (ejercicio ?ejercicio) (objetivo ?obj_pers) (duracion ?duracion_min) (rebajado FALSE)))
 			)
 		)
 	)
@@ -708,7 +709,7 @@
 
 	(declare (salience 130))
 	(objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?puntuacion_habito))
-	?ej_obj <- (ejercicio_objetivo (objetivo ?objetivo) (ejercicio ?ejercicio))
+	?ej_obj <- (ejercicio_objetivo (objetivo ?objetivo) (ejercicio ?ejercicio) (rebajado FALSE))
 	=>
 
 	; Si la puntuacion de los hábitos que cumplen el objetivo es muy alta, eliminamos la lista
@@ -719,15 +720,15 @@
 
 	; Si la puntuacion de los hábitos que cumplen el objetivo es alta, bajamos la intensidad de los ejercicios que cumplen dicho objetivo
 	else (if (> ?puntuacion_habito 1500) then
-		(bind ?intensidad (send ?ejercicio get-intensidad))
 		(bind ?nombre (send ?ejercicio get-nombre))
+		(bind ?intensidad (send ?ejercicio get-intensidad))
 		(if (eq ?intensidad Alta) then
-			(bind ?ej2 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Media))))
-			(modify ?ej_obj (ejercicio ?ej2))
+			(bind ?ej2 (nth$ 1 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Media)))))
+			(modify ?ej_obj (ejercicio ?ej2) (rebajado TRUE))
 			(printout t "[EJERCICIO " ?nombre " REBAJADO A INTENSIDAD " Media "]" crlf)
 		else (if (eq ?intensidad Media) then
-				(bind ?ej2 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Baja))))
-				(modify ?ej_obj (ejercicio ?ej2))
+				(bind ?ej2 (nth$ 1 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Baja)))))
+				(modify ?ej_obj (ejercicio ?ej2) (rebajado TRUE))
 				(printout t "[EJERCICIO " ?nombre " REBAJADO A INTENSIDAD " Baja "]" crlf)
 			)
 		)
