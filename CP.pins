@@ -1,4 +1,4 @@
-; Sun May 17 09:31:20 CEST 2020
+; Sun May 17 09:45:21 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -220,7 +220,7 @@
 		[CP_Class20033])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Extensiones de tríceps en polea con cuerda")
+	(nombre "Extensiones de triceps en polea con cuerda")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
@@ -403,7 +403,7 @@
 		[CP_Class20033])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Extensiones de tríceps en polea con cuerda")
+	(nombre "Extensiones de triceps en polea con cuerda")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
@@ -419,7 +419,7 @@
 		[CP_Class20033])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Extensiones de tríceps en polea con cuerda")
+	(nombre "Extensiones de triceps en polea con cuerda")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
