@@ -1,4 +1,4 @@
-; Sun May 17 10:08:47 CEST 2020
+; Sun May 17 11:13:58 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -146,7 +146,8 @@
 		[30-4-20_Class37]
 		[30-4-20_Class38]
 		[30-4-20_Class34]
-		[CP_Class20032])
+		[CP_Class20032]
+		[CP_Class20034])
 	(duracion_por_rep 10)
 	(grupo_muscular Espalda)
 	(intensidad Baja)
@@ -198,7 +199,15 @@
 		[CP_Class1]
 		[CP_Class20024]
 		[CP_Class20026]
-		[30-4-20_Class38])
+		[30-4-20_Class38]
+		[CP_Class20034]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Alta)
@@ -305,7 +314,8 @@
 		[30-4-20_Class37]
 		[30-4-20_Class38]
 		[30-4-20_Class34]
-		[CP_Class20032])
+		[CP_Class20032]
+		[CP_Class20034])
 	(duracion_por_rep 5)
 	(grupo_muscular Espalda)
 	(intensidad Media)
@@ -325,7 +335,8 @@
 		[30-4-20_Class37]
 		[30-4-20_Class38]
 		[30-4-20_Class34]
-		[CP_Class20032])
+		[CP_Class20032]
+		[CP_Class20034])
 	(duracion_por_rep 3)
 	(grupo_muscular Espalda)
 	(intensidad Alta)
@@ -382,7 +393,14 @@
 		[CP_Class1]
 		[CP_Class20029]
 		[CP_Class20034]
-		[CP_Class20036])
+		[CP_Class20036]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Alta)
 	(nombre "Rollbacks")
@@ -686,7 +704,8 @@
 
 	(contraindicado
 		[30-4-20_Class30]
-		[CP_Class20034])
+		[CP_Class20034]
+		[CP_Class20029])
 	(duracion_por_rep 10)
 	(intensidad Media)
 	(nombre "Plancha con rodilla al pecho")
@@ -1190,7 +1209,14 @@
 		[30-4-20_Class30]
 		[CP_Class20033]
 		[CP_Class20034]
-		[CP_Class20036])
+		[CP_Class20036]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 300)
 	(intensidad Baja)
 	(nombre "Zumba")
@@ -1199,7 +1225,8 @@
 		[CP_Class20019]
 		[30-4-20_Class27]
 		[30-4-20_Class25]
-		[CP_Class20018])
+		[CP_Class20018]
+		[30-4-20_Class24])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio cardio))
@@ -1213,7 +1240,14 @@
 		[30-4-20_Class30]
 		[CP_Class20033]
 		[CP_Class20034]
-		[CP_Class20036])
+		[CP_Class20036]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 600)
 	(intensidad Media)
 	(nombre "Zumba")
@@ -1222,7 +1256,8 @@
 		[CP_Class20019]
 		[30-4-20_Class27]
 		[30-4-20_Class25]
-		[CP_Class20018])
+		[CP_Class20018]
+		[30-4-20_Class24])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio cardio))
@@ -1236,7 +1271,14 @@
 		[30-4-20_Class30]
 		[CP_Class20033]
 		[CP_Class20034]
-		[CP_Class20036])
+		[CP_Class20036]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 900)
 	(intensidad Alta)
 	(nombre "Zumba")
@@ -1245,7 +1287,8 @@
 		[CP_Class20019]
 		[30-4-20_Class27]
 		[30-4-20_Class25]
-		[CP_Class20018])
+		[CP_Class20018]
+		[30-4-20_Class24])
 	(repeticiones+max 1)
 	(repeticiones+min 1)
 	(tipo+de+ejercicio cardio))
@@ -1383,7 +1426,8 @@
 
 	(contraindicado
 		[30-4-20_Class30]
-		[CP_Class20034])
+		[CP_Class20034]
+		[CP_Class20029])
 	(duracion_por_rep 10)
 	(intensidad Baja)
 	(nombre "Plancha con rodilla al pecho")
@@ -1403,7 +1447,8 @@
 
 	(contraindicado
 		[CP_Class20034]
-		[30-4-20_Class30])
+		[30-4-20_Class30]
+		[CP_Class20029])
 	(duracion_por_rep 10)
 	(intensidad Alta)
 	(nombre "Plancha con rodilla al pecho")
@@ -1808,7 +1853,8 @@
 	(nombre "Clamshell")
 	(objetivos
 		[CP_Class20019]
-		[30-4-20_Class27])
+		[30-4-20_Class27]
+		[30-4-20_Class25])
 	(repeticiones+max 15)
 	(repeticiones+min 15)
 	(tipo+de+ejercicio suelo))
@@ -1821,7 +1867,8 @@
 	(nombre "Clamshell")
 	(objetivos
 		[CP_Class20019]
-		[30-4-20_Class27])
+		[30-4-20_Class27]
+		[30-4-20_Class25])
 	(repeticiones+max 20)
 	(repeticiones+min 15)
 	(tipo+de+ejercicio suelo))
@@ -1834,7 +1881,8 @@
 	(nombre "Clamshell")
 	(objetivos
 		[CP_Class20019]
-		[30-4-20_Class27])
+		[30-4-20_Class27]
+		[30-4-20_Class25])
 	(repeticiones+max 30)
 	(repeticiones+min 15)
 	(tipo+de+ejercicio suelo))
@@ -2104,7 +2152,15 @@
 		[CP_Class20024]
 		[CP_Class20026]
 		[CP_Class1]
-		[30-4-20_Class37])
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Media)
 	(nombre "Climbers")
@@ -2123,7 +2179,15 @@
 		[CP_Class20024]
 		[CP_Class20026]
 		[CP_Class1]
-		[30-4-20_Class37])
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Alta)
 	(nombre "Climbers")
@@ -2143,7 +2207,17 @@
 		[CP_Class20026]
 		[CP_Class1]
 		[30-4-20_Class37]
-		[30-4-20_Class34])
+		[30-4-20_Class34]
+		[CP_Class20034]
+		[30-4-20_Class30]
+		[CP_Class20029]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 10)
 	(intensidad Media)
 	(nombre "Burpees")
@@ -2166,7 +2240,17 @@
 		[CP_Class20026]
 		[CP_Class1]
 		[30-4-20_Class37]
-		[30-4-20_Class34])
+		[30-4-20_Class34]
+		[CP_Class20034]
+		[30-4-20_Class30]
+		[CP_Class20029]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 10)
 	(intensidad Alta)
 	(nombre "Burpees")
@@ -2196,7 +2280,14 @@
 		[CP_Class20028]
 		[CP_Class20034]
 		[CP_Class20036]
-		[30-4-20_Class30])
+		[30-4-20_Class30]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 10)
 	(intensidad Alta)
 	(nombre "Burpees con salto de 180 grados")
@@ -2287,7 +2378,14 @@
 		[CP_Class1]
 		[CP_Class20029]
 		[CP_Class20034]
-		[CP_Class20036])
+		[CP_Class20036]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Media)
 	(nombre "Rollbacks")
@@ -2309,7 +2407,14 @@
 		[CP_Class1]
 		[CP_Class20029]
 		[CP_Class20034]
-		[CP_Class20036])
+		[CP_Class20036]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Baja)
 	(nombre "Rollbacks")
@@ -2726,7 +2831,14 @@
 		[CP_Class20028]
 		[CP_Class20034]
 		[CP_Class20036]
-		[30-4-20_Class30])
+		[30-4-20_Class30]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 10)
 	(intensidad Media)
 	(nombre "Burpees con salto de 180 grados")
@@ -2756,7 +2868,14 @@
 		[CP_Class20028]
 		[CP_Class20034]
 		[CP_Class20036]
-		[30-4-20_Class30])
+		[30-4-20_Class30]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 10)
 	(intensidad Baja)
 	(nombre "Burpees con salto de 180 grados")
@@ -2778,7 +2897,15 @@
 		[CP_Class20024]
 		[CP_Class20026]
 		[CP_Class1]
-		[30-4-20_Class37])
+		[30-4-20_Class37]
+		[CP_Class20034]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Baja)
 	(nombre "Climbers")
@@ -2798,7 +2925,17 @@
 		[CP_Class20026]
 		[CP_Class1]
 		[30-4-20_Class37]
-		[30-4-20_Class34])
+		[30-4-20_Class34]
+		[CP_Class20034]
+		[30-4-20_Class30]
+		[CP_Class20029]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 10)
 	(intensidad Baja)
 	(nombre "Burpees")
@@ -3978,7 +4115,8 @@
 	(contraindicado
 		[CP_Class20034]
 		[30-4-20_Class32]
-		[30-4-20_Class33])
+		[30-4-20_Class33]
+		[CP_Class20029])
 	(duracion_por_rep 10)
 	(intensidad Baja)
 	(nombre "Skipping")
@@ -3996,7 +4134,8 @@
 	(contraindicado
 		[CP_Class20034]
 		[30-4-20_Class32]
-		[30-4-20_Class33])
+		[30-4-20_Class33]
+		[CP_Class20029])
 	(duracion_por_rep 10)
 	(intensidad Alta)
 	(nombre "Skipping")
@@ -4014,7 +4153,8 @@
 	(contraindicado
 		[CP_Class20034]
 		[30-4-20_Class32]
-		[30-4-20_Class33])
+		[30-4-20_Class33]
+		[CP_Class20029])
 	(duracion_por_rep 10)
 	(intensidad Media)
 	(nombre "Skipping")
@@ -4101,6 +4241,11 @@
 
 ([CP_Class50072] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20029]
+		[30-4-20_Class30]
+		[CP_Class20033]
+		[CP_Class20034])
 	(duracion_por_rep 180)
 	(intensidad Baja)
 	(nombre "Pilates")
@@ -4117,6 +4262,11 @@
 
 ([CP_Class50073] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20029]
+		[30-4-20_Class30]
+		[CP_Class20033]
+		[CP_Class20034])
 	(duracion_por_rep 540)
 	(intensidad Alta)
 	(nombre "Pilates")
@@ -4133,6 +4283,11 @@
 
 ([CP_Class50074] of  Ejercicio
 
+	(contraindicado
+		[CP_Class20029]
+		[30-4-20_Class30]
+		[CP_Class20033]
+		[CP_Class20034])
 	(duracion_por_rep 360)
 	(intensidad Media)
 	(nombre "Pilates")
@@ -4257,6 +4412,7 @@
 
 ([CP_Class50081] of  Ejercicio
 
+	(contraindicado [CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Baja)
 	(nombre "Estiramiento de pectoral")
@@ -4270,6 +4426,7 @@
 
 ([CP_Class50082] of  Ejercicio
 
+	(contraindicado [CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Alta)
 	(nombre "Estiramiento de pectoral")
@@ -4283,6 +4440,7 @@
 
 ([CP_Class50083] of  Ejercicio
 
+	(contraindicado [CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Media)
 	(nombre "Estiramiento de pectoral")
@@ -4555,7 +4713,15 @@
 		[CP_Class1]
 		[CP_Class20024]
 		[CP_Class20026]
-		[30-4-20_Class38])
+		[30-4-20_Class38]
+		[CP_Class20034]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Baja)
@@ -4575,7 +4741,15 @@
 		[CP_Class1]
 		[CP_Class20024]
 		[CP_Class20026]
-		[30-4-20_Class38])
+		[30-4-20_Class38]
+		[CP_Class20034]
+		[CP_Class20021]
+		[30-4-20_Class32]
+		[CP_Class20022]
+		[30-4-20_Class33]
+		[CP_Class20023]
+		[CP_Class20025]
+		[CP_Class20027])
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Media)
