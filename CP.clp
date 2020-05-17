@@ -584,28 +584,50 @@
 	"Regla para limitar el tiempo que el usuario puede hacer deporte cada día, según su intensidad"
 	
 	(declare (salience 150))
-	(Persona (intensidad_inicial ?int_ini))
+	(Persona (objetivos $?objetivos&:(> (length$ $?objetivos) -1)) (intensidad_inicial ?int_ini))
 	=>
+	(bind ?n_obj (length$ $?objetivos))
 	(bind ?rutinas (find-all-instances ((?r Rutina+diaria)) TRUE))
 	(progn$ (?rutina ?rutinas)
 		(bind ?tx (div (send ?rutina get-tiempo_disp) 60))
 		(bind ?dia (send ?rutina get-dia))
 		(if (eq ?int_ini Baja) then
-			(if (> ?tx 60) then 
-				(send ?rutina put-tiempo_disp (* 60 60))
-				(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 60 minutos]" crlf)
+			(if (< ?n_obj 3) then
+				(if (> ?tx 40) then 
+					(send ?rutina put-tiempo_disp (* 40 60))
+					(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 40 minutos]" crlf)
+				)
+			else
+				(if (> ?tx 60) then 
+					(send ?rutina put-tiempo_disp (* 60 60))
+					(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 60 minutos]" crlf)
+				)
 			)
 		)
 		(if (eq ?int_ini Media) then
-			(if (> ?tx 90) then 
-				(send ?rutina put-tiempo_disp (* 90 60))
-				(printout t "[TIEMPO DISPONIBLE DIARIO " ?dia " LIMITADO: 90 minutos]" crlf)
+			(if (< ?n_obj 3) then
+				(if (> ?tx 60) then 
+					(send ?rutina put-tiempo_disp (* 60 60))
+					(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 60 minutos]" crlf)
+				)
+			else
+				(if (> ?tx 90) then 
+					(send ?rutina put-tiempo_disp (* 90 60))
+					(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 90 minutos]" crlf)
+				)
 			)
 		)
 		(if (eq ?int_ini Alta) then
-			(if (> ?tx 90) then 
-				(send ?rutina put-tiempo_disp (* 120 60))
-				(printout t "[TIEMPO DISPONIBLE DIARIO " ?dia " LIMITADO: 120 minutos]" crlf)
+			(if (< ?n_obj 3) then
+				(if (> ?tx 90) then 
+					(send ?rutina put-tiempo_disp (* 90 60))
+					(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 90 minutos]" crlf)
+				)
+			else
+				(if (> ?tx 120) then 
+					(send ?rutina put-tiempo_disp (* 120 60))
+					(printout t "[TIEMPO DISPONIBLE DIA " ?dia " LIMITADO: 120 minutos]" crlf)
+				)
 			)
 		)
 	)
