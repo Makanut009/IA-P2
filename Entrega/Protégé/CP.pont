@@ -1,0 +1,300 @@
+; Sun May 17 11:13:58 CEST 2020
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(single-slot tiempo_disp
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot contraindicado
+;+		(comment "Lista de condicionantes para los cualos este ejercicio es contraindicado.")
+		(type INSTANCE)
+;+		(allowed-classes Problema)
+		(create-accessor read-write))
+	(multislot objetivos
+;+		(comment "Objetivos que cumple esta actividad.")
+		(type INSTANCE)
+;+		(allowed-classes Objetivo)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot desfavorable
+		(type INSTANCE)
+;+		(allowed-classes Objetivo)
+		(create-accessor read-write))
+	(multislot grupo_muscular
+;+		(comment "Lista de grupos musculares que trabaja esta actividad.")
+		(type SYMBOL)
+		(allowed-values Espalda Piernas Gluteos Abdominales Brazos Codo Manos Cuello Hombro Pies)
+		(create-accessor read-write))
+	(single-slot duracion_por_rep
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot duracion
+;+		(comment "Duracion de la actividad, en minutos")
+		(type INTEGER)
+		(default 0)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot repeticiones+min
+;+		(comment "Minimo de repeticiones de ejercicio")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+		(range -3 3)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ejercicio
+		(type INSTANCE)
+;+		(allowed-classes Ejercicio)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot frecuencia
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot favorable
+		(type INSTANCE)
+;+		(allowed-classes Objetivo)
+		(create-accessor read-write))
+	(single-slot tipo+de+ejercicio
+		(type SYMBOL)
+		(allowed-values cardio con_pesas con_aparatos suelo estiramiento)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot rutinas+diarias
+		(type INSTANCE)
+;+		(allowed-classes Rutina+diaria)
+		(cardinality 1 7)
+		(create-accessor read-write))
+	(single-slot repeticiones+max
+;+		(comment "Maximo de repeticiones de ejercicio")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot ejercicios
+		(type INSTANCE)
+;+		(allowed-classes Ejercicio+recomendado)
+		(create-accessor read-write))
+	(single-slot repeticiones
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombre
+;+		(comment "Nombre")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_habito
+		(type SYMBOL)
+		(allowed-values tarea_domestica desplazamiento trabajo fuera_del_trabajo)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot duracion+total
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot intensidad
+		(type SYMBOL)
+		(allowed-values Baja Media Alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot dia
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot dificultad
+		(type SYMBOL)
+		(allowed-values moderada normal dificil)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Programa
+	(is-a USER)
+	(role concrete)
+	(multislot rutinas+diarias
+		(type INSTANCE)
+;+		(allowed-classes Rutina+diaria)
+		(cardinality 1 7)
+		(create-accessor read-write)))
+
+(defclass Rutina+diaria
+	(is-a USER)
+	(role concrete)
+	(multislot ejercicios
+		(type INSTANCE)
+;+		(allowed-classes Ejercicio+recomendado)
+		(create-accessor read-write))
+	(multislot objetivos
+;+		(comment "Objetivos que cumple esta actividad.")
+		(type INSTANCE)
+;+		(allowed-classes Objetivo)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot duracion+total
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tiempo_disp
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot dia
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Ejercicio+recomendado
+	(is-a USER)
+	(role concrete)
+	(single-slot repeticiones
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot duracion
+;+		(comment "Duracion de la actividad, en minutos")
+		(type INTEGER)
+		(default 0)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ejercicio
+		(type INSTANCE)
+;+		(allowed-classes Ejercicio)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Ejercicio "Ejercicio que realiza una persona"
+	(is-a USER)
+	(role concrete)
+	(single-slot repeticiones+max
+;+		(comment "Maximo de repeticiones de ejercicio")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot objetivos
+;+		(comment "Objetivos que cumple esta actividad.")
+		(type INSTANCE)
+;+		(allowed-classes Objetivo)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot duracion_por_rep
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo+de+ejercicio
+		(type SYMBOL)
+		(allowed-values cardio con_pesas con_aparatos suelo estiramiento)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot intensidad
+		(type SYMBOL)
+		(allowed-values Baja Media Alta)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot contraindicado
+;+		(comment "Lista de condicionantes para los cualos este ejercicio es contraindicado.")
+		(type INSTANCE)
+;+		(allowed-classes Problema)
+		(create-accessor read-write))
+	(single-slot nombre
+;+		(comment "Nombre")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grupo_muscular
+;+		(comment "Lista de grupos musculares que trabaja esta actividad.")
+		(type SYMBOL)
+		(allowed-values Espalda Piernas Gluteos Abdominales Brazos Codo Manos Cuello Hombro Pies)
+		(create-accessor read-write))
+	(single-slot repeticiones+min
+;+		(comment "Minimo de repeticiones de ejercicio")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Condicionante "Condicionantes que tiene la persona, que afectan a su capacidad para realizarcierto tipo de ejercicios."
+	(is-a USER)
+	(role concrete))
+
+(defclass Habito+personal "Habito que tiene la persona"
+	(is-a Condicionante)
+	(role concrete)
+	(multislot favorable
+		(type INSTANCE)
+;+		(allowed-classes Objetivo)
+		(create-accessor read-write))
+	(single-slot duracion
+;+		(comment "Duracion de la actividad, en minutos")
+		(type INTEGER)
+		(default 0)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nombre
+;+		(comment "Nombre")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+		(range -3 3)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot frecuencia
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_habito
+		(type SYMBOL)
+		(allowed-values tarea_domestica desplazamiento trabajo fuera_del_trabajo)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Objetivo "Objetivo que puede tener un usuario."
+	(is-a Condicionante)
+	(role concrete)
+	(single-slot nombre
+;+		(comment "Nombre")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Problema
+	(is-a Condicionante)
+	(role concrete)
+	(single-slot nombre
+;+		(comment "Nombre")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Problema+cardiorrespiratorio "Problema cardio-respiratorio que tiene el usuario."
+	(is-a Problema)
+	(role concrete))
+
+(defclass Problema+musculo-esqueletico "Problema musculo-esqueletico que tiene el usuario."
+	(is-a Problema)
+	(role concrete)
+	(multislot grupo_muscular
+;+		(comment "Lista de grupos musculares que trabaja esta actividad.")
+		(type SYMBOL)
+		(allowed-values Espalda Piernas Gluteos Abdominales Brazos Codo Manos Cuello Hombro Pies)
+		(create-accessor read-write)))
+
+(defclass Problema+peso "Problema relacionado con el IMC del usuario."
+	(is-a Problema)
+	(role concrete))
+
+(defclass Problema+edad
+	(is-a Problema)
+	(role concrete))
+
+(defclass Problema+presion
+	(is-a Problema)
+	(role concrete))

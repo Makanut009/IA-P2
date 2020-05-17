@@ -1,0 +1,16 @@
+IA Q2 2019-2020
+Sistemas basados en el conocimiento
+
+Miembros del equipo:
+- Jordi Cluet i Martinell
+- Rodrigo Arian Huapaya Sierra
+- Enric Lamarca Ferrés
+
+
+Práctica 2 - COACHING POTATOES - Entrega final
+
+Para ejecutar el programa, se tiene que hacer lo siguiente:
+- Ejecutar (clear) en CLIPS
+- Cargar el CP_entrega.clp, usando Load.
+- Ejecutar (reset)
+- Ejecutar (run)
