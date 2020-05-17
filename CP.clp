@@ -581,7 +581,7 @@
 )
 
 (defrule limita_tiempo_segun_intensidad
-	"Regla para limitar el tiempo que el usuario puede hacer deporte cada día, según su intensidad"
+	"Regla para limitar el tiempo que el usuario puede hacer deporte cada día, según su intensidad y número de objetivos"
 	
 	(declare (salience 150))
 	(Persona (objetivos $?objetivos&:(> (length$ $?objetivos) -1)) (intensidad_inicial ?int_ini))
@@ -704,8 +704,7 @@
 )
 
 (defrule quita_ejercicios_ya_cumplidos_con_habitos 
-	"Regla para eliminar todas aquellas listas de ejercicios que cumplen un
-	objetivo que consideramos que el usuario ya cumple con sus hábitos"
+	"Regla para descartar objetivos o a rebajar la intensidad de ejercicios que ya se cumplen con hábitos"
 
 	(declare (salience 130))
 	(objetivo_cumplido_habito (objetivo ?objetivo) (puntuacion ?puntuacion_habito))
@@ -919,7 +918,7 @@
 	(modify ?l2 (objetivos ?aux2))
 )
 
-(defrule dia2b "Regla para asignar ejercicios al segundo día del programa"
+(defrule dia2b "Regla auxiliar para asignar ejercicios al segundo día del programa"
 	(declare (salience 95))
 	?ej_rutina <- (ejercicios_rutina (dia 2) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 2) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -1030,7 +1029,7 @@
 	(modify ?l2 (objetivos ?aux2))
 )
 
-(defrule dia3b "Regla para asignar ejercicios al segundo día del programa"
+(defrule dia3b "Regla auxiliar para asignar ejercicios al tercer día del programa"
 	(declare (salience 85))
 	?ej_rutina <- (ejercicios_rutina (dia 3) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 3) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -1141,7 +1140,7 @@
 	(modify ?l2 (objetivos ?aux2))
 )
 
-(defrule dia4b "Regla para asignar ejercicios al segundo día del programa"
+(defrule dia4b "Regla auxiliar para asignar ejercicios al cuarto día del programa"
 	(declare (salience 75))
 	?ej_rutina <- (ejercicios_rutina (dia 4) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 4) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -1252,7 +1251,7 @@
 	(modify ?l2 (objetivos ?aux2))
 )
 
-(defrule dia5b "Regla para asignar ejercicios al segundo día del programa"
+(defrule dia5b "Regla auxiliar para asignar ejercicios al quinto día del programa"
 	(declare (salience 65))
 	?ej_rutina <- (ejercicios_rutina (dia 5) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 5) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -1363,7 +1362,7 @@
 	(modify ?l2 (objetivos ?aux2))
 )
 
-(defrule dia6b "Regla para asignar ejercicios al segundo día del programa"
+(defrule dia6b "Regla auxiliar para asignar ejercicios al sexto día del programa"
 	(declare (salience 55))
 	?ej_rutina <- (ejercicios_rutina (dia 6) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 6) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
@@ -1474,7 +1473,7 @@
 	(modify ?l2 (objetivos ?aux2))
 )
 
-(defrule dia7b "Regla para asignar ejercicios al segundo día del programa"
+(defrule dia7b "Regla auxiliar para asignar ejercicios al séptimo día del programa"
 	(declare (salience 45))
 	?ej_rutina <- (ejercicios_rutina (dia 7) (ejercicios $?ejercicios_rutina))
 	?rutina <- (object (is-a Rutina+diaria) (dia 7) (tiempo_disp ?tiempo_disp) (ejercicios $?ejercicios_rec) (objetivos $?objetivos_rutina) (duracion+total ?duracion_total))
