@@ -1565,7 +1565,9 @@
 		(bind ?ejercicios_rutina (send ?rutina get-ejercicios))
 		(progn$  (?ejercicio_rec ?ejercicios_rutina)
 			(bind ?ejercicio (send ?ejercicio_rec get-ejercicio))
-			(printout t (send ?ejercicio get-nombre) crlf)
+			(bind ?nombre (send ?ejercicio get-nombre))
+			(bind ?intensidad (send ?ejercicio get-intensidad))
+			(printout t ?nombre " de intensidad " ?intensidad crlf)
 			(bind ?duracion (/ (send ?ejercicio_rec get-duracion) 60))
 			(if (and (> ?duracion 0) (< ?duracion 1)) then
 			 	(printout t "Duracion: menos de un minuto" crlf) else
