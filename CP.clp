@@ -574,7 +574,7 @@
 	else (if (< ?int_ini 30) then (bind ?int_ini_cat Media)
 	else (bind ?int_ini_cat Alta)))
 
-	(printout t "[INTENSIDAD INICIAL CALCULADA: " ?int_ini_cat "]" crlf crlf)
+	(printout t "[INTENSIDAD INICIAL CALCULADA: " ?int_ini_cat "]" crlf)
 	
 	(modify ?persona (intensidad_inicial ?int_ini_cat))
 	(assert (no_hay_obj_cumpl))
@@ -631,7 +631,6 @@
 			)
 		)
 	)
-	(printout t crlf)
 )
 
 (defrule objetivos_cumplidos_habitos 
@@ -726,9 +725,11 @@
 		(if (eq ?intensidad Alta) then
 			(bind ?ej2 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Media))))
 			(modify ?ej_obj (ejercicio ?ej2))
+			(printout t "[EJERCICIO " ?nombre " REBAJADO A INTENSIDAD " Media "]" crlf)
 		else (if (eq ?intensidad Media) then
 				(bind ?ej2 (find-instance ((?ej Ejercicio)) (and (eq ?ej:nombre ?nombre) (eq ?ej:intensidad Baja))))
 				(modify ?ej_obj (ejercicio ?ej2))
+				(printout t "[EJERCICIO " ?nombre " REBAJADO A INTENSIDAD " Baja "]" crlf)
 			)
 		)
 	))
@@ -751,6 +752,7 @@
 	(test(< (length$ $?objetivos) 3))
 	(Persona (intensidad_inicial ?int_ini))
 	=>
+	(printout t "[OBJETIVOS ANADIDOS]" crlf)
 	(bind $?s_objetivos (create$ "Equilibrio" "Flexibilidad" "Aliviar dolor espalda" "Aliviar dolor extremidades inferiores" "Aliviar dolor extremidades superiores" "Aliviar dolor cervicales"))
 	(bind $?aux $?objetivos)
 	(progn$ (?s_objetivo $?s_objetivos)
