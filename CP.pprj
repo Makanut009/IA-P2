@@ -1,4 +1,4 @@
-; Sun May 17 09:45:21 CEST 2020
+; Sun May 17 10:06:36 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,17 +20,17 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[CP_ProjectKB_Class43]
-		[CP_ProjectKB_Class44]
-		[CP_ProjectKB_Class45]
-		[CP_ProjectKB_Class46]
-		[CP_ProjectKB_Class47]
-		[CP_ProjectKB_Class48]
-		[CP_ProjectKB_Class49]
-		[CP_ProjectKB_Class50]
-		[CP_ProjectKB_Class51]
-		[CP_ProjectKB_Class52]
-		[CP_ProjectKB_Class53]))
+		[CP_ProjectKB_Class79]
+		[CP_ProjectKB_Class80]
+		[CP_ProjectKB_Class81]
+		[CP_ProjectKB_Class82]
+		[CP_ProjectKB_Class83]
+		[CP_ProjectKB_Class84]
+		[CP_ProjectKB_Class85]
+		[CP_ProjectKB_Class86]
+		[CP_ProjectKB_Class87]
+		[CP_ProjectKB_Class88]
+		[CP_ProjectKB_Class89]))
 
 ([CLSES_TAB] of  Widget
 
@@ -390,76 +390,76 @@
 	(property_list [Coaching+Potatoes_ProjectKB_Class10])
 	(widget_class_name "uk.ac.man.cs.mig.coode.debugger.test.DebuggerTestTab"))
 
-([CP_ProjectKB_Class43] of  String
+([CP_ProjectKB_Class79] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([CP_ProjectKB_Class44] of  String
+([CP_ProjectKB_Class80] of  String
 
 	(name "Problema presion")
 	(string_value "nombre"))
 
-([CP_ProjectKB_Class45] of  String
+([CP_ProjectKB_Class81] of  String
 
 	(name "Problema edad")
 	(string_value "nombre"))
 
-([CP_ProjectKB_Class46] of  String
+([CP_ProjectKB_Class82] of  String
 
 	(name "Ejercicio")
 	(string_value "nombre"))
 
-([CP_ProjectKB_Class47] of  String
+([CP_ProjectKB_Class83] of  String
 
 	(name "Objetivo")
 	(string_value "nombre"))
 
-([CP_ProjectKB_Class48] of  String
+([CP_ProjectKB_Class84] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([CP_ProjectKB_Class49] of  String
+([CP_ProjectKB_Class85] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([CP_ProjectKB_Class50] of  String
+([CP_ProjectKB_Class86] of  String
 
 	(name "Habito personal")
 	(string_value "nombre"))
 
-([CP_ProjectKB_Class51] of  String
+([CP_ProjectKB_Class87] of  String
 
 	(name "Problema peso")
 	(string_value "nombre"))
 
-([CP_ProjectKB_Class52] of  String
+([CP_ProjectKB_Class88] of  String
 
 	(name "Problema cardiorrespiratorio")
 	(string_value "nombre"))
 
-([CP_ProjectKB_Class53] of  String
+([CP_ProjectKB_Class89] of  String
 
 	(name "Problema musculo-esqueletico")
 	(string_value "nombre"))
 
-([CP_ProjectKB_Class54] of  Map_Entry
+([CP_ProjectKB_Class90] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([CP_ProjectKB_Class55] of  Map_Entry
+([CP_ProjectKB_Class91] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([CP_ProjectKB_Class56] of  Map_Entry
+([CP_ProjectKB_Class92] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
@@ -514,9 +514,9 @@
 ([KB_759338_Class1] of  Map
 
 	(entries
-		[CP_ProjectKB_Class54]
-		[CP_ProjectKB_Class55]
-		[CP_ProjectKB_Class56]))
+		[CP_ProjectKB_Class90]
+		[CP_ProjectKB_Class91]
+		[CP_ProjectKB_Class92]))
 
 ([KB_759338_Class100] of  String
 
