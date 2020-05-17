@@ -1,4 +1,4 @@
-; Sat May 16 17:49:13 CEST 2020
+; Sun May 17 09:31:20 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -407,23 +407,23 @@
 
 ([CP_ProjectKB_Class32] of  String
 
-	(name "Objetivo")
+	(name "Ejercicio")
 	(string_value "nombre"))
 
 ([CP_ProjectKB_Class33] of  String
 
-	(name "Ejercicio")
+	(name "Objetivo")
 	(string_value "nombre"))
 
 ([CP_ProjectKB_Class34] of  String
 
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
 
 ([CP_ProjectKB_Class35] of  String
 
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([CP_ProjectKB_Class36] of  String
 
@@ -437,12 +437,12 @@
 
 ([CP_ProjectKB_Class38] of  String
 
-	(name "Problema musculo-esqueletico")
+	(name "Problema cardiorrespiratorio")
 	(string_value "nombre"))
 
 ([CP_ProjectKB_Class39] of  String
 
-	(name "Problema cardiorrespiratorio")
+	(name "Problema musculo-esqueletico")
 	(string_value "nombre"))
 
 ([CP_ProjectKB_Class40] of  Map_Entry
@@ -503,7 +503,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_300293_Class3] of  Map
+([KB_171300_Class3] of  Map
 )
 
 ([KB_759338_Class0] of  String
@@ -699,8 +699,8 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")

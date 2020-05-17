@@ -1,4 +1,4 @@
-; Sat May 16 17:49:13 CEST 2020
+; Sun May 17 09:31:20 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -114,7 +114,7 @@
 	(duracion_por_rep 5)
 	(grupo_muscular Brazos)
 	(intensidad Baja)
-	(nombre "Levantar pesas de intensidad baja")
+	(nombre "Levantar pesas")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20018]
@@ -129,7 +129,7 @@
 	(duracion_por_rep 4)
 	(grupo_muscular Gluteos)
 	(intensidad Baja)
-	(nombre "Sentadillas de intensidad baja")
+	(nombre "Sentadillas")
 	(objetivos
 		[30-4-20_Class27]
 		[CP_Class20018]
@@ -150,7 +150,7 @@
 	(duracion_por_rep 10)
 	(grupo_muscular Espalda)
 	(intensidad Baja)
-	(nombre "Hiperextensiones de intensidad baja")
+	(nombre "Hiperextensiones")
 	(objetivos
 		[30-4-20_Class26]
 		[30-4-20_Class27]
@@ -165,7 +165,7 @@
 	(duracion_por_rep 30)
 	(grupo_muscular Piernas)
 	(intensidad Baja)
-	(nombre "Estirar quadriceps de intensidad baja")
+	(nombre "Estirar quadriceps")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20018])
@@ -202,7 +202,7 @@
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Alta)
-	(nombre "Bicicleta estatica de intensidad alta")
+	(nombre "Bicicleta estatica")
 	(objetivos
 		[30-4-20_Class25]
 		[30-4-20_Class23]
@@ -220,7 +220,7 @@
 		[CP_Class20033])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Extensiones de tríceps en polea con cuerda intensidad baja")
+	(nombre "Extensiones de tríceps en polea con cuerda")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
@@ -278,7 +278,7 @@
 	(duracion_por_rep 60)
 	(grupo_muscular Piernas)
 	(intensidad Media)
-	(nombre "Estirar quadriceps de intensidad media")
+	(nombre "Estirar quadriceps")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20018])
@@ -291,7 +291,7 @@
 	(duracion_por_rep 120)
 	(grupo_muscular Piernas)
 	(intensidad Alta)
-	(nombre "Estirar quadriceps de intensidad alta")
+	(nombre "Estirar quadriceps")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20018])
@@ -309,7 +309,7 @@
 	(duracion_por_rep 5)
 	(grupo_muscular Espalda)
 	(intensidad Media)
-	(nombre "Hiperextensiones de intensidad media")
+	(nombre "Hiperextensiones")
 	(objetivos
 		[30-4-20_Class26]
 		[30-4-20_Class27]
@@ -329,7 +329,7 @@
 	(duracion_por_rep 3)
 	(grupo_muscular Espalda)
 	(intensidad Alta)
-	(nombre "Hiperextensiones de intensidad alta")
+	(nombre "Hiperextensiones")
 	(objetivos
 		[30-4-20_Class26]
 		[30-4-20_Class27]
@@ -347,7 +347,7 @@
 	(duracion_por_rep 5)
 	(grupo_muscular Brazos)
 	(intensidad Media)
-	(nombre "Levantar pesas de intensidad media")
+	(nombre "Levantar pesas")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20018]
@@ -364,7 +364,7 @@
 	(duracion_por_rep 5)
 	(grupo_muscular Brazos)
 	(intensidad Alta)
-	(nombre "Levantar pesas de intensidad alta")
+	(nombre "Levantar pesas")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20018]
@@ -385,7 +385,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Rollbacks intensidad alta")
+	(nombre "Rollbacks")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -403,7 +403,7 @@
 		[CP_Class20033])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Extensiones de tríceps en polea con cuerda intensidad media")
+	(nombre "Extensiones de tríceps en polea con cuerda")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
@@ -419,7 +419,7 @@
 		[CP_Class20033])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Extensiones de tríceps en polea con cuerda intensidad alta")
+	(nombre "Extensiones de tríceps en polea con cuerda")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
@@ -623,7 +623,7 @@
 	(duracion_por_rep 3)
 	(grupo_muscular Gluteos)
 	(intensidad Media)
-	(nombre "Sentadillas de intensidad media")
+	(nombre "Sentadillas")
 	(objetivos
 		[30-4-20_Class27]
 		[CP_Class20019]
@@ -640,7 +640,7 @@
 	(duracion_por_rep 3)
 	(grupo_muscular Gluteos)
 	(intensidad Alta)
-	(nombre "Sentadillas de intensidad alta")
+	(nombre "Sentadillas")
 	(objetivos
 		[30-4-20_Class27]
 		[CP_Class20018]
@@ -660,7 +660,7 @@
 	(duracion_por_rep 3)
 	(grupo_muscular Abdominales)
 	(intensidad Baja)
-	(nombre "Abdominales de intensidad baja")
+	(nombre "Abdominales")
 	(objetivos
 		[30-4-20_Class28]
 		[30-4-20_Class23]
@@ -674,7 +674,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Ejercicio del gato intensidad baja")
+	(nombre "Ejercicio del gato")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20014])
@@ -689,7 +689,7 @@
 		[CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Plancha con rodilla al pecho intensidad media")
+	(nombre "Plancha con rodilla al pecho")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -709,7 +709,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Flexiones intensidad media")
+	(nombre "Flexiones")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -727,7 +727,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Press de hombros de intensidad baja")
+	(nombre "Press de hombros")
 	(objetivos
 		[30-4-20_Class24]
 		[30-4-20_Class26]
@@ -744,7 +744,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Press de hombros de intensidad media")
+	(nombre "Press de hombros")
 	(objetivos
 		[30-4-20_Class24]
 		[30-4-20_Class26]
@@ -761,7 +761,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Press de hombros de intensidad alta")
+	(nombre "Press de hombros")
 	(objetivos
 		[30-4-20_Class24]
 		[30-4-20_Class26]
@@ -779,7 +779,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Fondos de triceps intensidad baja")
+	(nombre "Fondos de triceps")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
@@ -796,7 +796,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Fondos de triceps intensidad media")
+	(nombre "Fondos de triceps")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
@@ -813,7 +813,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Fondos de triceps intensidad alta")
+	(nombre "Fondos de triceps")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class24])
@@ -828,7 +828,7 @@
 		[30-4-20_Class36])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Curl de biceps con mancuernas intensidad baja")
+	(nombre "Curl de biceps con mancuernas")
 	(objetivos [30-4-20_Class24])
 	(repeticiones+max 12)
 	(repeticiones+min 12)
@@ -841,7 +841,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Curl de biceps con mancuernas intensidad media")
+	(nombre "Curl de biceps con mancuernas")
 	(objetivos [30-4-20_Class24])
 	(repeticiones+max 24)
 	(repeticiones+min 12)
@@ -854,7 +854,7 @@
 		[30-4-20_Class36])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Curl de biceps con mancuernas intensidad alta")
+	(nombre "Curl de biceps con mancuernas")
 	(objetivos [30-4-20_Class24])
 	(repeticiones+max 36)
 	(repeticiones+min 12)
@@ -864,7 +864,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Piernas al pecho intensidad baja")
+	(nombre "Piernas al pecho")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -876,7 +876,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Piernas al pecho intensidad media")
+	(nombre "Piernas al pecho")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -888,7 +888,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Piernas al pecho intensidad alta")
+	(nombre "Piernas al pecho")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -900,7 +900,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Giro de tronco con brazos en mariposa intensidad baja")
+	(nombre "Giro de tronco con brazos en mariposa")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -912,7 +912,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Giro de tronco con brazos en mariposa intensidad media")
+	(nombre "Giro de tronco con brazos en mariposa")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -924,7 +924,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Giro de tronco con brazos en mariposa intensidad alta")
+	(nombre "Giro de tronco con brazos en mariposa")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -936,7 +936,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Abrir rodillas al suelo con pies tocandose intensidad baja")
+	(nombre "Abrir rodillas al suelo con pies tocandose")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -948,7 +948,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Abrir rodillas al suelo con pies tocandose intensidad media")
+	(nombre "Abrir rodillas al suelo con pies tocandose")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -960,7 +960,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Abrir rodillas al suelo con pies tocandose intensidad alta")
+	(nombre "Abrir rodillas al suelo con pies tocandose")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -972,7 +972,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Girar cadera y tocar con una rodilla al suelo intensidad baja")
+	(nombre "Girar cadera y tocar con una rodilla al suelo")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -984,7 +984,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Girar cadera y tocar con una rodilla al suelo intensidad media")
+	(nombre "Girar cadera y tocar con una rodilla al suelo")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -996,7 +996,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Girar cadera y tocar con una rodilla al suelo intensidad alta")
+	(nombre "Girar cadera y tocar con una rodilla al suelo")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -1008,7 +1008,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Brazo detras de la espalda de la espalda e inclinar cuello intensidad baja")
+	(nombre "Brazo detras de la espalda de la espalda e inclinar cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1020,7 +1020,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Brazo detras de la espalda de la espalda e inclinar cuello intensidad media")
+	(nombre "Brazo detras de la espalda de la espalda e inclinar cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1032,7 +1032,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Brazo detras de la espalda de la espalda e inclinar cuello intensidad alta")
+	(nombre "Brazo detras de la espalda de la espalda e inclinar cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1044,7 +1044,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Baja)
-	(nombre "Estirar brazos para desbloquear omoplatos intensidad baja")
+	(nombre "Estirar brazos para desbloquear omoplatos")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1056,7 +1056,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Alta)
-	(nombre "Estirar brazos para desbloquear omoplatos intensidad alta")
+	(nombre "Estirar brazos para desbloquear omoplatos")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1068,7 +1068,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Media)
-	(nombre "Estirar brazos para desbloquear omoplatos intensidad media")
+	(nombre "Estirar brazos para desbloquear omoplatos")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1080,7 +1080,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Baja)
-	(nombre "Inclinar cuello hacia atras intensidad baja")
+	(nombre "Inclinar cuello hacia atras")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1092,7 +1092,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Media)
-	(nombre "Inclinar cuello hacia atras intensidad media")
+	(nombre "Inclinar cuello hacia atras")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1104,7 +1104,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Alta)
-	(nombre "Inclinar cuello hacia atras intensidad alta")
+	(nombre "Inclinar cuello hacia atras")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -1116,7 +1116,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Baja)
-	(nombre "Bajar barbilla al cuello con los brazos detras intensidad baja")
+	(nombre "Bajar barbilla al cuello con los brazos detras")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20014]
@@ -1129,7 +1129,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Media)
-	(nombre "Bajar barbilla al cuello con los brazos detras intensidad media")
+	(nombre "Bajar barbilla al cuello con los brazos")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20014]
@@ -1142,7 +1142,7 @@
 
 	(duracion_por_rep 15)
 	(intensidad Alta)
-	(nombre "Bajar barbilla al cuello con los brazos detras intensidad alta")
+	(nombre "Bajar barbilla al cuello con los brazos detras")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20014]
@@ -1155,7 +1155,7 @@
 
 	(duracion_por_rep 60)
 	(intensidad Baja)
-	(nombre "Caminar hacia atras y los lados intensidad baja")
+	(nombre "Caminar hacia atras y los lados")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 3)
 	(repeticiones+min 3)
@@ -1165,7 +1165,7 @@
 
 	(duracion_por_rep 60)
 	(intensidad Media)
-	(nombre "Caminar hacia atras y los lados intensidad media")
+	(nombre "Caminar hacia atras y los lados")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 3)
 	(repeticiones+min 3)
@@ -1175,7 +1175,7 @@
 
 	(duracion_por_rep 60)
 	(intensidad Alta)
-	(nombre "Caminar hacia atras y los lados intensidad alta")
+	(nombre "Caminar hacia atras y los lados")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 3)
 	(repeticiones+min 3)
@@ -1193,7 +1193,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 300)
 	(intensidad Baja)
-	(nombre "Zumba intensidad baja")
+	(nombre "Zumba")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1216,7 +1216,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 600)
 	(intensidad Media)
-	(nombre "Zumba intensidad media")
+	(nombre "Zumba")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1239,7 +1239,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 900)
 	(intensidad Alta)
-	(nombre "Zumba intensidad alta")
+	(nombre "Zumba")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1254,7 +1254,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Balanceo del cuerpo con peso intensidad baja")
+	(nombre "Balanceo del cuerpo con peso intensidad")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20017])
@@ -1266,7 +1266,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Balanceo del cuerpo con peso intensidad media")
+	(nombre "Balanceo del cuerpo con peso")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20017])
@@ -1278,7 +1278,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Balanceo del cuerpo con peso intensidad alta")
+	(nombre "Balanceo del cuerpo con peso intensidad")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20017])
@@ -1291,7 +1291,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Levantarse sin usar las manos intensidad baja")
+	(nombre "Levantarse sin usar las manos")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 10)
 	(repeticiones+min 10)
@@ -1302,7 +1302,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Levantarse sin usar las manos intensidad media")
+	(nombre "Levantarse sin usar las manos")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 15)
 	(repeticiones+min 10)
@@ -1313,7 +1313,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Levantarse sin usar las manos intensidad alta")
+	(nombre "Levantarse sin usar las manos")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 20)
 	(repeticiones+min 10)
@@ -1328,7 +1328,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Runner pulls intensidad baja")
+	(nombre "Runner pulls")
 	(objetivos
 		[CP_Class20017]
 		[CP_Class20018]
@@ -1348,7 +1348,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Runner pulls intensidad media")
+	(nombre "Runner pulls")
 	(objetivos
 		[CP_Class20017]
 		[CP_Class20018]
@@ -1368,7 +1368,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Runner pulls intensidad alta")
+	(nombre "Runner pulls")
 	(objetivos
 		[CP_Class20017]
 		[CP_Class20018]
@@ -1386,7 +1386,7 @@
 		[CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Plancha con rodilla al pecho intensidad baja")
+	(nombre "Plancha con rodilla al pecho")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -1406,7 +1406,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Plancha con rodilla al pecho intensidad alta")
+	(nombre "Plancha con rodilla al pecho")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -1426,7 +1426,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Levantar una pierna en posicion de marcha intensidad baja")
+	(nombre "Levantar una pierna en posicion de marcha")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1442,7 +1442,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Levantar una pierna en posicion de marcha intensidad media")
+	(nombre "Levantar una pierna en posicion de marcha")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1458,7 +1458,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Levantar una pierna en posicion de marcha intensidad alta")
+	(nombre "Levantar una pierna en posicion de marcha")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1474,7 +1474,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Elevarse con una sola pierna intensidad baja")
+	(nombre "Elevarse con una sola pierna")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1490,7 +1490,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Elevarse con una sola pierna intensidad media")
+	(nombre "Elevarse con una sola pierna")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1506,7 +1506,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Elevarse con una sola pierna intensidad alta")
+	(nombre "Elevarse con una sola pierna")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1522,7 +1522,7 @@
 		[CP_Class20034])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Levantar caderas y flexionar piernas con bola suiza intensidad baja")
+	(nombre "Levantar caderas y flexionar piernas con bola suiza")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1539,7 +1539,7 @@
 		[CP_Class20034])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Levantar caderas y flexionar piernas con bola suiza intensidad media")
+	(nombre "Levantar caderas y flexionar piernas con bola suiza")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1556,7 +1556,7 @@
 		[CP_Class20034])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Levantar caderas y flexionar piernas con bola suiza intensidad alta")
+	(nombre "Levantar caderas y flexionar piernas con bola suiza")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1573,7 +1573,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Zancadas intensidad baja")
+	(nombre "Zancadas")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class27]
@@ -1590,7 +1590,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Zancadas intensidad media")
+	(nombre "Zancadas")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class27]
@@ -1607,7 +1607,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Zancadas intensidad alta")
+	(nombre "Zancadas")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class27]
@@ -1627,7 +1627,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 15)
 	(intensidad Baja)
-	(nombre "Peso muerto con barra intensidad baja")
+	(nombre "Peso muerto con barra")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1648,7 +1648,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 15)
 	(intensidad Media)
-	(nombre "Peso muerto con barra intensidad media")
+	(nombre "Peso muerto con barra")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1669,7 +1669,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 15)
 	(intensidad Alta)
-	(nombre "Peso muerto con barra intensidad alta")
+	(nombre "Peso muerto con barra")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1690,7 +1690,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Peso muerto con mancuernas intensidad baja")
+	(nombre "Peso muerto con mancuernas")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1711,7 +1711,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Peso muerto con mancuernas intensidad media")
+	(nombre "Peso muerto con mancuernas")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1732,7 +1732,7 @@
 		[CP_Class20028])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Peso muerto con mancuernas intensidad alta")
+	(nombre "Peso muerto con mancuernas")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1751,7 +1751,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Mancuerna con un unico brazo intensidad baja")
+	(nombre "Mancuerna con un unico brazo")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1770,7 +1770,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Mancuerna con un unico brazo intensidad media")
+	(nombre "Mancuerna con un unico brazo")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1789,7 +1789,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Mancuerna con un unico brazo intensidad alta")
+	(nombre "Mancuerna con un unico brazo")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1805,7 +1805,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Clamshell intensidad baja")
+	(nombre "Clamshell")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class27])
@@ -1818,7 +1818,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Clamshell intensidad media")
+	(nombre "Clamshell")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class27])
@@ -1831,7 +1831,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Clamshell intensidad alta")
+	(nombre "Clamshell")
 	(objetivos
 		[CP_Class20019]
 		[30-4-20_Class27])
@@ -1848,7 +1848,7 @@
 		[CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Un paso adelante con mancuernas intensidad baja")
+	(nombre "Un paso adelante con mancuernas")
 	(objetivos
 		[CP_Class20017]
 		[CP_Class20019]
@@ -1868,7 +1868,7 @@
 		[CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Un paso adelante con mancuernas intensidad media")
+	(nombre "Un paso adelante con mancuernas")
 	(objetivos
 		[CP_Class20017]
 		[CP_Class20019]
@@ -1888,7 +1888,7 @@
 		[CP_Class20034])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Un paso adelante con mancuernas intensidad alta")
+	(nombre "Un paso adelante con mancuernas")
 	(objetivos
 		[CP_Class20017]
 		[CP_Class20019]
@@ -1907,7 +1907,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Sentadillas oblicuas intensidad baja")
+	(nombre "Sentadillas oblicuas")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -1927,7 +1927,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Sentadillas oblicuas intensidad media")
+	(nombre "Sentadillas oblicuas")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -1947,7 +1947,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Sentadillas oblicuas intensidad alta")
+	(nombre "Sentadillas oblicuas")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -1966,7 +1966,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Flexiones intensidad baja")
+	(nombre "Flexiones")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -1983,7 +1983,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Flexiones intensidad alta")
+	(nombre "Flexiones")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -2001,7 +2001,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Salto de cuerda intensidad baja")
+	(nombre "Salto de cuerda")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -2021,7 +2021,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Salto de cuerda intensidad alta")
+	(nombre "Salto de cuerda")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -2041,7 +2041,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Salto de cuerda intensidad media")
+	(nombre "Salto de cuerda")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -2058,7 +2058,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Lunge intensidad baja")
+	(nombre "Lunge")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -2073,7 +2073,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Lunge intensidad media")
+	(nombre "Lunge")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -2088,7 +2088,7 @@
 	(contraindicado [CP_Class20034])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Lunge intensidad alta")
+	(nombre "Lunge")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20019]
@@ -2107,7 +2107,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Climbers intensidad media")
+	(nombre "Climbers")
 	(objetivos
 		[30-4-20_Class23]
 		[30-4-20_Class28]
@@ -2126,7 +2126,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Climbers intensidad alta")
+	(nombre "Climbers")
 	(objetivos
 		[30-4-20_Class23]
 		[30-4-20_Class28]
@@ -2146,7 +2146,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Burpees intensidad media")
+	(nombre "Burpees")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2169,7 +2169,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Burpees intensidad alta")
+	(nombre "Burpees")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2199,7 +2199,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Burpees con salto de 180 grados intensidad alta")
+	(nombre "Burpees con salto de 180 grados")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2222,7 +2222,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Patinador intensidad baja")
+	(nombre "Patinador")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -2244,7 +2244,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Patinador intensidad alta")
+	(nombre "Patinador")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -2266,7 +2266,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Patinador intensidad media")
+	(nombre "Patinador")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -2290,7 +2290,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Rollbacks intensidad media")
+	(nombre "Rollbacks")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -2312,7 +2312,7 @@
 		[CP_Class20036])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Rollbacks intensidad baja")
+	(nombre "Rollbacks")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20017]
@@ -2348,7 +2348,7 @@
 		[30-4-20_Class38])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Dominadas intensidad media")
+	(nombre "Dominadas")
 	(objetivos [30-4-20_Class26])
 	(repeticiones+max 10)
 	(repeticiones+min 5)
@@ -2364,7 +2364,7 @@
 		[30-4-20_Class38])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Dominadas intensidad alta")
+	(nombre "Dominadas")
 	(objetivos
 		[30-4-20_Class26]
 		[30-4-20_Class24])
@@ -2377,7 +2377,7 @@
 	(contraindicado [CP_Class20032])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Peso muerto intensidad baja")
+	(nombre "Peso muerto")
 	(objetivos [30-4-20_Class26])
 	(repeticiones+max 5)
 	(repeticiones+min 5)
@@ -2388,7 +2388,7 @@
 	(contraindicado [CP_Class20032])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Peso muerto intensidad alta")
+	(nombre "Peso muerto")
 	(objetivos [30-4-20_Class26])
 	(repeticiones+max 15)
 	(repeticiones+min 10)
@@ -2399,7 +2399,7 @@
 	(contraindicado [CP_Class20032])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Peso muerto intensidad media")
+	(nombre "Peso muerto")
 	(objetivos [30-4-20_Class26])
 	(repeticiones+max 10)
 	(repeticiones+min 5)
@@ -2413,7 +2413,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Remo con barra en maquina intensidad baja")
+	(nombre "Remo con barra en maquina")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2432,7 +2432,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Remo con barra en maquina intensidad alta")
+	(nombre "Remo con barra en maquina")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2451,7 +2451,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Remo con barra en maquina intensidad media")
+	(nombre "Remo con barra en maquina")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2470,7 +2470,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Press banca intensidad baja")
+	(nombre "Press banca")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2487,7 +2487,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Press banca intensidad alta")
+	(nombre "Press banca")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2504,7 +2504,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Press banca intensidad media")
+	(nombre "Press banca")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2523,7 +2523,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Press con mancuernas inclinado intensidad baja")
+	(nombre "Press con mancuernas inclinado")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2542,7 +2542,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Press con mancuernas inclinado intensidad alta")
+	(nombre "Press con mancuernas inclinado")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2561,7 +2561,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Press con mancuernas inclinado intensidad media")
+	(nombre "Press con mancuernas inclinado")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2579,7 +2579,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Press declinado con mancuernas intensidad baja")
+	(nombre "Press declinado con mancuernas")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2597,7 +2597,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Press declinado con mancuernas intensidad alta")
+	(nombre "Press declinado con mancuernas")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2615,7 +2615,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Press declinado con mancuernas intensidad media")
+	(nombre "Press declinado con mancuernas")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013]
@@ -2631,7 +2631,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Aperturas en banco inclinado intensidad baja")
+	(nombre "Aperturas en banco inclinado")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013])
@@ -2646,7 +2646,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Aperturas en banco inclinado intensidad alta")
+	(nombre "Aperturas en banco inclinado")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013])
@@ -2661,7 +2661,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Aperturas en banco inclinado intensidad media")
+	(nombre "Aperturas en banco inclinado")
 	(objetivos
 		[30-4-20_Class24]
 		[CP_Class20013])
@@ -2678,7 +2678,7 @@
 	(duracion_por_rep 3)
 	(grupo_muscular Abdominales)
 	(intensidad Media)
-	(nombre "Abdominales de intensidad media")
+	(nombre "Abdominales")
 	(objetivos
 		[30-4-20_Class28]
 		[30-4-20_Class23]
@@ -2692,7 +2692,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Ejercicio del gato intensidad media")
+	(nombre "Ejercicio del gato")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20014])
@@ -2704,7 +2704,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Ejercicio del gato intensidad alta")
+	(nombre "Ejercicio del gato")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20014])
@@ -2729,7 +2729,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Burpees con salto de 180 grados intensidad media")
+	(nombre "Burpees con salto de 180 grados")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2759,7 +2759,7 @@
 		[30-4-20_Class30])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Burpees con salto de 180 grados intensidad baja")
+	(nombre "Burpees con salto de 180 grados")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2781,7 +2781,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Climbers intensidad baja")
+	(nombre "Climbers")
 	(objetivos
 		[30-4-20_Class23]
 		[30-4-20_Class28]
@@ -2801,7 +2801,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Burpees intensidad baja")
+	(nombre "Burpees")
 	(objetivos
 		[30-4-20_Class23]
 		[CP_Class20018]
@@ -2818,7 +2818,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Rodillas al pecho intensidad baja")
+	(nombre "Rodillas al pecho")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -2830,7 +2830,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Rodillas al pecho intensidad media")
+	(nombre "Rodillas al pecho")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -2842,7 +2842,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Rodillas al pecho intensidad alta")
+	(nombre "Rodillas al pecho")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -2854,7 +2854,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar hombros intensidad baja")
+	(nombre "Estirar hombros")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -2867,7 +2867,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar hombros intensidad media")
+	(nombre "Estirar hombros")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -2880,7 +2880,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar hombros intensidad alta")
+	(nombre "Estirar hombros")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -2893,7 +2893,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar dorsales intensidad baja")
+	(nombre "Estirar dorsales")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -2906,7 +2906,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar dorsales intensidad alta")
+	(nombre "Estirar dorsales")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -2919,7 +2919,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar dorsales intensidad media")
+	(nombre "Estirar dorsales")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -2932,7 +2932,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar triceps intensidad baja")
+	(nombre "Estirar triceps")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -2944,7 +2944,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar triceps intensidad alta")
+	(nombre "Estirar triceps")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -2956,7 +2956,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar triceps intensidad media")
+	(nombre "Estirar triceps")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -2968,7 +2968,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Rotacion de hombros intensidad baja")
+	(nombre "Rotacion de hombros")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -2981,7 +2981,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Rotacion de hombros intensidad alta")
+	(nombre "Rotacion de hombros")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -2994,7 +2994,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Rotacion de hombros intensidad media")
+	(nombre "Rotacion de hombros")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3007,7 +3007,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Extension de espalda intensidad baja")
+	(nombre "Extension de espalda")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -3019,7 +3019,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Extension de espalda intensidad media")
+	(nombre "Extension de espalda")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -3031,7 +3031,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Extension de espalda intensidad alta")
+	(nombre "Extension de espalda")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -3043,7 +3043,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Torsion de cadera intensidad baja")
+	(nombre "Torsion de cadera")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -3055,7 +3055,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Torsion de cadera intensidad alta")
+	(nombre "Torsion de cadera")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -3067,7 +3067,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Torsion de cadera intensidad media")
+	(nombre "Torsion de cadera")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20012])
@@ -3079,7 +3079,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estiramiento de la cara posterior del hombro intensidad baja")
+	(nombre "Estiramiento de la cara posterior del hombro")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3092,7 +3092,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estiramiento de la cara posterior del hombro intensidad alta")
+	(nombre "Estiramiento de la cara posterior del hombro")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3105,7 +3105,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estiramiento de la cara posterior del hombro intensidad media")
+	(nombre "Estiramiento de la cara posterior del hombro")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3118,7 +3118,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estiramiento de la cara anterior del hombro intensidad baja")
+	(nombre "Estiramiento de la cara anterior del hombro")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3131,7 +3131,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estiramiento de la cara anterior del hombro intensidad alta")
+	(nombre "Estiramiento de la cara anterior del hombro")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3144,7 +3144,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estiramiento de la cara anterior del hombro intensidad media")
+	(nombre "Estiramiento de la cara anterior del hombro")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3157,7 +3157,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estiramiento de cadera intensidad baja")
+	(nombre "Estiramiento de cadera")
 	(objetivos
 		[CP_Class20012]
 		[30-4-20_Class26])
@@ -3169,7 +3169,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estiramiento de cadera intensidad alta")
+	(nombre "Estiramiento de cadera")
 	(objetivos
 		[CP_Class20012]
 		[30-4-20_Class26])
@@ -3181,7 +3181,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estiramiento de cadera intensidad media")
+	(nombre "Estiramiento de cadera")
 	(objetivos
 		[CP_Class20012]
 		[30-4-20_Class26])
@@ -3198,7 +3198,7 @@
 	(duracion_por_rep 2)
 	(grupo_muscular Abdominales)
 	(intensidad Alta)
-	(nombre "Abdominales de intensidad alta")
+	(nombre "Abdominales")
 	(objetivos
 		[30-4-20_Class28]
 		[30-4-20_Class23]
@@ -3212,7 +3212,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estiramiento capsular en rotacion interna intensidad baja")
+	(nombre "Estiramiento capsular en rotacion interna")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3225,7 +3225,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estiramiento capsular en rotacion interna intensidad alta")
+	(nombre "Estiramiento capsular en rotacion interna")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3238,7 +3238,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estiramiento capsular en rotacion interna intensidad media")
+	(nombre "Estiramiento capsular en rotacion interna")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3251,7 +3251,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar isquiosurales y gemelos intensidad baja")
+	(nombre "Estirar isquiosurales y gemelos")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3263,7 +3263,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar isquiosurales y gemelos intensidad alta")
+	(nombre "Estirar isquiosurales y gemelos")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3275,7 +3275,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar isquiosurales y gemelos intensidad media")
+	(nombre "Estirar isquiosurales y gemelos")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3287,7 +3287,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar flexores de cadera intensidad baja")
+	(nombre "Estirar flexores de cadera")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3299,7 +3299,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar flexores de cadera intensidad alta")
+	(nombre "Estirar flexores de cadera")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3311,7 +3311,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar flexores de cadera intensidad media")
+	(nombre "Estirar flexores de cadera")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3323,7 +3323,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar psoas iliaco intensidad baja")
+	(nombre "Estirar psoas iliaco")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3335,7 +3335,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar psoas iliaco intensidad alta")
+	(nombre "Estirar psoas iliaco")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3347,7 +3347,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar psoas iliaco intensidad media")
+	(nombre "Estirar psoas iliaco")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3359,7 +3359,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Elevaciones intensidad baja")
+	(nombre "Elevaciones")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3372,7 +3372,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Elevaciones intensidad alta")
+	(nombre "Elevaciones")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3385,7 +3385,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Elevaciones intensidad media")
+	(nombre "Elevaciones")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3398,7 +3398,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Flexiones verticales intensidad baja")
+	(nombre "Flexiones verticales")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3411,7 +3411,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Flexiones verticales intensidad alta")
+	(nombre "Flexiones verticales")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3424,7 +3424,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Flexiones verticales intensidad media")
+	(nombre "Flexiones verticales")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3437,7 +3437,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar triceps sural intensidad baja")
+	(nombre "Estirar triceps sural")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3449,7 +3449,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar triceps sural intensidad alta")
+	(nombre "Estirar triceps sural")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3461,7 +3461,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar triceps sural intensidad media")
+	(nombre "Estirar triceps sural")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3473,7 +3473,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar isquiotibiales intensidad baja")
+	(nombre "Estirar isquiotibiales")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3485,7 +3485,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar isquiotibiales intensidad alta")
+	(nombre "Estirar isquiotibiales")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3497,7 +3497,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar isquiotibiales intensidad media")
+	(nombre "Estirar isquiotibiales")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3509,7 +3509,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar tensor de la fascia lata intensidad baja")
+	(nombre "Estirar tensor de la fascia lata")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3521,7 +3521,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar tensor de la fascia lata intensidad alta")
+	(nombre "Estirar tensor de la fascia lata")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3533,7 +3533,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar tensor de la fascia lata intensidad media")
+	(nombre "Estirar tensor de la fascia lata")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3545,7 +3545,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar piramidal y gluteos intensidad baja")
+	(nombre "Estirar piramidal y gluteos")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3557,7 +3557,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar piramidal y gluteos intensidad alta")
+	(nombre "Estirar piramidal y gluteos")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3569,7 +3569,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar piramidal y gluteos intensidad media")
+	(nombre "Estirar piramidal y gluteos")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3581,7 +3581,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar psoas iliaco estirando el brazo intensidad baja")
+	(nombre "Estirar psoas iliaco estirando el brazo")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3593,7 +3593,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar psoas iliaco estirando el brazo intensidad alta")
+	(nombre "Estirar psoas iliaco estirando el brazo")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3605,7 +3605,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar psoas iliaco estirando el brazo intensidad media")
+	(nombre "Estirar psoas iliaco estirando el brazo")
 	(objetivos
 		[CP_Class20015]
 		[CP_Class20012])
@@ -3617,7 +3617,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estiramiento mariposa intensidad baja")
+	(nombre "Estiramiento mariposa")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -3629,7 +3629,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estiramiento mariposa intensidad alta")
+	(nombre "Estiramiento mariposa")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -3641,7 +3641,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estiramiento mariposa intensidad media")
+	(nombre "Estiramiento mariposa")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012])
@@ -3657,7 +3657,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Sentadilla con una sola pierna intensidad baja")
+	(nombre "Sentadilla con una sola pierna")
 	(objetivos
 		[CP_Class20017]
 		[30-4-20_Class25])
@@ -3673,7 +3673,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Sentadilla con una sola pierna intensidad alta")
+	(nombre "Sentadilla con una sola pierna")
 	(objetivos
 		[CP_Class20017]
 		[30-4-20_Class25])
@@ -3689,7 +3689,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Sentadilla con una sola pierna intensidad media")
+	(nombre "Sentadilla con una sola pierna")
 	(objetivos
 		[CP_Class20017]
 		[30-4-20_Class25])
@@ -3705,7 +3705,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Sentadilla con salto una sola pierna intensidad baja")
+	(nombre "Sentadilla con salto una sola pierna")
 	(objetivos
 		[CP_Class20017]
 		[30-4-20_Class25])
@@ -3721,7 +3721,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Sentadilla con salto una sola pierna intensidad alta")
+	(nombre "Sentadilla con salto una sola pierna")
 	(objetivos
 		[CP_Class20017]
 		[30-4-20_Class25])
@@ -3737,7 +3737,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Sentadilla con salto una sola pierna intensidad media")
+	(nombre "Sentadilla con salto una sola pierna")
 	(objetivos
 		[CP_Class20017]
 		[30-4-20_Class25])
@@ -3753,7 +3753,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Estocada con patada al frente intensidad baja")
+	(nombre "Estocada con patada al frente")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 15)
 	(repeticiones+min 10)
@@ -3767,7 +3767,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Estocada con patada al frente intensidad alta")
+	(nombre "Estocada con patada al frente")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 25)
 	(repeticiones+min 20)
@@ -3781,7 +3781,7 @@
 		[30-4-20_Class37])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Estocada con patada al frente intensidad media")
+	(nombre "Estocada con patada al frente")
 	(objetivos [CP_Class20017])
 	(repeticiones+max 20)
 	(repeticiones+min 15)
@@ -3791,7 +3791,7 @@
 
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Flexion cervical intensidad baja")
+	(nombre "Flexion cervical")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3803,7 +3803,7 @@
 
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Flexion cervical intensidad alta")
+	(nombre "Flexion cervical")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3815,7 +3815,7 @@
 
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Flexion cervical intensidad media")
+	(nombre "Flexion cervical")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3827,7 +3827,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar trapecio superior intensidad baja")
+	(nombre "Estirar trapecio superior")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3839,7 +3839,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar trapecio superior intensidad alta")
+	(nombre "Estirar trapecio superior")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3851,7 +3851,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar trapecio superior intensidad media")
+	(nombre "Estirar trapecio superior")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3863,7 +3863,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Ejercicio del pendulo intensidad baja")
+	(nombre "Ejercicio del pendulo")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3876,7 +3876,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Ejercicio del pendulo intensidad alta")
+	(nombre "Ejercicio del pendulo")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3889,7 +3889,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Ejercicio del pendulo intensidad media")
+	(nombre "Ejercicio del pendulo")
 	(objetivos
 		[CP_Class20014]
 		[CP_Class20016]
@@ -3902,7 +3902,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Retraccion del omoplato intensidad baja")
+	(nombre "Retraccion del omoplato")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012]
@@ -3915,7 +3915,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Retraccion del omoplato intensidad alta")
+	(nombre "Retraccion del omoplato")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012]
@@ -3928,7 +3928,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Retraccion del omoplato intensidad media")
+	(nombre "Retraccion del omoplato")
 	(objetivos
 		[CP_Class20016]
 		[CP_Class20012]
@@ -3941,7 +3941,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar extensiones de cuello intensidad baja")
+	(nombre "Estirar extensiones de cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3953,7 +3953,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar extensiones de cuello intensidad alta")
+	(nombre "Estirar extensiones de cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3965,7 +3965,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar extensiones de cuello intensidad media")
+	(nombre "Estirar extensiones de cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -3981,7 +3981,7 @@
 		[30-4-20_Class33])
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Skipping intensidad baja")
+	(nombre "Skipping")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -3999,7 +3999,7 @@
 		[30-4-20_Class33])
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Skipping intensidad alta")
+	(nombre "Skipping")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4017,7 +4017,7 @@
 		[30-4-20_Class33])
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Skipping intensidad media")
+	(nombre "Skipping")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4031,7 +4031,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Estirar oblicuo de cuello intensidad baja")
+	(nombre "Estirar oblicuo de cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -4043,7 +4043,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Estirar oblicuo de cuello intensidad alta")
+	(nombre "Estirar oblicuo de cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -4055,7 +4055,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Estirar oblicuo de cuello intensidad media")
+	(nombre "Estirar oblicuo de cuello")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -4067,7 +4067,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Baja)
-	(nombre "Apertura de la garganta intensidad baja")
+	(nombre "Apertura de la garganta")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -4079,7 +4079,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Alta)
-	(nombre "Apertura de la garganta intensidad alta")
+	(nombre "Apertura de la garganta")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -4091,7 +4091,7 @@
 
 	(duracion_por_rep 10)
 	(intensidad Media)
-	(nombre "Apertura de la garganta intensidad media")
+	(nombre "Apertura de la garganta")
 	(objetivos
 		[30-4-20_Class46]
 		[CP_Class20012])
@@ -4103,7 +4103,7 @@
 
 	(duracion_por_rep 180)
 	(intensidad Baja)
-	(nombre "Pilates intensidad baja")
+	(nombre "Pilates")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20018]
@@ -4119,7 +4119,7 @@
 
 	(duracion_por_rep 540)
 	(intensidad Alta)
-	(nombre "Pilates intensidad alta")
+	(nombre "Pilates")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20018]
@@ -4135,7 +4135,7 @@
 
 	(duracion_por_rep 360)
 	(intensidad Media)
-	(nombre "Pilates intensidad media")
+	(nombre "Pilates")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20018]
@@ -4155,7 +4155,7 @@
 		[CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Fondo de pecho intensidad baja")
+	(nombre "Fondo de pecho")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4172,7 +4172,7 @@
 		[CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Fondo de pecho intensidad alta")
+	(nombre "Fondo de pecho")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4189,7 +4189,7 @@
 		[CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Fondo de pecho intensidad media")
+	(nombre "Fondo de pecho")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4208,7 +4208,7 @@
 		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Pullover intensidad baja")
+	(nombre "Pullover")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4227,7 +4227,7 @@
 		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Pullover intensidad alta")
+	(nombre "Pullover")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4246,7 +4246,7 @@
 		[CP_Class20027])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Pullover intensidad media")
+	(nombre "Pullover")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4259,7 +4259,7 @@
 
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Estiramiento de pectoral intensidad baja")
+	(nombre "Estiramiento de pectoral")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20019]
@@ -4272,7 +4272,7 @@
 
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Estiramiento de pectoral intensidad alta")
+	(nombre "Estiramiento de pectoral")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20019]
@@ -4285,7 +4285,7 @@
 
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Estiramiento de pectoral intensidad media")
+	(nombre "Estiramiento de pectoral")
 	(objetivos
 		[CP_Class20012]
 		[CP_Class20019]
@@ -4302,7 +4302,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Flexiones inclinadas intensidad baja")
+	(nombre "Flexiones inclinadas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20013])
@@ -4318,7 +4318,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Flexiones inclinadas intensidad alta")
+	(nombre "Flexiones inclinadas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20013])
@@ -4334,7 +4334,7 @@
 		[CP_Class20032])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Flexiones inclinadas intensidad media")
+	(nombre "Flexiones inclinadas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20013])
@@ -4351,7 +4351,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Tijeras con las piernas intensidad baja")
+	(nombre "Tijeras con las piernas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4370,7 +4370,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Tijeras con las piernas intensidad alta")
+	(nombre "Tijeras con las piernas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4389,7 +4389,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Tijeras con las piernas intensidad media")
+	(nombre "Tijeras con las piernas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4407,7 +4407,7 @@
 		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Flexiones isometricas intensidad baja")
+	(nombre "Flexiones isometricas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20013])
@@ -4423,7 +4423,7 @@
 		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Flexiones isometricas intensidad alta")
+	(nombre "Flexiones isometricas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20013])
@@ -4439,7 +4439,7 @@
 		[CP_Class1])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Flexiones isometricas intensidad media")
+	(nombre "Flexiones isometricas")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20013])
@@ -4456,7 +4456,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "McGill Crunch intensidad baja")
+	(nombre "McGill Crunch")
 	(objetivos
 		[30-4-20_Class28]
 		[30-4-20_Class26]
@@ -4476,7 +4476,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "McGill Crunch intensidad alta")
+	(nombre "McGill Crunch")
 	(objetivos
 		[30-4-20_Class28]
 		[30-4-20_Class26]
@@ -4496,7 +4496,7 @@
 		[30-4-20_Class34])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "McGill Crunch intensidad media")
+	(nombre "McGill Crunch")
 	(objetivos
 		[30-4-20_Class28]
 		[30-4-20_Class26]
@@ -4512,7 +4512,7 @@
 	(contraindicado [CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Baja)
-	(nombre "Curl de isquiotibiales intensidad baja")
+	(nombre "Curl de isquiotibiales")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4526,7 +4526,7 @@
 	(contraindicado [CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Alta)
-	(nombre "Curl de isquiotibiales intensidad alta")
+	(nombre "Curl de isquiotibiales")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4540,7 +4540,7 @@
 	(contraindicado [CP_Class20029])
 	(duracion_por_rep 5)
 	(intensidad Media)
-	(nombre "Curl de isquiotibiales intensidad media")
+	(nombre "Curl de isquiotibiales")
 	(objetivos
 		[CP_Class20018]
 		[CP_Class20019]
@@ -4559,7 +4559,7 @@
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Baja)
-	(nombre "Bicicleta estatica de intensidad baja")
+	(nombre "Bicicleta estatica")
 	(objetivos
 		[30-4-20_Class25]
 		[30-4-20_Class23]
@@ -4579,7 +4579,7 @@
 	(duracion_por_rep 300)
 	(grupo_muscular Piernas)
 	(intensidad Media)
-	(nombre "Bicicleta estatica de intensidad media")
+	(nombre "Bicicleta estatica")
 	(objetivos
 		[30-4-20_Class25]
 		[30-4-20_Class23]

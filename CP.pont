@@ -1,4 +1,4 @@
-; Sat May 16 17:49:13 CEST 2020
+; Sun May 17 09:31:20 CEST 2020
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -97,22 +97,22 @@
 		(allowed-values tarea_domestica desplazamiento trabajo fuera_del_trabajo)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot duracion+total
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot intensidad
 		(type SYMBOL)
 		(allowed-values Baja Media Alta)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot duracion+total
+	(single-slot dia
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot dificultad
 		(type SYMBOL)
 		(allowed-values moderada normal dificil)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot dia
-		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -138,11 +138,11 @@
 ;+		(allowed-classes Objetivo)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot tiempo_disp
+	(single-slot duracion+total
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot duracion+total
+	(single-slot tiempo_disp
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
